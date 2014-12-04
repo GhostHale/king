@@ -165,6 +165,9 @@ a{
 		font-size: 12px;
 		line-height: 36px;
 		color: #666;
+		a{
+			color: #666;
+		}
 	}
 	.content{
 		padding: 50px 34px 100px 34px;
@@ -262,4 +265,222 @@ a{
 	height: ;
 	margin: 0 auto;
 	margin-top: ;
+}
+#curtain{
+	position: absolute;
+	top: 0;
+	left: 0;
+	display: none;
+	width: 100%;
+	height: 110%;
+	background-color: #000;
+	filter: alpha(opacity=80) !important;
+	opacity: 0.8;
+	-moz-opacity: 0.8;
+	z-index: 10;
+}
+#login_register{
+	position: absolute;
+	width: 512-38-38px;
+	left: 50%;
+	top: 10%;
+	margin-left: -256px;
+	padding: 33px 38px;
+	background-color: #f2f2f2;
+	z-index: 11;
+	display: none;
+	.close{
+		position: absolute;
+		width: 32px;
+		height: 32px;
+		background-color: #0472d3;
+		font-size: 32px;
+		line-height: 32px;
+		text-align: center;
+		color: #fff;
+		right: -10px;
+		top: -10px;
+		border-radius: 32px;
+		cursor: pointer;
+	}
+	.interface{
+		border: 1px solid #cacaca;
+		input{
+			outline: none;
+			border: none;
+		}
+		ul{
+			overflow: hidden;
+			border-bottom: 1px solid #cacaca;
+			li{
+				font-size: 20px;
+				color: #666;
+				line-height: 50px;
+				text-align: center;
+				float: left;
+				width: 216px;
+				cursor: pointer;
+			}
+			.login_btn{
+				border-right: 1px solid #cacaca;
+			}
+			.register_btn{
+
+			}
+			.on_btn{
+				color: #666;
+				background-color: #fff;
+			}
+		}
+		.login_interface{
+			display: block;
+			padding: 23px 60px 30px 60px;
+			.box{
+				overflow: hidden;
+				margin-top: 12px;
+				img{
+					display: block;
+					float: left;
+				}
+				div{
+					float: left;
+					width: 260px;
+					height: 35px;
+					border: 1px solid #cacaca;
+					padding-left: 45px;
+					input{
+						display: block;
+						float: left;
+						height: 30px;
+						font-size: 18px;
+						color: #999;
+						padding: 3px 0 2px 0;
+					}
+				}
+				.username{
+					background: url(../images/login_user.png) no-repeat;
+					background-color: #fff;
+				}
+				.password{
+					background: url(../images/login_pwd.png) no-repeat;
+					background-color: #fff;
+				}
+			}
+			.checkbox{
+				margin-top: 26px;
+				padding-right: 4px;
+				input{
+					float: left;
+				}
+				a{
+					float: right;
+					color: #0371d2;
+				}
+			}
+			.submit{
+				display: block;
+				margin: 30px 0 0 24px;
+				font-size: 18px;
+				padding: 12px 110px;
+				color: #fff;
+				background-color: #0371d2;
+				border-bottom: 2px solid #0160b2;
+				cursor: pointer;
+			}
+		}
+		.register_interface{
+			display: none;
+			padding: 23px 50px 30px 50px;
+			.box{
+				overflow: hidden;
+				margin-top: 12px;
+				label{
+					float: left;
+					display: block;
+					line-height: 50px;
+					width: 72px;
+					font-size: 18px;
+					text-align: right;
+					margin-right: 12px;
+					color: #666;
+				}
+				img{
+					display: block;
+					float: left;
+				}
+				div{
+					float: left;
+					width: 236px;
+					height: 36px;
+					border: 1px solid #cacaca;
+					background-color: #fff;
+					span{
+						display: block;
+						float: left;
+						width: 40px;
+						text-align: center;
+					}
+					input{
+						display: block;
+						float: left;
+						width: 196px;
+						height: 30px;
+						font-size: 18px;
+						padding: 3px 0;
+					}
+				}
+				.yanzheng{
+					width: 146px;
+					margin-left: 20px;
+					input{
+						width: 106px;
+					}
+				}
+				.reg_icon{
+				    font-family:"register" !important;
+				    font-size:20px;
+				    line-height: 36px;
+				    color: #666;
+				    font-style:normal;
+				    -webkit-font-smoothing: antialiased;
+				    -webkit-text-stroke-width: 0.2px;
+				    -moz-osx-font-smoothing: grayscale;
+				}
+				h5{
+					font-weight: lighter;
+					color: #cc3300;
+				}
+				.suo{
+					font-size: 24px;
+				}
+			}
+			.checkbox{
+				margin-top: 26px;
+				text-align: center;
+				a{
+					color: #0371d2;
+				}
+			}
+			.submit{
+				display: block;
+				margin: 30px 0 0 50px;
+				font-size: 18px;
+				padding: 12px 96px;
+				color: #fff;
+				background-color: #0371d2;
+				border-bottom: 2px solid #0160b2;
+				cursor: pointer;
+			}
+		}	
+	}
+}
+@font-face {font-family: 'register';
+    src: url('../font/register.eot'); /* IE9*/
+    src: url('../font/register.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+    url('../font/register.woff') format('woff'), /* chrome、firefox */
+    url('../font/register.ttf') format('truetype'), /* chrome、firefox、opera、Safari, Android, iOS 4.2+*/
+    url('../font/register.svg#uxiconfont') format('svg'); /* iOS 4.1- */
+}
+.warn{
+	background-color: transparent;
 }
