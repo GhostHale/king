@@ -1,7 +1,5 @@
-*.html
 .project
 .settings/
 system/
 .htaccess
 .DS_Store
-*.less
