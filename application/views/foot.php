@@ -16,13 +16,17 @@
             <div class="up"></div>
         </div>
     </div>
+    <div id="back_top">
+        <div class="kefu"></div>
+        <div class="top"></div>
+    </div>
 </body>
-<script type="text/javascript" src="js/main.js"></script>
+<script type="text/javascript" src="/js/main.js"></script>
 <script type="text/javascript">
     $('.up').on('click',function(){
         $(window).scrollTop(0);
     });
-    $(function(){   
+    $(function(){
         $('.service').css({"position":"absolute","top":$(window).scrollTop()+300+'px',"right":"4%"});
     });
     $('body').on('mousewheel',function(){
