@@ -1,3 +1,8 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>掌金街</title>
+        <meta name="description" content="">
 <?php include(APPPATH.'views/top.php');?>
         <link rel="stylesheet" type="text/css" href="/css/main.css">
 		<link rel="stylesheet" type="text/css" href="/css/style.css">

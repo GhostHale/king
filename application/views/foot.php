@@ -20,9 +20,9 @@
         <div class="kefu"></div>
         <div class="top"></div>
     </div>
-</body>
 <script type="text/javascript" src="/js/main.js"></script>
 <script type="text/javascript">
+    $('#nav_type>li:eq(<?=$GLOBALS['type']?>)').attr("class","nav_on");
     $('.up').on('click',function(){
         $(window).scrollTop(0);
     });
@@ -35,4 +35,5 @@
         };  
     });
 </script>
+</body>
 </html>

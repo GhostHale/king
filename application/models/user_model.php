@@ -15,31 +15,35 @@ class User_model extends CI_Model
      */
     function user_check($username)
     {
-        $this->db->select('count(*) AS num');
         $this->db->where('user',$username); //查询条件
-        $data = $this->db->get('user')->result_array(); //从哪张表,返回数据类型 result 是对象类型的result_array是数组类型
+        $data = $this->db->get('user'); //从哪张表,返回数据类型 result 是对象类型的result_array是数组类型
         //print_r($data);
-        if ($data[0]['num'] > 0) {
+        if ($data->nub_rows()!=0) {
             return false;    //这个玩意就是说重名了
-        }
-        return true;
+        }else return true;
     }
-
 
     /*
      * 用户注册
      */
     function user_register($table, $user)
     {
+        //@TODO 查重
         $this->db->insert($table,$user);
         return true;
     }
 
-    /*
+    function phone_check($phone){
+        
+    }
+    
+    function mail_check($mail){
+        
+    }
+    /*可以根据邮箱和手机来登陆
      * 用户登录
      */
     function user_login($username,$password){
-        $this->load->library('session');
         $this->db->select('count(*) AS num');
         $array  = array('user'=>$username,'psw'=>md5(md5($password)));
         $this->db->where($array); 
@@ -71,16 +75,6 @@ class User_model extends CI_Model
         $result = $this->db->update($tableName,$data);
         return $result;
     }
-
-
-    /*
-     * @TODO 设置登录之后的session
-     */
-    function setSession(){
-        //
-    }
-
-
 
 }
 

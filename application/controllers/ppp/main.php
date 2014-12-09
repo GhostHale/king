@@ -1,4 +1,6 @@
 <?php
+    global $type;
+    $type=0;
 class main extends CI_Controller {
     
     function index(){
