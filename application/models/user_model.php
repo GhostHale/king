@@ -6,19 +6,17 @@ class User_model extends CI_Model
     function __construct()
     {
         parent::__construct();
-        $this->load->database();
     }
 
 
     /*
-     * 检查账号是否重名
+     * 检查是否重复
      */
-    function user_check($username)
+    function is_unique($cou,$data)
     {
-        $this->db->where('user',$username); //查询条件
+        $this->db->where($cou,$username); //查询条件
         $data = $this->db->get('user'); //从哪张表,返回数据类型 result 是对象类型的result_array是数组类型
-        //print_r($data);
-        if ($data->nub_rows()!=0) {
+        if ($data->num_rows()>0) {
             return false;    //这个玩意就是说重名了
         }else return true;
     }
@@ -26,54 +24,40 @@ class User_model extends CI_Model
     /*
      * 用户注册
      */
-    function user_register($table, $user)
+    function user_register($user)
     {
-        //@TODO 查重
-        $this->db->insert($table,$user);
+        if (is_unique('phone',$user['phone'])) return '手机号码已存在！';
+        if (is_unique('email',$user['email'])) return '此邮箱已存在！';
+        if (is_unique('user',$user['user'])) return '此用户名已存在！';
+        $this->db->insert($user);
+        $this->session->set_userdata('id',$this->db->insert_id());
         return true;
     }
 
-    function phone_check($phone){
-        
-    }
-    
-    function mail_check($mail){
-        
-    }
-    /*可以根据邮箱和手机来登陆
+    /*可以根据用户名、邮箱和手机来登陆
      * 用户登录
      */
     function user_login($username,$password){
-        $this->db->select('count(*) AS num');
-        $array  = array('user'=>$username,'psw'=>md5(md5($password)));
-        $this->db->where($array); 
-        $data = $this->db->get('user')->result_array();
-        //var_dump($data);
-        if ($data[0]['num'] > 0) {
-          echo "登录成功";
-            $this->db->select('id');
-            $this->db->where('user',$username);
-            $data = $this->db->get('user')->result_array();
-            //var_dump($data);
-            $user=array('id'=>$data[0]['id'],'user'=>$username);
-            $this->session->set_userdata('user',$user);  //$_SESSION['user']=$user
-            return true;
-        }
-        else
-            return "用户名或密码错误";
-    }
-
-
-    /*
-      * 更新表  用户修改信息
-      * $tableName 表名
-      * $data      更新数据
-      * $where     where条件
-      */
-    public function updateTable($tableName,$data,$filed,$where){
-        $this->db->where_in($filed,$where);
-        $result = $this->db->update($tableName,$data);
-        return $result;
+        $que=array();
+        if (is_numeric($username)) $que['phone']=$username;
+        else if (strstr($username,'@')>0) $que['email']=$username;
+        else $que['user']=$username;
+        $this->db->where($que);
+        $data = $this->db->select('pid,user,psw')->get('user');
+        if ($data->num_rows()==1) {
+            $data=$data->row();
+            if ($data->psw==md5(md5($password))){
+                $this->session->set_userdata('id',$data->pid);
+                if ($this->input->post('save')){
+                    $this->load->helper('functions');
+                    $check=setcheck();$time=time()+3600*24;$dbcheck=check($check);
+                    setcookie('name',$data->user,$time,'/','',false,true);
+                    setcookie('check',$dbcheck,$time,'/','',false,true);
+                    $this->db->query("UPDATE user SET check=$dbcheck WHERE id=?",$data->pid);
+                }
+                return true;
+            }else return "用户名、密码错误！";
+        }else return "用户名不存在！";
     }
 
 }

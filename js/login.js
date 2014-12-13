@@ -85,7 +85,7 @@ $('#register .button').on('click',function(){
 });
 
 $('.register').on('click',function(){
-    location.href = "register.html";
+    location.href = "/user/register";
 });
 
 $('.register_interface .submit').bind('click',function(event){

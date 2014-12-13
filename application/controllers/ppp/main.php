@@ -11,7 +11,7 @@ class main extends CI_Controller {
      * 公告列表
      */
      function annlist(){
-         $this->load->view('ppp/anndetail');
+         $this->load->view('ppp/ann');
      }
      
     /*
