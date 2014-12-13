@@ -1,41 +1,41 @@
-jQuery.cookie = function(name, value, options) {
-    if (typeof value != 'undefined') { // name and value given, set cookie
-        options = options || {};
-        if (value === null) {
-            value = '';
-            options.expires = -1;
-        }
-        var expires = '';
-        if (options.expires && (typeof options.expires == 'number' || options.expires.toUTCString)) {
-            var date;
-            if (typeof options.expires == 'number') {
-                date = new Date();
-                date.setTime(date.getTime() + (options.expires * 24 * 60 * 60 * 1000));
-            } else {
-                date = options.expires;
-            }
-            expires = '; expires=' + date.toUTCString(); // use expires attribute, max-age is not supported by IE
-        }
-        var path = options.path ? '; path=' + options.path : '';
-        var domain = options.domain ? '; domain=' + options.domain : '';
-        var secure = options.secure ? '; secure' : '';
-        document.cookie = [name, '=', encodeURIComponent(value), expires, path, domain, secure].join('');
-    } else { // only name given, get cookie
-        var cookieValue = null;
-        if (document.cookie && document.cookie != '') {
-            var cookies = document.cookie.split(';');
-            for (var i = 0; i < cookies.length; i++) {
-                var cookie = jQuery.trim(cookies[i]);
-                // Does this cookie string begin with the name we want?
-                if (cookie.substring(0, name.length + 1) == (name + '=')) {
-                    cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
-                    break;
-                }
-            }
-        }
-        return cookieValue;
-    }
-};
+// jQuery.cookie = function(name, value, options) {
+//     if (typeof value != 'undefined') { // name and value given, set cookie
+//         options = options || {};
+//         if (value === null) {
+//             value = '';
+//             options.expires = -1;
+//         }
+//         var expires = '';
+//         if (options.expires && (typeof options.expires == 'number' || options.expires.toUTCString)) {
+//             var date;
+//             if (typeof options.expires == 'number') {
+//                 date = new Date();
+//                 date.setTime(date.getTime() + (options.expires * 24 * 60 * 60 * 1000));
+//             } else {
+//                 date = options.expires;
+//             }
+//             expires = '; expires=' + date.toUTCString(); // use expires attribute, max-age is not supported by IE
+//         }
+//         var path = options.path ? '; path=' + options.path : '';
+//         var domain = options.domain ? '; domain=' + options.domain : '';
+//         var secure = options.secure ? '; secure' : '';
+//         document.cookie = [name, '=', encodeURIComponent(value), expires, path, domain, secure].join('');
+//     } else { // only name given, get cookie
+//         var cookieValue = null;
+//         if (document.cookie && document.cookie != '') {
+//             var cookies = document.cookie.split(';');
+//             for (var i = 0; i < cookies.length; i++) {
+//                 var cookie = jQuery.trim(cookies[i]);
+//                 // Does this cookie string begin with the name we want?
+//                 if (cookie.substring(0, name.length + 1) == (name + '=')) {
+//                     cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+//                     break;
+//                 }
+//             }
+//         }
+//         return cookieValue;
+//     }
+// };
 
 $('.interface ul li').on('click',function(){
 	$('.on_btn').removeClass('on_btn');
@@ -137,27 +137,34 @@ $('.register_interface .submit').bind('click',function(event){
 	}
 });
 
-//初始化页面时验证是否记住了密码 
-$(document).ready(function() { 
-    if ($.cookie("rmbUser") == "true") { 
-        $("#login_register .checkbox input").attr("checked", true); 
-        $("#login_register .userName").val($.cookie("userName")); 
-        $("#login_register .password").val($.cookie("passWord")); 
-    } 
-}); 
-//保存用户信息 
-function saveUserInfo() {
-    if ($("#login_register .checkbox input").attr("checked") == 'checked') { 
-        var userName = $("#login_register .username input").val(); 
-        var passWord = $("#login_register .password input").val(); 
-        $.cookie("rmbUser", "true", { expires: 7 }); // 存储一个带7天期限的 cookie 
-        $.cookie("userName", userName, { expires: 7 }); // 存储一个带7天期限的 cookie 
-        $.cookie("passWord", passWord, { expires: 7 }); // 存储一个带7天期限的 cookie 
-    } 
-    else { 
-        $.cookie("rmbUser", "false", { expires: -1 }); 
-        $.cookie("userName", '', { expires: -1 }); 
-        $.cookie("passWord", '', { expires: -1 }); 
-    } 
-} 
-$('#login_register .login_interface .submit').on('click',saveUserInfo);
+//登录成功后
+$('#header .login').on('click',function(){
+    $.ajax({ url: "user/logout", context: document.body, success: function(){
+        $('#header .register').after("<li class='quit' style='border-right: 1px dashed #979797;'>退出</li>");  
+    }});
+});
+
+// //初始化页面时验证是否记住了密码 
+// $(document).ready(function() { 
+//     if ($.cookie("rmbUser") == "true") { 
+//         $("#login_register .checkbox input").attr("checked", true); 
+//         $("#login_register .userName").val($.cookie("userName")); 
+//         $("#login_register .password").val($.cookie("passWord")); 
+//     } 
+// }); 
+// //保存用户信息 
+// function saveUserInfo() {
+//     if ($("#login_register .checkbox input").attr("checked") == 'checked') { 
+//         var userName = $("#login_register .username input").val(); 
+//         var passWord = $("#login_register .password input").val(); 
+//         $.cookie("rmbUser", "true", { expires: 7 }); // 存储一个带7天期限的 cookie 
+//         $.cookie("userName", userName, { expires: 7 }); // 存储一个带7天期限的 cookie 
+//         $.cookie("passWord", passWord, { expires: 7 }); // 存储一个带7天期限的 cookie 
+//     } 
+//     else { 
+//         $.cookie("rmbUser", "false", { expires: -1 }); 
+//         $.cookie("userName", '', { expires: -1 }); 
+//         $.cookie("passWord", '', { expires: -1 }); 
+//     } 
+// } 
+// $('#login_register .login_interface .submit').on('click',saveUserInfo);
