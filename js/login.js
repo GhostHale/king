@@ -16,18 +16,13 @@ $('.close').on('click',function(){
 $('.login').on('click',function(){
 	$('#curtain').css('display','block');
 	$('#login_register').css('display','block');
-	$('.login_interface').css('display','block');
-	$('.register_interface').css('display','none');
-	$('.on_btn').removeClass('on_btn');
-	$('.login_btn').addClass('on_btn');
+	$('#login_register .login_interface').css('display','block');
+	$('#login_register .login_interface').css('display','block');
+	$('#login_register .register_interface').css('display','none');
+	$('#login_register .on_btn').removeClass('on_btn');
+	$('#login_register .login_btn').addClass('on_btn');
 });
 $('.register').on('click',function(){
-	$('#curtain').css('display','block');
-	$('#login_register').css('display','block');
-	$('.login_interface').css('display','none');
-	$('.register_interface').css('display','block');
-	$('.on_btn').removeClass('on_btn');
-	$('.register_btn').addClass('on_btn');
 });
 
 $('.register_interface .submit').bind('click',function(event){
@@ -73,7 +68,7 @@ $('.register_interface .submit').bind('click',function(event){
     	};
 	});
 	if (status1&&status2&&status3&&status4&&status5&&status6) {
-		$('.register_interface form').submit();
+		$('.register_interface .submit').submit();
 	}else{
 		event.preventDefault()
 	}

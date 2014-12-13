@@ -117,9 +117,64 @@ a{
 		}
 	}
 	#banner{
+		position: relative;
 		width: 100%;
 		height: 338+56px;
 		overflow: hidden;
+		.free_reg{
+			position: absolute;
+			top: 20px;
+			left: 50%;
+			margin-left: 180px;
+			width: 310px;
+			height: 300px;
+			border: 1px solid "blue";
+			background-color: #0271d1;
+			h1{
+				padding: 39px 0 0 34px;
+				color: #fff;
+				font-size: 24px;
+				font-weight: lighter;
+			}
+			h2,h3{
+				width: 240px;
+				font-size: 18px;
+				font-weight: lighter;
+				line-height: 28px;
+				padding: 14px 0 0 34px;
+				color: #f6f5ec;
+				.shandian_rate{
+					font-size: 32px;
+					color: #ffae01;
+				}
+				.dynamic_fold,.static_fold{
+					color: #ff8401;
+				}
+			}
+			.login{
+				font-size: 14px;
+				width: 240px;
+				margin: 6px auto 0 auto;
+				font-weight: lighter;
+				color: #f6f5ec;
+				text-align: right;
+				cursor: pointer;
+			}
+			button{
+				display: block;
+				width: 240px;
+				height: 48px;
+				font-size: 18px;
+				color: #fff;
+				text-align: center;
+				border: none;
+				border-bottom: 4px solid #ff8401;
+				background-color: #ffae01;
+				line-height: 48px;
+				margin: 30px auto 0 auto;
+				cursor: pointer;
+			}
+		}
 		.banner_con{
 			position: relative;
 			left: 0;
@@ -132,6 +187,7 @@ a{
 			li{
 				float: left;
 				height: 337px;
+				background-color: #000;
 				background-position: 50% 50%;
 			}
 		}
@@ -147,203 +203,12 @@ a{
 				border:1px solid #ababab;
 				border-radius: 11px;
 				box-shadow: 0 0 2px #ababab;
-				cursor: pointer;
 			}
 			.slider_focus{
 				background-color: #ff8401;
 			}
 		}
 	}
-}
-#main{
-	width: 1002px;
-	margin: 0 auto;
-	overflow: hidden;
-	.main_nav{
-		width: inherit;
-		text-align: left;
-		font-size: 14px;
-		line-height: 36px;
-		color: #666;
-		a{
-			color: #666;
-		}
-	}
-	.top_con{
-		padding: 26px 36px 16px 36px;
-		width: 1000-36-36px;
-		margin-top: 10px;
-		border: 1px solid #c4c4c4;
-		overflow: hidden;
-		.top_left{
-			float: left;
-			width: 720px;
-			div{
-				overflow: hidden;
-				span{
-					width: 70px;
-					display: block;
-					float: left;
-					font-size: 14px;
-					color: #666;
-					line-height: 22px;
-				}
-			}
-			h1{
-				font-size: 20px;
-				color: #0371d2;
-				font-weight: lighter;
-				padding-bottom: 24px;
-			}
-			ul{
-				float: left;
-				overflow: hidden;
-				margin-bottom: 18px;
-				li{
-					float: left;
-					padding: 4px 10px;
-					margin-left: 18px;
-					font-size: 14px;
-					color: #666;
-					cursor: pointer;
-				}
-				.select{
-					background-color: #0371d2;
-					color: #fff;
-				}
-			}
-		}
-		.top_right{
-			float: left;
-			width: 200px;
-			h1{
-				font-weight: lighter;
-				font-size: 20px;
-				color: #666;
-				padding-bottom: 20px;
-			}
-			p{
-				font-size: 14px;
-				line-height: 30px;
-				color: #666;
-			}
-		}
-	}
-	.list{
-		width: 1000px;
-		border: 1px solid #c4c4c4;
-		margin-top: 30px;
-		margin-bottom: 32px;
-		h1{
-			font-size: 18px;
-			font-weight: lighter;
-			line-height: 42px;
-			color: #999;
-			width: 1000px;
-			text-indent: 36px;
-			background-color: #ebf5ff;
-		}
-		table{
-			width: 100%;
-			border-spacing: 0;
-			.li{
-				width: 100%;
-				padding: 28px 24px 22px 16px;
-				td{
-					font-size: 14px;
-					color: #666;
-					padding: 28px 0 22px 0;
-					text-align: center;
-					border-top: 1px solid #c4c4c4;
-				}
-				.name{
-					padding-left: 16px;
-					img{
-						width: 91px;
-						height: 73px;
-					}
-				}
-				.progress{
-					overflow: hidden;
-					.progress_line{
-						float: left;
-						width: 76px;
-						height: 12px;
-						margin: 0 10px 0 30px;
-						background-color: #dfdbdc;
-						div{
-							height: inherit;
-							width: 38px;
-							background-color: #0271d1;
-						}
-					}
-					span{
-						display: block;
-						float: left;
-						font-size: 12px;
-						color: #666;
-					}
-				}
-				.type{
-					padding-right: 24px;
-					a{
-						display: block;
-						width: 70px;
-						font-size: 16px;
-						height: 34px;
-						margin-left: 16px;
-						line-height: 34px;
-						color: #fff;
-						border-radius: 2px;
-					}
-					.invest_btn{
-						background-color: #0271d1;
-					}
-					.in_back{
-						background-color: #dfdbdc;
-					}
-				}
-			}
-			.headline{
-				width: 100%;
-				th{ 
-					text-align: center;
-					line-height: 38px;
-					color: #666;
-					font-size: 14px;
-				}
-				.title,.money,.progress{
-					width: 15%;
-				}
-				.name,.rate,.level,.limit,.type{
-					width: 11%;
-				}
-			}
-		}
-	}
-	.page{
-			float: right;
-			a{
-				display: block;
-				float: left;
-				color: #333;
-				height: 36px;
-				line-height: 36px;
-				padding: 0 2px;
-				margin: 0 2px;
-			}
-			.first_page,.last_page,.page_pre,.page_next{
-				padding: 0 20px;
-			}
-			.page_pre{
-				background-color: #bdd2e4;
-				margin-right: 10px;
-			}
-			.page_next{
-				background-color: #d6d6d6;
-				margin-left: 10px;
-			}
-		}
 }
 #footer{
 	width: 100%;
@@ -376,9 +241,187 @@ a{
 	}
 	.copyright{
 		width: 1002px;
-		margin: 0 auto;
 		text-align: center;
+		margin: 0 auto;
 		padding-top: 15px;
+	}
+}
+#main{	
+	#register{
+			width: 512-38-38px;
+			padding: 33px 38px;
+			background-color: #f2f2f2;
+			z-index: 11;
+			margin: 0 auto;
+			.interface{
+				input{
+					outline: none;
+					border: none;
+				}
+				ul{
+					overflow: hidden;
+					border-bottom: 1px solid #cacaca;
+					li{
+						font-size: 20px;
+						color: #666;
+						line-height: 50px;
+						text-align: center;
+						float: left;
+						width: 216px;
+						cursor: pointer;
+					}
+					.login_btn{
+						border-right: 1px solid #cacaca;
+					}
+					.register_btn{
+
+					}
+					.on_btn{
+						color: #666;
+						background-color: #fff;
+					}
+				}
+				.login_interface{
+					display: block;
+					padding: 23px 60px 30px 60px;
+					.box{
+						overflow: hidden;
+						margin-top: 12px;
+						img{
+							display: block;
+							float: left;
+						}
+						div{
+							float: left;
+							width: 260px;
+							height: 35px;
+							border: 1px solid #cacaca;
+							padding-left: 45px;
+							input{
+								display: block;
+								float: left;
+								height: 30px;
+								font-size: 18px;
+								color: #999;
+								padding: 3px 0 2px 0;
+							}
+						}
+						.username{
+							background: url(../images/login_user.png) no-repeat;
+							background-color: #fff;
+						}
+						.password{
+							background: url(../images/login_pwd.png) no-repeat;
+							background-color: #fff;
+						}
+					}
+					.checkbox{
+						margin-top: 26px;
+						padding-right: 4px;
+						input{
+							float: left;
+						}
+						a{
+							float: right;
+							color: #0371d2;
+						}
+					}
+					.submit{
+						display: block;
+						margin: 30px 0 0 24px;
+						font-size: 18px;
+						padding: 12px 110px;
+						color: #fff;
+						background-color: #0371d2;
+						border-bottom: 2px solid #0160b2;
+						cursor: pointer;
+					}
+				}
+				.register_interface{
+					display: block;
+					padding: 23px 50px 30px 50px;
+					.box{
+						overflow: hidden;
+						margin-top: 12px;
+						label{
+							float: left;
+							display: block;
+							line-height: 50px;
+							width: 72px;
+							font-size: 18px;
+							text-align: right;
+							margin-right: 12px;
+							color: #666;
+						}
+						img{
+							display: block;
+							float: left;
+						}
+						div{
+							float: left;
+							width: 236px;
+							height: 36px;
+							border: 1px solid #cacaca;
+							background-color: #fff;
+							span{
+								display: block;
+								float: left;
+								width: 40px;
+								text-align: center;
+							}
+							input{
+								display: block;
+								float: left;
+								width: 196px;
+								height: 30px;
+								font-size: 18px;
+								padding: 3px 0;
+							}
+						}
+						.yanzheng{
+							width: 146px;
+							margin-left: 20px;
+							input{
+								width: 106px;
+							}
+						}
+						.reg_icon{
+						    font-family:"register" !important;
+						    font-size:20px;
+						    line-height: 36px;
+						    color: #666;
+						    font-style:normal;
+						    -webkit-font-smoothing: antialiased;
+						    -webkit-text-stroke-width: 0.2px;
+						    -moz-osx-font-smoothing: grayscale;
+						}
+						h5{
+							font-weight: lighter;
+							color: #cc3300;
+						}
+						.suo{
+							font-size: 24px;
+						}
+					}
+					.checkbox{
+						margin-top: 26px;
+						text-align: center;
+						a{
+							color: #0371d2;
+						}
+					}
+					.submit{
+						display: block;
+						margin: 30px 0 0 50px;
+						font-size: 18px;
+						padding: 12px 96px;
+						color: #fff;
+						background-color: #0371d2;
+						border-bottom: 2px solid #0160b2;
+						cursor: pointer;
+					}
+				}	
+			}
 	}
 }
 #back_top{
