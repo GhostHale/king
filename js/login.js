@@ -22,8 +22,29 @@ $('.login').on('click',function(){
 	$('#login_register .on_btn').removeClass('on_btn');
 	$('#login_register .login_btn').addClass('on_btn');
 });
-$('.register').on('click',function(){
+function reg_btn(){
+    $('#register .button').val("发送验证码到手机");
+    $('#register .button').on('click',function(){
+        $('#register .button').unbind('click');
+        var timer = setInterval('time()',1000);
+    });
+}
+var i = 60;
+var timer;
+function time(){
+    i -= 1;
+    if (i == 0) {
+       clearInterval(timer);
+        reg_btn();
+    }else{
+        $('#register .button').val(i+"秒后再次点击");
+    }
+}
+$('#register .button').on('click',function(){
+    $('#register .button').unbind('click');
+    timer = setInterval('time()',1000);
 });
+
 
 $('.register_interface .submit').bind('click',function(event){
 	var status1 = false;

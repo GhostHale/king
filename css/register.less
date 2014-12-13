@@ -247,10 +247,23 @@ a{
 	}
 }
 #main{	
+	.main_tit{
+		overflow: hidden;
+		width: 674px;
+		margin: 0 auto;
+		border-bottom: 2px solid #c4c4c4;
+		h1{
+			float: left;
+			font-size: 14px;
+			font-weight: lighter;
+			color: #fff;
+			background-color: #0271d1;
+			line-height: 30px;
+			padding: 0 10px;
+		}
+	}
 	#register{
-			width: 512-38-38px;
-			padding: 33px 38px;
-			background-color: #f2f2f2;
+			padding: 0px 38px;
 			z-index: 11;
 			margin: 0 auto;
 			.interface{
@@ -281,68 +294,27 @@ a{
 						background-color: #fff;
 					}
 				}
-				.login_interface{
-					display: block;
-					padding: 23px 60px 30px 60px;
-					.box{
-						overflow: hidden;
-						margin-top: 12px;
-						img{
-							display: block;
-							float: left;
-						}
-						div{
-							float: left;
-							width: 260px;
-							height: 35px;
-							border: 1px solid #cacaca;
-							padding-left: 45px;
-							input{
-								display: block;
-								float: left;
-								height: 30px;
-								font-size: 18px;
-								color: #999;
-								padding: 3px 0 2px 0;
-							}
-						}
-						.username{
-							background: url(../images/login_user.png) no-repeat;
-							background-color: #fff;
-						}
-						.password{
-							background: url(../images/login_pwd.png) no-repeat;
-							background-color: #fff;
-						}
-					}
-					.checkbox{
-						margin-top: 26px;
-						padding-right: 4px;
-						input{
-							float: left;
-						}
-						a{
-							float: right;
-							color: #0371d2;
-						}
-					}
-					.submit{
-						display: block;
-						margin: 30px 0 0 24px;
-						font-size: 18px;
-						padding: 12px 110px;
-						color: #fff;
-						background-color: #0371d2;
-						border-bottom: 2px solid #0160b2;
-						cursor: pointer;
-					}
-				}
 				.register_interface{
 					display: block;
 					padding: 23px 50px 30px 50px;
 					.box{
+						width: 474px;
 						overflow: hidden;
+						margin: 0 auto;
 						margin-top: 12px;
+						.button{
+							width: 156px;
+							text-align: center;
+							display: block;
+							float: left;
+							font-size: 14px;
+							color: #333;
+							padding: 10px 22px;
+							margin-left: 20px;
+							background-color: #dadada;
+							border-bottom: 2px solid #c0c0c0;
+							cursor: pointer;
+						}
 						label{
 							float: left;
 							display: block;
@@ -359,7 +331,7 @@ a{
 						}
 						div{
 							float: left;
-							width: 236px;
+							width: 336px;
 							height: 36px;
 							border: 1px solid #cacaca;
 							background-color: #fff;
@@ -372,17 +344,16 @@ a{
 							input{
 								display: block;
 								float: left;
-								width: 196px;
+								width: 296px;
 								height: 30px;
 								font-size: 18px;
 								padding: 3px 0;
 							}
 						}
 						.yanzheng{
-							width: 146px;
-							margin-left: 20px;
+							width: 156px;
 							input{
-								width: 106px;
+								width: 116px;
 							}
 						}
 						.reg_icon{
@@ -404,7 +375,9 @@ a{
 						}
 					}
 					.checkbox{
-						margin-top: 26px;
+						width: 474px;
+						margin: 0 auto;
+						margin-top: 36px;
 						text-align: center;
 						a{
 							color: #0371d2;
@@ -412,7 +385,8 @@ a{
 					}
 					.submit{
 						display: block;
-						margin: 30px 0 0 50px;
+						margin: 0 auto;
+						margin-top: 40px;
 						font-size: 18px;
 						padding: 12px 96px;
 						color: #fff;
