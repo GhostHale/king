@@ -21,7 +21,7 @@
 			<div class="form_li">
 				<h1>标段名字:</h1>
 				<div>
-					<input type="text" name="toubiao_name">
+					<input type="text" name="title">
 					<h3></h3>
 				</div>
 				<p>申请借款的用户需要根据不同的产品提交相应的信用认证材料，经过闪电贷审核后获取相应的信用级及信用额度。标题输入15到30个汉字。</p>
@@ -29,7 +29,7 @@
 			<div class="form_li">
 				<h1>借款额度:</h1>
 				<div style="padding-right:0;width:401px;">
-					<input type="text" name="toubiao_name">
+					<input type="text" name="total">
 					<span>元</span>
 					<h3 class="h3"></h3>
 				</div>
@@ -50,7 +50,7 @@
 			<div class="form_li">
 				<h1>年利率:</h1>
 				<div style="padding-right:0;width:401px;">
-					<input type="text" name="toubiao_name">
+					<input type="text" name="rate">
 					<span>%</span>
 					<h3 class="h4"></h3>
 				</div>
@@ -108,30 +108,6 @@
 		</form>
 	</div>
 <script type="text/javascript">
-	$('.area_nav li').on('mouseover',function(){
-		$(this).addClass('area_on');
-	});
-	$('.area_nav li').on('mouseout',function(){
-		$(this).removeClass('area_on');
-	});
-	$('.kind_nav li').on('mouseover',function(){
-		$(this).addClass('kind_on');
-	});
-	$('.kind_nav li').on('mouseout',function(){
-		$(this).removeClass('kind_on');
-	});
-	$('.top').on('click',function(){
-		$(window).scrollTop(0);
-	});
-	$(function(){	
-		$('#back_top').css({"position":"absolute","top":$(window).scrollTop()+300+'px',"right":"4%"});
-	});
-	$('body').on('mousewheel',function(){
-		if ($(window).scrollTop()<=$('body').height()-$(window).height()) {
-			$('#back_top').css({"position":"absolute","top":$(window).scrollTop()+300+'px',"right":"4%"});
-			$('#curtain').css('top',$(window).scrollTop()+'px');
-		};	
-	});
 	$(function() {
     	$( ".datepicker" ).datepicker();
 	});

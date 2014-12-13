@@ -45,30 +45,4 @@
 		</ul>
 		<a class="next" href="lend2">下一步</a>
 	</div>
-<script type="text/javascript">
-	$('.area_nav li').on('mouseover',function(){
-		$(this).addClass('area_on');
-	});
-	$('.area_nav li').on('mouseout',function(){
-		$(this).removeClass('area_on');
-	});
-	$('.kind_nav li').on('mouseover',function(){
-		$(this).addClass('kind_on');
-	});
-	$('.kind_nav li').on('mouseout',function(){
-		$(this).removeClass('kind_on');
-	});
-	$('.top').on('click',function(){
-		$(window).scrollTop(0);
-	});
-	$(function(){	
-		$('#back_top').css({"position":"absolute","top":$(window).scrollTop()+300+'px',"right":"4%"});
-	});
-	$('body').on('mousewheel',function(){
-		if ($(window).scrollTop()<=$('body').height()-$(window).height()) {
-			$('#back_top').css({"position":"absolute","top":$(window).scrollTop()+300+'px',"right":"4%"});
-			$('#curtain').css('top',$(window).scrollTop()+'px');
-		};	
-	});
-</script>
 <?php include(APPPATH.'views/foot.php');?>

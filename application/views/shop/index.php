@@ -184,10 +184,4 @@
 				</div>
 			</div>
 		</div>
-		<div class="service">
-			<div class="service_btn">
-
-			</div>
-			<div class="up"></div>
-		</div>
 <?php include(APPPATH.'views/foot.php');?>
