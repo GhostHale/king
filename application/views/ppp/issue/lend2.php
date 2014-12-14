@@ -3,7 +3,7 @@
 <head>
 <title>我要借款</title>
 <meta name="description" content="">
-<link rel="stylesheet" type="text/css" href="/css/touzi.css">
+<link rel="stylesheet" type="text/css" href="/css/loan.css">
 <link rel="stylesheet" href="/css/jquery-ui.css">
 <script src="/js/jquery-ui.js"></script>
 <?php include(APPPATH.'views/top.php');?>
@@ -17,7 +17,9 @@
 			<li class="pro_end">提现</li>
 		</ul>
 		<form class="form" method="post" action="">
-			<h1 class="title">您即将发布的标段为<span>企业主</span><a class="help" href="">适用帮助</a><a href="">进入个人中心</a></h1>
+			<h1 class="title">您即将发布的标段为<span><?php switch($rank){
+case 1:echo '工薪族';break;case 2:echo '企业主';break;case 3:echo '网店主';break;default:echo 'unknown';
+        };?></span><a class="help" href="">适用帮助</a><a href="">进入个人中心</a></h1>
 			<div class="form_li">
 				<h1>标段名字:</h1>
 				<div>

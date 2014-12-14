@@ -6,19 +6,19 @@ class User_model extends CI_Model
     function __construct()
     {
         parent::__construct();
+        $this->load->library('session');
     }
-
 
     /*
      * 检查是否重复
      */
     function is_unique($cou,$data)
     {
-        $this->db->where($cou,$username); //查询条件
+        $this->db->where($cou,$data); //查询条件
         $data = $this->db->get('user'); //从哪张表,返回数据类型 result 是对象类型的result_array是数组类型
         if ($data->num_rows()>0) {
-            return false;    //这个玩意就是说重名了
-        }else return true;
+            return true;    //这个玩意就是说重名了
+        }else return false;
     }
 
     /*
@@ -26,11 +26,12 @@ class User_model extends CI_Model
      */
     function user_register($user)
     {
-        if (is_unique('phone',$user['phone'])) return '手机号码已存在！';
-        if (is_unique('email',$user['email'])) return '此邮箱已存在！';
-        if (is_unique('user',$user['user'])) return '此用户名已存在！';
-        $this->db->insert($user);
+        if ($this->is_unique('phone',$user['phone'])) return '手机号码已存在！';
+        if ($this->is_unique('email',$user['email'])) return '此邮箱已存在！';
+        if ($this->is_unique('user',$user['user'])) return '此用户名已存在！';
+        $this->db->insert('user',$user);
         $this->session->set_userdata('id',$this->db->insert_id());
+        setcookie('name',$data->user,$time,'/','',false,true);
         return true;
     }
 
@@ -49,13 +50,16 @@ class User_model extends CI_Model
             if ($data->psw==md5(md5($password))){
                 $this->session->set_userdata('id',$data->pid);
                 if ($this->input->post('save')){
-                    $this->load->helper('functions');
-                    $check=setcheck();$time=time()+3600*24;$dbcheck=check($check);
-                    setcookie('name',$data->user,$time,'/','',false,true);
+                    $this->load->helper('login');
+                    $check=setcheck();$dbcheck=check($check);
+                    $time=time()+604800;
                     setcookie('check',$dbcheck,$time,'/','',false,true);
+                    setcookie('name',$data->user,$time,'/','',false,true);
                     $this->db->query("UPDATE user SET check=$dbcheck WHERE id=?",$data->pid);
+                }else{
+                    setcookie('name',$data->user,time()+86400,'/','',false,true);
                 }
-                return true;
+                return array('state'=>1,'name'=>$data->user);
             }else return "用户名、密码错误！";
         }else return "用户名不存在！";
     }

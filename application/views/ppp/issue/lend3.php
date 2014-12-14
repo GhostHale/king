@@ -3,7 +3,7 @@
 <head>
 <title>我要借款</title>
 <meta name="description" content="">
-<link rel="stylesheet" type="text/css" href="、css/touzi.css">
+<link rel="stylesheet" type="text/css" href="/css/loan.css">
 <?php include(APPPATH.'views/top.php');?>
 	<div id="main">
 		<span class="main_nav"><a href="">首页</a> > <a href="">我要投资</a> > <a href="">投资详情</a></span>

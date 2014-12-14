@@ -1,17 +1,4 @@
 <?php
-function setcheck()
-{
-    $lim = mt_rand(5, 20);
-    $str = "";
-    for ($a = 0; $a < $lim; $a++)
-        $str .= chr(mt_rand(33, 126));
-    return md5($str);
-}
-
-function check($p){
-    $check=substr($p,2,10).substr($p,-12);
-    return md5($check);
-}
 /*
  * 页面跳转函数
  * 参数：$str为字符串(警示信息)，警示框输出$str值；$url为跳转的目标地址
@@ -23,4 +10,8 @@ function jump($str, $url)
     echo "<script type=\"text/javascript\">alert('$str')</script>";
 }
 
+function jumpback($str){
+    header("Content-type: text/html; charset=utf-8");
+    echo "<script>alert('$str');history.back(-1);</script>";
+}
 ?>

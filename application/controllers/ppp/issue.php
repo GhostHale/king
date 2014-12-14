@@ -11,12 +11,29 @@ class issue extends CI_Controller {
      * 我要借贷
      */
     function lend1(){
-        $this->load->view('ppp/issue/lend1');
+        $this->load->library('session');
+        $this->load->helper('functions');
+        if (($id=$this->session->userdata('id'))===false)
+            jump('请先登录！','/');
+        $res=$this->db->query("SELECT rank FROM ppp_user WHERE pid=$id");
+        if ($res->num_rows()!=1)
+            jump('请先激活账号','/');
+        else{
+            $res=$res->row()->rank;
+            $this->session->set_userdata('rank',$res);
+            $this->load->view('ppp/issue/lend1',array('rank'=>$res));
+        }
     }
     /*
      * 我要借贷的表单显示和处理
      */ 
     function lend2(){
+        $this->load->library('session');
+        if (($id=$this->session->userdata('id'))===false)
+            jump('请先登录！','/');
+        if (($rank=$this->session->userdata('rank'))===false){
+            header('Location:/ppp/issue/lend1');
+        }
         if ($this->input->post('rate')){
             $this->load->library('form_validation');
             $config=array(array('field'=> 'title','rules'=>'trim|required|min_length[5]|max_length[20]|xss_clean')

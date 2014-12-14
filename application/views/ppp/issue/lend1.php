@@ -3,7 +3,7 @@
 <head>
 <title>我要借款</title>
 <meta name="description" content="">
-<link rel="stylesheet" type="text/css" href="/css/touzi.css">
+<link rel="stylesheet" type="text/css" href="/css/loan.css">
 <?php include(APPPATH.'views/top.php');?>
 	<div id="main">
 		<span class="main_nav"><a href="">首页</a> > <a href="">我要借款</a> > <a href="">借款详情</a></span>
@@ -14,7 +14,9 @@
 			<li class="pro_nor">招标</li>
 			<li class="pro_end">提现</li>
 		</ul>
-		<h4>您的社会角色为： <span>企业主</span>，请点击下一步</h4>
+		<h4>您的社会角色为： <span><?php switch($rank){
+case 1:echo '工薪族';break;case 2:echo '企业主';break;case 3:echo '网店主';break;default:echo 'unknown';
+		};?></span>，请点击下一步</h4>
 		<ul class="character">
 			<li class="character_li">
 				<h1>工薪族<a href="">了解详情</a></h1>

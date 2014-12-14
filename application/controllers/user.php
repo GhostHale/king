@@ -1,7 +1,7 @@
 <?php
-
 if (!defined('BASEPATH')) exit('No direct script access allowed');
-
+global $type;
+$type=5;
 class User extends CI_Controller
 {
     /*
@@ -46,19 +46,19 @@ class User extends CI_Controller
         //设置规则
         $this->form_validation->set_rules(  'user',
                                             '用户名',
-                                            'required|min_length[5]|max_length[20]|alpha_dash|xss_clean');
+                                            'required|max_length[20]|alpha_dash|xss_clean');
 
         $this->form_validation->set_rules(  'psw',
                                             '密码',
-                                            'required|min_length[5]|max_length[16]');
+                                            'required|min_length[5]');
 
         $this->form_validation->set_rules(  'phone',
                                             '电话',
-                                            'required|max_length[20]|is_numeric');
+                                            'trim|required|max_length[14]|is_numeric');
 
         $this->form_validation->set_rules(  'mail',
                                             '电子邮箱',
-                                            'required|max_length[50]|valid_email');
+                                            'trim|required|max_length[50]|valid_email');
         $result = $this->form_validation->run();
 
         if(!$result){
@@ -106,18 +106,18 @@ class User extends CI_Controller
         }
     }
 
-    //暂时用用户名登录，到时再加两个参数做个判断就可以另外使用邮箱和电话号码实现登录
     function login(){
-        $username = $this->input->post('username');
-        $password = $this->input->post('password');
+        $username = $this->input->post('user');
+        $password = $this->input->post('psw');
         if (!$username||!$password) show_404();
-        if (($res=$this->user->user_login($username,$password))===true){
-            echo 'ok';
-        }else echo $res;
+        $res=$this->user->user_login($username,$password);
+        if (is_array($res)){
+            echo json_encode($res);
+        }else echo json_encode(array('state'=>0,'error'=>$res));
     }
 
     function logout(){
-        $this->session->unset_userdata('id');
+        $this->session->sess_destroy();
         setcookie('name','',time()-1,'/');
         setcookie('check','',time()-1,'/');
         $this->load->helper('functions');
