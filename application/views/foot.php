@@ -22,6 +22,12 @@
     </div>
 <script type="text/javascript" src="/js/main.js"></script>
 <script type="text/javascript">
+    $('#main .title li').on('mouseover',function(){
+        $(this).css('background-color','#0271d1');
+    });
+    $('#main .title li').on('mouseout',function(){
+        $(this).css('background-color','#666');
+    });
     $('#nav_type>li:eq(<?=$GLOBALS['type']?>)').attr("class","nav_on");
     $('.up').on('click',function(){
         $(window).scrollTop(0);

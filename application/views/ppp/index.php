@@ -7,12 +7,11 @@
         <link rel="stylesheet" type="text/css" href="/css/main.css">
 	<div id="main">
 		<ul class="title">
-			<li><h3 class="title_li">已完成注册</h3><span class="register_num">1000</span>人</li>
-			<li><h3 class="title_li">累计投资金额</h3>￥<span class="invest_money">10000</span>万</li>
-			<li><h3 class="title_li">投资人收益</h3>￥<span class="benefit">10000</span>万</li>
-			<li><h3 class="title_li">坏账率</h3><span class="bad_debt_rate">1</span>%</li>
-			<li><h3 class="title_li">正常待还率</h3><span class="normal_rate">1</span>%</li>
-			<li><h3 class="title_li">最高年化率</h3><span class="max_rate">1</span>%</li>
+			<li>我要借款</li>
+			<li>我要投资</li>
+			<li>关于我们</li>
+			<li>帮助中心</li>
+			<li>个人中心</li>
 		</ul>
 		<div class="main_left">
 			<ul class="kind_nav">
