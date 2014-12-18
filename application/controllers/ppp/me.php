@@ -31,7 +31,7 @@ class main extends CI_Controller {
         }
         $name=$dbinfo[$rank]['data'][$type];
         
-        $config['upload_path'] = 'upload/ppp_pic/';
+        $config['upload_path'] = 'upload/pics/';
         $config['allowed_types'] = 'jpeg|jpg|png';
         $config['max_size'] = '2048';
         $config['file_name'] = $id.$name;

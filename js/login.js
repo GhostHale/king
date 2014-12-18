@@ -32,7 +32,8 @@ function login(){
     $.post('/user/login',$('#login').serialize(),function(data){
         if (data.state==1){
             alert('登录成功！');
-            $('#header .register').after("<li class='quit' style='border-right: 1px dashed #979797;'>退出</li><li>Welcome back,"+data.name+"</li>");
+            $('#header .register').after("<li class='quit' style='border-right: 1px dashed #979797;'><a href='/user/logout'>退出</a></li><li>Welcome back,"+data.name+"</li>");
+            $('.close').click();
         }else alert(data.error);
     },'json');
     return false;
