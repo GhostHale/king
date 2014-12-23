@@ -1,9 +1,8 @@
 <?php
     global $type;
     $type=0;
-class main extends CI_Controller {
-    function __construct()
-    {
+class me extends CI_Controller {
+    function __construct(){
         parent::__construct();
         $this->load->library('session');
         if (!$this->session->userdata('id')){
@@ -15,7 +14,11 @@ class main extends CI_Controller {
     function index(){
         $this->load->view('ppp/index');
     }
-    
+    function info(){
+        $this->load->model('p2p');
+        $data=$this->p2p->getUserInfo();
+        echo 'ok';
+    }
     function picup($type=''){
         if (!is_numeric($type)) die('参数非法!');
         $dbinfo=array(array('table'=>'ppp_user','data'=>array('peo','bank','car','comany','marry','credit','tax','society','educa','house','hukou','skill'))
@@ -23,10 +26,10 @@ class main extends CI_Controller {
             ,array('table'=>'rank_com','data'=>array('yyzz','zzdm','bhistory','swdj','gszc','nszm','sjbb'))
             ,array('table'=>'rank_tao','data'=>array('yyzz','smrz','jkzh','dmjt'))
             );
-        $id=$type->session(userdata('id'));
+        $id=$this->session->userdata('id');
         if ($type<15) $rank=0;
         else {
-            $rank=$this->db->query("SELECT rank FROM ppp_user WHERE pid=$id")->row()->rank;
+            $rank=$this->db->query("SELECT rank FROM p2p_user WHERE pid=$id")->row()->rank;
             $type-=15;
         }
         $name=$dbinfo[$rank]['data'][$type];

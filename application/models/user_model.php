@@ -31,7 +31,7 @@ class User_model extends CI_Model
         if ($this->is_unique('user',$user['user'])) return '此用户名已存在！';
         $this->db->insert('user',$user);
         $this->session->set_userdata('id',$this->db->insert_id());
-        setcookie('name',$user['user'],$time,'/','',false,true);
+        setcookie('name',$user['user'],time()+3600*24,'/','',false,true);
         return true;
     }
 

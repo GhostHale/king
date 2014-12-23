@@ -2,7 +2,7 @@
 class Bbs extends CI_Model{
     function getMain($data){
         $off=($data['page']-1)*20;
-        $sql="SELECT id,title,pid,(SELECT `user` FROM user WHERE user.pid=main.pid) as `user`,".
+        $sql="SELECT id,title,(SELECT `user` FROM user WHERE user.pid=main.pid) as `user`,".
         "(SELECT `pictou` FROM user WHERE user.pid=main.pid) as `tou`,".
         "(SELECT COUNT(*) FROM bbs_rep rep WHERE `main`=main.id) as rep,".
         "mid(`content`,1,20) as content".

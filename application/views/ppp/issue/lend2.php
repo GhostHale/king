@@ -40,7 +40,7 @@ case 1:echo '工薪族';break;case 2:echo '企业主';break;case 3:echo '网店�
 			<div class="form_li">
 				<h1>还款方式:</h1>
 				<div class="li_down">
-					<input type="text" name="toubiao_name" value="等额本金" readonly="readonly">
+					<input type="text" name="paytype" value="等额本金" readonly="readonly">
 					<ul>
 						<li>等额本金</li>
 						<li>等额本息</li>

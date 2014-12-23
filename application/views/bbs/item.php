@@ -22,9 +22,9 @@
             aReply.click(function(){
                 var b=this.parentNode.parentNode;
                 var m=$(b).find('.com_value').html();
-                if(m.length>100)
+                if(m.length>50)
                 {
-                   m=m.substr(0,100)
+                   m=m.substr(0,50)
                 }
                 m=delHtmlTag(m);
                 oInput[0].value='回复：'+m+'...';
