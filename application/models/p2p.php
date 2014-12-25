@@ -64,6 +64,7 @@ class P2p extends CI_Model{
     public function selectQuery($sql){
         $data = $this->db->query($sql)->result_array();
         return $data;
+        
     }
 }
 ?>

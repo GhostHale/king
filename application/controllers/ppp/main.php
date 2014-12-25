@@ -9,6 +9,7 @@ class main extends CI_Controller {
         $result = $this->p2p->selectQuery($sql);
         print_r($result);
         $this->load->view('ppp/index',$result[0]);
+        
     }
     
     /*
