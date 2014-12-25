@@ -9,12 +9,6 @@
         <div class="copyright">
             Copyright©2014 掌金联盟 zhangjin.com 版权所有
         </div>
-        <div class="service">
-            <div class="service_btn">
-
-            </div>
-            <div class="up"></div>
-        </div>
     </div>
     <div id="back_top">
         <div class="kefu"></div>
