@@ -3,6 +3,7 @@ class P2p extends CI_Model{
     function __construct(){
         parent::__construct();
         $this->load->library('session');
+        $this->load->database();
     }
     
     function addBd(){
@@ -55,6 +56,14 @@ class P2p extends CI_Model{
         }
         $this->db->trans_complete();
         return '余额不足，请充值！';
+    }
+    /*
+     * 查询表
+     * $sql sql语句
+     */
+    public function selectQuery($sql){
+        $data = $this->db->query($sql)->result_array();
+        return $data;
     }
 }
 ?>

@@ -4,7 +4,11 @@
 class main extends CI_Controller {
     
     function index(){
-        $this->load->view('ppp/index');
+        $this -> load -> model('p2p');
+        $sql="SELECT ppp_bd.`total`,ppp_bd.`rate`,ppp_bd.`period`,ppp_bd.`paytype`,user.`user` FROM ppp_bd INNER JOIN user ON ppp_bd.`pid`=user.`pid` ";
+        $result = $this->p2p->selectQuery($sql);
+        print_r($result);
+        $this->load->view('ppp/index',$result[0]);
     }
     
     /*

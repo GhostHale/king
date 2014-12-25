@@ -26,12 +26,14 @@
 				<li class="kind_li">
 					<h1 class="program_name">短期经营资金</h1>
 					<ul>
-						<li class="short">金额：<span></span></li>
-						<li class="short">年利率：<span></span></li>
-						<li class="short">借款期限：<span></span></li>
-						<li class="short">还款方式：<span></span></li>
+						<li class="short">金额：<?=$total?><span></span></li>
+						<li class="short">年利率：<?=$rate*100?>%<span></span></li>
+						<li class="short">借款期限：<?=$period?>个月<span></span></li>
+						<li class="short">还款方式：<?php if($paytype==1) echo "等额本息";
+														  if($paytype==2) echo "等额本金";
+														  if($paytype==3) echo "按月还息到期还本";?><span></span></li>
 						<li class="long">担保单位：<span></span></li>
-						<li class="long">投资人：<span></span></li>
+						<li class="long">投资人：<?=$user?><span></span></li>
 						<li class="long">回购方：<span></span></li>
 						<li class="long">借款进度：<div class="progress_line" style="width:130px;"><span>100%</span></div></li>
 					</ul>
