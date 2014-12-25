@@ -15,7 +15,29 @@ class Bbs extends CI_Model{
         if ($this->db->insert('bbs_main',$data)) return true;
         else return 'Unknown';
     }
+
+    function delMain($data){
+        $res=$this->db->query("SELECT rank FROM bbs_user WHERE pid=$data[pid]")->row()->rank;
+        if ($res==1){
+            $res=$this->db->query("SELECT id FROM bbs_rep WHERE main=$data[id]")->row_array();
+            if (count($res)==0) return '此帖不存在';
+            $del=array();
+            foreach($res as $item) $del[]=$item['id'];
+            $this->db->where_in('rid',$del)->delete(array('bbs_zan','bbs_rep'));
+            $this->db->query("DELETE FROM bbs_main WHERE id=$data[id]");
+            return 'ok';
+        }else return '你没有权限。';
+    }
     
+    function delRep($data){
+        $res=$this->db->query("SELECT rank,main FROM bbs_user WHERE pid=$data[pid]")->row_array();
+        if ($res['rank']==1){
+            $this->db->simple_query("UPDATE bbs_main SET reply=reply-1 WHERE id=$res[main]");
+            $this->db->where('rid',$data['rid'])->delete(array('bbs_zan','bbs_rep'));
+            return 'ok';
+        }else return '你没有权限。';
+    }
+
     function getItem($id){
         $sql="SELECT (SELECT `user` FROM user WHERE user.pid=main.pid) as `user`,".
         "(SELECT COUNT(*) FROM bbs_rep rep WHERE `main`=main.id) as rep,".
@@ -30,6 +52,22 @@ class Bbs extends CI_Model{
         }else show_404();
     }
     
-    
+    function reply($data){
+        if ($rep=$this->input->post('reply')) $res='<div class="reply">'.htmlspecialchars($rep,'ENT_NOQUOTES','UTF-8').'</div>';
+        else $rep='';
+        $data['content']=$rep.htmlspecialchars($data['content'],'ENT_NOQUOTES','UTF-8');
+        $this->db->insert('bbs_rep',$data);
+        $this->db->simple_query("UPDATE bbs_main SET reply=reply+1 WHERE id=$data[main]");
+    }
+
+    function zan($data){
+        $res=$this->db->query("SELECT pid FROM bbs_zan WHERE pid=$data[pid] AND rid=$data[rid]");
+        if ($res->num_rows()>0) return '你已经赞过了';
+        else{
+            $this->db->simple_query("INSERT INTO bbs_zan (pid,rid) VALUES ($data[pid],$data[rid])");
+            $this->db->simple_query("UPDATE bbs_rep SET agree=agree+1 WHERE id=$data[rid]");
+            return 'ok';
+        }
+    }
 }
 ?>
