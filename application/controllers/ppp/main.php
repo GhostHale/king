@@ -34,7 +34,6 @@ class main extends CI_Controller {
         //print_r($data);
         
     }
-    
     /*
      * 公告列表
      */

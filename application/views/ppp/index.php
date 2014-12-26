@@ -50,6 +50,7 @@
 						echo '<div class="unfinish">还款中</div>';
 					}
 				echo '</li>';
+				
 			}
 				?>
 				<!--<li class="kind_li">

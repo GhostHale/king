@@ -48,7 +48,6 @@
 		<ul class="announce_list">
 			<?php 
 				for($i=0;$i<$num1;$i++){
-
 					echo '<li>'.($i+1).' '.$result1[$i]['title'].'<span>'.$result1[$i]['time'].'</span></li>';
 				}
 				
