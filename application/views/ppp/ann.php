@@ -37,7 +37,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="utf-8"/> 
+<meta charset="utf-8"/>  
 <title>公告列表</title>
 <meta name="description" content="">
 <link rel="stylesheet" type="text/css" href="/css/announce.css">
@@ -47,7 +47,7 @@
 		<h1>最新公告</h1>
 		<ul class="announce_list">
 			<?php 
-				for($i=0;$i<$num1;$i++){
+				for($i=0;$i<$num1;$i++){ 
 					echo '<li>'.($i+1).' '.$result1[$i]['title'].'<span>'.$result1[$i]['time'].'</span></li>';
 				}
 				

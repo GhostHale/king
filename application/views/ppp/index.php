@@ -49,7 +49,8 @@
 					if($today-$end>0){
 						echo '<div class="unfinish">还款中</div>';
 					}
-				echo '</li>';
+				echo '</li>'; 
+				
 				
 			}
 				?>

@@ -22,6 +22,7 @@ class main extends CI_Controller {
         $data['result1'] = $result1;
         $data['num1'] = $num1;
 
+
         //当天日期
         $datestring = "%Y%m%d";
         $time  = time();
@@ -32,7 +33,7 @@ class main extends CI_Controller {
         //按钮状态判断
         //echo str_replace('-', '', $result1[0]['time']);
         //print_r($data);
-        
+         
     }
     /*
      * 公告列表
