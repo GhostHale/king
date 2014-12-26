@@ -22,24 +22,37 @@
 				<li>信用</li>
 				<li>已完成</li>
 			</ul>
-			<ul class="program_list">
+			<?php
+			for($i=0;$i<$num;$i++){
+			echo '<ul class="program_list">
 				<li class="kind_li">
 					<h1 class="program_name">短期经营资金</h1>
 					<ul>
-						<li class="short">金额：<?=$total?><span></span></li>
-						<li class="short">年利率：<?=$rate*100?>%·<span></span></li>
-						<li class="short">借款期限：<?=$period?>个月<span></span></li>
-						<li class="short">还款方式：<?php if($paytype==1) echo "等额本息";
-														  if($paytype==2) echo "等额本金";
-														  if($paytype==3) echo "按月还息到期还本"; ?><span></span></li>
-						<li class="long">担保单位：<span></span></li>
-						<li class="long">投资人：<?=$user?><span></span></li>
-						<li class="long">回购方：<span></span></li>
-						<li class="long">借款进度：<div class="progress_line" style="width:130px;"><span>100%</span></div></li>
-					</ul>
-					<div class="finish">马上投资</div>
-				</li>
-				<li class="kind_li">
+						<li class="short">'.'金额：';echo $result[$i]['total'];echo '<span></span></li>
+						<li class="short">'.'年利率：';echo $result[$i]['rate']*100;echo '%';echo '<span></span></li>
+						<li class="short">'.'借款期限：';echo $result[$i]['period'];echo '个月';echo '<span></span></li>
+						<li class="short">'.'还款方式：'; if($result[$i]['paytype']==1) echo "等额本息";
+														  if($result[$i]['paytype']==2) echo "等额本金";
+														  if($result[$i]['paytype']==3) echo "按月还息到期还本";echo '<span></span></li>
+						<li class="long">'.'担保单位：';echo '<span></span></li>
+						<li class="long">'.'投资人：';echo $result[$i]['user'];echo '<span></span></li>
+						<li class="long">'.'回购方：';echo '<span></span></li>
+						<li class="long">'.'借款进度：<div class="progress_line" style="width:130px;"><span>100%</span></div></li>
+					</ul>';
+					//<div class="finish">马上投资</div>
+					$end = str_replace('-', '', $result[$i]['end']);  //众筹结束日期
+					//还在众筹日期之内
+					if($today-$end<=0){
+						echo '<div class="finish">马上投资</div>';
+					}
+					//超过日期
+					if($today-$end>0){
+						echo '<div class="unfinish">还款中</div>';
+					}
+				echo '</li>';
+			}
+				?>
+				<!--<li class="kind_li">
 					<h1 class="program_name">短期经营资金</h1>
 					<ul>
 						<li class="short">金额：<span></span></li>
@@ -136,17 +149,17 @@
 						<li class="long">借款进度：<div class="progress_line" style="width:130px;"><span>100%</span></div></li>
 					</ul>
 					<div class="unfinish">还款中</div>
-				</li>
+				</li>-->
 			</ul>
 		</div>
 		<div class="main_right">
 			<div class="announce_list">
-				<h1>官方公告<a href="">更多>>&nbsp;</a></h1>
-				<a class="li" href="">1</a>
-				<a class="li" href="">2</a>
-				<a class="li" href="">3</a>
-				<a class="li" href="">4</a>
-				<a class="li" href="">5</a>
+				<h1>官方公告<a href="/ppp/main/annlist">更多>>&nbsp;</a></h1>
+				<?php 
+					for($i=0;$i<$num1;$i++){
+					echo '<a class="li" href="">';echo $i+1;echo ' ';echo $result1[$i]['title'];echo'</a>';
+				}
+				?>
 			</div>
 			<embed src="http://player.youku.com/player.php/sid/XMjI0MDIwNDc2/v.swf" quality="high" width="280" height="252" align="middle" allowScriptAccess="sameDomain" float="right" type="application/x-shockwave-flash"></embed>
 			<ul class="problems_list">
