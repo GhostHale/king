@@ -123,4 +123,15 @@ class User extends CI_Controller
         $this->load->helper('functions');
         jump('退出成功！','/');
     }
+
+    function recharge(){
+        $this->load->library('session');
+        $this->load->helper('functions');
+        if (($id=$this->session->userdata('id'))===false)
+            jump('请先登录！','/');
+        if ($money=$this->input->post('money')){
+            if (($res=$this->user->recharge($money))===true) echo '充值成功！';
+            else jumpback($res);
+        }else echo '<form method="post">请输入充值数：<input name="money" type="text" /><input type="submit" value="submit" /></form>';
+    }
 }

@@ -2,9 +2,8 @@
 class Bbs extends CI_Model{
     function getMain($data){
         $off=($data['page']-1)*20;
-        $sql="SELECT id,title,(SELECT `user` FROM user WHERE user.pid=main.pid) as `user`,".
-        "(SELECT `pictou` FROM user WHERE user.pid=main.pid) as `tou`,".
-        "(SELECT COUNT(*) FROM bbs_rep rep WHERE `main`=main.id) as rep,".
+        $sql="SELECT id,title,reply,(SELECT `name` FROM bbs_user WHERE bbs_user.pid=main.pid) as `name`,".
+        "(SELECT `tou` FROM bbs_user WHERE bbs_user.pid=main.pid) as `tou`,".
         "mid(`content`,1,20) as content".
         " FROM bbs_main main order by `time` DESC LIMIT $off,20";
         $res=$this->db->query($sql)->result_array();
@@ -12,6 +11,21 @@ class Bbs extends CI_Model{
     }
     
     function addMain($data){
+        if (isset($_FILES['file'])){
+            $this->load->library('upload');
+            $config['upload_path'] = 'upload/bbs/';
+            $config['encrypt_name'] = true;
+            $config['allowed_types'] = '*';
+            $config['max_size'] = 50 * 1024 * 1024;//50MB
+            //设置大小
+            $this -> upload -> initialize($config);
+            if (!$this -> upload -> do_upload("files")) {
+                return $this -> upload -> display_errors();
+            } else {
+                $file = $this -> upload -> data();
+                $data['append']=json_encode(array('n'=>$file['file_name'],'o'=>$file['orig_name'],'s'=>$file['file_size']));
+            }
+        }
         if ($this->db->insert('bbs_main',$data)) return true;
         else return 'Unknown';
     }
@@ -39,9 +53,8 @@ class Bbs extends CI_Model{
     }
 
     function getItem($id){
-        $sql="SELECT (SELECT `user` FROM user WHERE user.pid=main.pid) as `user`,".
-        "(SELECT COUNT(*) FROM bbs_rep rep WHERE `main`=main.id) as rep,".
-        "title,content,time,append,readtimes FROM bbs_main main WHERE id=$id";
+        $sql="SELECT (SELECT `name` FROM bbs_user WHERE bbs_user.pid=main.pid) as `name`,".
+        "reply,title,content,time,append,readtimes FROM bbs_main main WHERE id=$id";
         $res=$this->db->query($sql);
         if ($res->num_rows()==1){
             $res=$res->row_array();

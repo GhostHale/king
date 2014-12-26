@@ -41,6 +41,23 @@ class P2p extends CI_Model{
         }
     }
 
+    function getMeIndex(){
+        $id=$this->session->userdata('id');
+        $data=$this->db->query("SELECT * FROM possess WHERE pid=$id")->row_array();
+        return $data;
+    }
+    
+    function getIndex(){
+        $sql="(SELECT bid,`total`,title,`rate`,`period`,`paytype`,status,`end`,(SELECT `user` FROM user WHERE user.pid=p2p_bd.pid) as `user` FROM p2p_bd";
+        $sql=$sql." WHERE status=1 ORDER BY end LIMIT 0,6) UNION ".$sql." WHERE status=2 ORDER BY end DESC LIMIT 0,2)";
+        $data['bd'] =  $this->db->query($sql)->result_array();
+
+        //p2p首页公告列表
+        $sql="SELECT id,title,time FROM announce ORDER BY time DESC LIMIT 0,5";
+        $data['ann'] = $this->db->query($sql)->result_array();
+        return $data;
+    }
+    
     function invest($money,$bid){
         $id=$this->session->userdata('id');
         $this->db->trans_start();
@@ -56,15 +73,6 @@ class P2p extends CI_Model{
         }
         $this->db->trans_complete();
         return '余额不足，请充值！';
-    }
-    /*
-     * 查询表
-     * $sql sql语句
-     */
-    public function selectQuery($sql){
-        $data = $this->db->query($sql)->result_array();
-        return $data;
-        
     }
 }
 ?>

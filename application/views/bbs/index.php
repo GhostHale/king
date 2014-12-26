@@ -26,11 +26,15 @@
             for (x in data){
                 res+='<li>';
                 var tou;
-                if (data[x].tou=='') tou='/images/person.png';
-                else tou='/upload/pics/'+data[x].tou;
+                switch (data[x].tou){
+                    case 1:tou='/upload/pic/'+data[x].id+'tou'+'.jpg';break;
+                    case 2:tou='/upload/pic/'+data[x].id+'tou'+'.jpeg';break;
+                    case 3:tou='/upload/pic/'+data[x].id+'tou'+'.png';break;
+                    default:tou='/images/person.png';
+                }
                 res+='<div class="usr_photo"><img src="'+tou+'"></div>';
                 res+='<div class="bbs_topic"><a href="/bbs/main/item/'+data[x].id+'"><h3>'+data[x].title+'</h3></a><p>'+data[x].content+'</p></div>';
-                res+='<div class="bbs_data"><span>发帖人：'+data[x].user+'</span><br /><br /><span>回复总数：'+data[x].rep+'</span></div>';
+                res+='<div class="bbs_data"><span>发帖人：'+data[x].name+'</span><br /><br /><span>回复总数：'+data[x].reply+'</span></div>';
                 res+='</li>';
             }
             $('#bbs_list').html(res);

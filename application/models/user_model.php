@@ -30,7 +30,9 @@ class User_model extends CI_Model
         if ($this->is_unique('email',$user['email'])) return '此邮箱已存在！';
         if ($this->is_unique('user',$user['user'])) return '此用户名已存在！';
         $this->db->insert('user',$user);
-        $this->session->set_userdata('id',$this->db->insert_id());
+        $id=$this->db->insert_id();
+        $this->db->query("INSERT INTO possess (pid) VALUES ($id)");
+        $this->session->set_userdata('id',$id);
         setcookie('name',$user['user'],time()+3600*24,'/','',false,true);
         return true;
     }
@@ -64,6 +66,12 @@ class User_model extends CI_Model
         }else return "用户名不存在！";
     }
 
+    function recharge($money){
+        if (!is_numeric($money)) return '必须是整数！';
+        $id=$this->session->userdata('id');
+        if ($this->db->query("UPDATE possess SET total=total+$money WHERE pid=$id")) return true;
+        else return 'unknown error';
+    }
 }
 
 

@@ -64,7 +64,12 @@ class issue extends CI_Controller {
                 }else echo $res;
             }
         }else{
-            $this->load->view('ppp/issue/invdetail');
+            $sql="SELECT *,(SELECT `user` FROM user WHERE user.pid=p2p_bd.pid) as `user` FROM p2p_bd WHERE bid=$id";
+            $res=$this->db->query($sql);
+            if ($res->num_rows()!=1) show_404();
+            $res=$res->row_array();
+            if ($res['status']==0||$res['status']==6) die('想钱也不是这样想的啊！');
+            else $this->load->view('ppp/issue/invdetail',$res);
         }
     }
 

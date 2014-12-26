@@ -41,7 +41,7 @@
     </ul>
     <div class="article">
         <h2><?=$title?></h3>
-            <p class="art_inf">楼主:<span><?=$user?></span>时间:<span><?=$time?></span>点击:<span>0</span>回复:<span id="rep">0</span></p>
+            <p class="art_inf">楼主:<span><?=$name?></span>时间:<span><?=$time?></span>点击:<span>0</span>回复:<span id="rep">0</span></p>
             <div class="art_box"><?=$content?></div>
     </div>
     <div class="comment">

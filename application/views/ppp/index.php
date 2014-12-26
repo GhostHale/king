@@ -7,11 +7,11 @@
         <link rel="stylesheet" type="text/css" href="/css/main.css">
 	<div id="main">
 		<ul class="title">
-			<li>我要借款</li>
+			<a href="/ppp/issue/lend1"><li>我要借款</li></a>
 			<li>我要投资</li>
 			<li>关于我们</li>
 			<li>帮助中心</li>
-			<li>个人中心</li>
+			<a href="/ppp/me/index"><li>个人中心</li></a>
 		</ul>
 		<div class="main_left">
 			<ul class="kind_nav">
@@ -22,107 +22,28 @@
 				<li>信用</li>
 				<li>已完成</li>
 			</ul>
-			<?php
-			for($i=0;$i<$num;$i++){
-			echo '<ul class="program_list">
+			<?php foreach($bd as $item):?>
+			<ul class="program_list">
 				<li class="kind_li">
-					<h1 class="program_name">短期经营资金</h1>
+					<h1 class="program_name"><?=$item['title']?></h1>
 					<ul>
-						<li class="short">'.'金额：';echo $result[$i]['total'];echo '<span></span></li>
-						<li class="short">'.'年利率：';echo $result[$i]['rate']*100;echo '%';echo '<span></span></li>
-						<li class="short">'.'借款期限：';echo $result[$i]['period'];echo '个月';echo '<span></span></li>
-						<li class="short">'.'还款方式：'; if($result[$i]['paytype']==1) echo "等额本息";
-														  if($result[$i]['paytype']==2) echo "等额本金";
-														  if($result[$i]['paytype']==3) echo "按月还息到期还本";echo '<span></span></li>
-						<li class="long">'.'担保单位：';echo '<span></span></li>
-						<li class="long">'.'投资人：';echo $result[$i]['user'];echo '<span></span></li>
-						<li class="long">'.'回购方：';echo '<span></span></li>
-						<li class="long">'.'借款进度：<div class="progress_line" style="width:130px;"><span>100%</span></div></li>
-					</ul>';
-					//<div class="finish">马上投资</div>
-					$end = str_replace('-', '', $result[$i]['end']);  //众筹结束日期
-					//还在众筹日期之内
-					if($today-$end<=0){
-						echo '<div class="finish">马上投资</div>';
-					}
-					//超过日期
-					if($today-$end>0){
-						echo '<div class="unfinish">还款中</div>';
-					}
-				echo '</li>'; 
-				
-				
-			}
-				?>
+						<li class="short">金额：<?=$item['total']?>元<span></span></li>
+						<li class="short">年利率：<?=$item['rate']?>%<span></span></li>
+						<li class="short">借款期限：<?=$item['period']?>个月<span></span></li>
+						<li class="short">还款方式：<?php if($item['paytype']==1) echo "等额本息";
+														  if($item['paytype']==2) echo "等额本金";
+														  if($item['paytype']==3) echo "按月还息到期还本";?><span></span></li>
+						<li class="long">担保单位：<span></span></li>
+						<li class="long">投资人：<?=$item['user'];?><span></span></li>
+						<li class="long">回购方：<span></span></li>
+						<li class="long">借款进度：<div class="progress_line" style="width:130px;"><span>100%</span></div></li>
+					</ul>
+					<a href="/ppp/issue/bddetail/<?=$item['bid']?>">
+					<?=($item['status']=1)?'<div class="finish">马上投资</div>':'<div class="unfinish">已完成</div>'?>
+					</a>
+				</li>
+			<?php endforeach;?>
 				<!--<li class="kind_li">
-					<h1 class="program_name">短期经营资金</h1>
-					<ul>
-						<li class="short">金额：<span></span></li>
-						<li class="short">年利率：<span></span></li>
-						<li class="short">借款期限：<span></span></li>
-						<li class="short">还款方式：<span></span></li>
-						<li class="long">担保单位：<span></span></li>
-						<li class="long">投资人：<span></span></li>
-						<li class="long">回购方：<span></span></li>
-						<li class="long">借款进度：<div class="progress_line" style="width:130px;"><span>100%</span></div></li>
-					</ul>
-					<div class="finish">马上投资</div>
-				</li>
-				<li class="kind_li">
-					<h1 class="program_name">短期经营资金</h1>
-					<ul>
-						<li class="short">金额：<span></span></li>
-						<li class="short">年利率：<span></span></li>
-						<li class="short">借款期限：<span></span></li>
-						<li class="short">还款方式：<span></span></li>
-						<li class="long">担保单位：<span></span></li>
-						<li class="long">投资人：<span></span></li>
-						<li class="long">回购方：<span></span></li>
-						<li class="long">借款进度：<div class="progress_line" style="width:130px;"><span>100%</span></div></li>
-					</ul>
-					<div class="finish">已完成</div>
-				</li>
-				<li class="kind_li">
-					<h1 class="program_name">短期经营资金</h1>
-					<ul>
-						<li class="short">金额：<span></span></li>
-						<li class="short">年利率：<span></span></li>
-						<li class="short">借款期限：<span></span></li>
-						<li class="short">还款方式：<span></span></li>
-						<li class="long">担保单位：<span></span></li>
-						<li class="long">投资人：<span></span></li>
-						<li class="long">回购方：<span></span></li>
-						<li class="long">借款进度：<div class="progress_line" style="width:130px;"><span>100%</span></div></li>
-					</ul>
-					<div class="finish">已完成</div>
-				</li>
-				<li class="kind_li">
-					<h1 class="program_name">短期经营资金</h1>
-					<ul>
-						<li class="short">金额：<span></span></li>
-						<li class="short">年利率：<span></span></li>
-						<li class="short">借款期限：<span></span></li>
-						<li class="short">还款方式：<span></span></li>
-						<li class="long">担保单位：<span></span></li>
-						<li class="long">投资人：<span></span></li>
-						<li class="long">回购方：<span></span></li>
-						<li class="long">借款进度：<div class="progress_line" style="width:130px;"><span>100%</span></div></li>
-					</ul>
-					<div class="finish">已完成</div>
-				</li>
-				<li class="kind_li">
-					<h1 class="program_name">短期经营资金</h1>
-					<ul>
-						<li class="short">金额：<span></span></li>
-						<li class="short">年利率：<span></span></li>
-						<li class="short">借款期限：<span></span></li>
-						<li class="short">还款方式：<span></span></li>
-						<li class="long">担保单位：<span></span></li>
-						<li class="long">投资人：<span></span></li>
-						<li class="long">回购方：<span></span></li>
-						<li class="long">借款进度：<div class="progress_line" style="width:130px;"><span>100%</span></div></li>
-					</ul>
-					<div class="finish">已完成</div>
 				</li>
 				<li class="kind_li">
 					<h1 class="program_name">短期经营资金</h1>
@@ -158,8 +79,11 @@
 			<div class="announce_list">
 				<h1>官方公告<a href="/ppp/main/annlist">更多>>&nbsp;</a></h1>
 				<?php 
-					for($i=0;$i<$num1;$i++){
-					echo '<a class="li" href="">';echo $i+1;echo ' ';echo $result1[$i]['title'];echo'</a>';
+				    $i=1;
+					foreach($ann as $item){
+					echo '<a class="li" href="/ppp/main/anndetail/'.$item['id'].'">';
+					echo $i++;
+					echo ' '.$item['title'].'</a>';
 				}
 				?>
 			</div>

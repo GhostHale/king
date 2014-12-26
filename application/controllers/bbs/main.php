@@ -43,8 +43,8 @@ class main extends CI_Controller {
         $this->load->helper('functions');
         $this->load->library('session');
         if ($id=$this->session->userdata('id')){
-            if ($this->db->query("SELECT rank FROM bbs_user WHERE pid=id")->num_rows()==0){
-                jump('请先激活！','/bbs/me');
+            if ($this->db->query("SELECT rank FROM bbs_user WHERE pid=$id")->num_rows()==0){
+                jump('请先激活！','/bbs/me/init');
                 return;
             }
             if ($data=$this->input->post(array('title','content'))){

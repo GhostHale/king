@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta charset="utf-8"/> 
-<title>掌金宝</title>
+<title><?=$title?></title>
 <meta name="description" content="">
 <link rel="stylesheet" type="text/css" href="/css/less_detail.css">
 <?php include(APPPATH.'views/top.php');?>
@@ -10,28 +10,27 @@
 		<span class="main_nav"><a href="">首页 </a>> <a href="">我要投资</a>> <a href="">标段详情</a></span>
 		<div class="top_con">
 			<div class="left">
-				<h1 class="left_title">生物公司资金周转第三期</h1>
+				<h1 class="left_title"><?=$title?></h1>
 				<ul class="infro">
-					<li>借款金额：<h1>￥<span>155，000.00</span></h1></li>
+					<li>借款金额：<h1>￥<span><?=$total?></span></h1></li>
 					<li>信用等级：<h1><span>AAA</span></h1></li>
-					<li>年利率：<h1>15%</h1></li>
-					<li>标段期限：<h1>一个月</h1></li>
-					
-					<li class="from">时间段：<h1>2014年11月2日--2014年12月1日</h1></li>
+					<li>年利率：<h1><?=$rate?>%</h1></li>
+					<li>标段期限：<h1><?=$period?><?=($isday)?'日':'月'?></h1></li>
+					<li class="from">时间段：<h1><?=$start?>到<?=$end?></h1></li>
 				</ul>
 				<ul class="infro_un">
 					<li class="li_left">
 						<div class="progress_line"><div></div></div>
-						<span>50，000.00元</span>
+						<span>5，000.00元</span>
 					</li>
 					<li>√100%安全认证，确认安全交易</li>
 				</ul>
 			</div>
 			<div class="right">
 				<h1 class="right_title">投资金额</h1>
-				<form>
-					<input class="money" type="text" name="money">元
-					<h1>到期总收益<span>￥<span class="income"></span>元</span></h1>
+				<form onsubmit="return sub()" name="form">
+					<input class="money" type="text" name="money" onchange="count(this)">元
+					<h1>到期总收益<span>￥<span id="income" class="income"></span>元</span></h1>
 					<a>理财计算器，计算您的投资收益</a>
 					<div>
 						<input class="checkbox" type="checkbox">
@@ -166,28 +165,6 @@
 		</div>
 	</div>
 <script type="text/javascript">
-$('.top_left li').on('click',function(){
-	$(this).parent().find('.select').removeClass('select');
-	$(this).addClass('select');
-});
-$('.right .submit').bind('click',function(event){
-	var status1 = false;
-	$(function(){
-    	if ($('.right .checkbox').attr('checked')=='checked') {
-    		status1=true;
-    	};
-	});
-	if (status1) {
-		$('.right .submit').submit();
-	}else{
-		event.preventDefault()
-	}
-});
-$('.right .money').on('blur',function(){
-	var ben = parseInt($('.right .money').val());
-	var rate = 0;
-	$('.income').text('');
-});
 $('.list li').on('click',function(){
 	var index = $(this).index();
 	$('.list_under').css('display','none');
@@ -201,5 +178,27 @@ $('.list li').on('click',function(){
 	$('.li_on').removeClass('li_on');
 	$(this).addClass('li_on');
 });
+function count(e){
+    var money=e.value;
+    if (isNaN(money)){
+        $('#income').html('输入非法！');
+    }else{
+        money=parseInt(money)*<?=$rate?>;
+        money=Math.floor(money/<?=($isday)?'365':'12'?>);
+        $('#income').html(money/100);
+    }
+}
+function sub(){
+    var money=form.money.value;
+    if (isNaN(money)){
+        alert('输入非法！');
+    }else{
+        $.post(location.href,{money:money},function(data){
+            if (data=='ok') alert('投资成功！');
+            else alert(data);
+        });
+    }
+    return false;
+}
 </script>
 <?php include(APPPATH.'views/foot.php');?>

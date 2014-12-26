@@ -12,7 +12,11 @@ class me extends CI_Controller {
     }
 
     function index(){
-        $this->load->view('ppp/index');
+        $this->load->model('p2p');
+        $data=$this->p2p->getMeIndex();
+        echo "欢迎，".$_COOKIE['name']."<br />";
+        echo "你的可用资金是$data[total],冻结资金是$data[froze],将获得$data[lend]本金。总资产".($data['total']+$data['froze']+$data['lend']);
+        echo '<br /><a href="/user/recharge" target="_blank">充值</a>';
     }
     function info(){
         $this->load->model('p2p');

@@ -47,8 +47,8 @@
 		<h1>最新公告</h1>
 		<ul class="announce_list">
 			<?php 
-				for($i=0;$i<$num1;$i++){ 
-					echo '<li>'.($i+1).' '.$result1[$i]['title'].'<span>'.$result1[$i]['time'].'</span></li>';
+				foreach($ann as $item){ 
+					echo '<li><a href="/ppp/main/anndetail/'.$item['id'].'">'.$item['title'].'</a><span>'.$item['time'].'</span></li>';
 				}
 				
 			?>
