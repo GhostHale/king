@@ -11,7 +11,9 @@ $(document).ready(function(){
             return;
         }
     }
-    loadPage('1');
+    url=location.href;
+    if (url.indexOf('#')==-1) loadPage('1');
+    else loadPage(url.substr(url.indexOf('#')+1));
     $(window).bind('hashchange',loadPage);
 });
 function forOld(){//处理老版本返回事件
