@@ -1,4 +1,6 @@
-�û���֤ʹ��session��Ĭ�ϱ���1�죨��Ҫ�޸ģ�
-session����id��user��
-�û��ϴ���ͼƬ��������ʽΪid+�ֶΡ���idΪ12���ϴ�ͷ���ϴ�֮�󱣴���ļ���Ϊ12pictou�����ݿ�pictou�ֶ�����Ϊ1��
-zhong���е�rank��json���棬ͬʱ��gzcompressѹ������ʾʱ��ѹ�����ɡ�
+﻿用户验证使用session，默认保存1天，只保存id。
+如果保存密码，那么设置cookie name和check，保留7天。否则保存一天name
+保存密码后，session id的设置在session类中自动完成。
+用户上传的图片，命名格式为id+字段。如id为12的上传头像，上传之后保存的文件名为12pictou。数据库pictou字段设置为文件类型，1代表jqg,2:jqeg,3:png.0:没有上传。
+zhong表中的rank用json保存，同时用gzcompress压缩。显示时解压缩即可。
+所有列表，分页由前端做（我来写）。

@@ -1,13 +1,17 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>掌金宝</title>
+        <meta name="description" content="">
 <?php include(APPPATH.'views/top.php');?>
         <link rel="stylesheet" type="text/css" href="/css/main.css">
 	<div id="main">
 		<ul class="title">
-			<li><h3 class="title_li">已完成注册</h3><span class="register_num">1000</span>人</li>
-			<li><h3 class="title_li">累计投资金额</h3>￥<span class="invest_money">10000</span>万</li>
-			<li><h3 class="title_li">投资人收益</h3>￥<span class="benefit">10000</span>万</li>
-			<li><h3 class="title_li">坏账率</h3><span class="bad_debt_rate">1</span>%</li>
-			<li><h3 class="title_li">正常待还率</h3><span class="normal_rate">1</span>%</li>
-			<li><h3 class="title_li">最高年化率</h3><span class="max_rate">1</span>%</li>
+			<a href="/ppp/issue/lend1"><li>我要借款</li></a>
+			<li>我要投资</li>
+			<li>关于我们</li>
+			<li>帮助中心</li>
+			<a href="/ppp/me/index"><li>个人中心</li></a>
 		</ul>
 		<div class="main_left">
 			<ul class="kind_nav">
@@ -18,90 +22,28 @@
 				<li>信用</li>
 				<li>已完成</li>
 			</ul>
+			<?php foreach($bd as $item):?>
 			<ul class="program_list">
 				<li class="kind_li">
-					<h1 class="program_name">短期经营资金</h1>
+					<h1 class="program_name"><?=$item['title']?></h1>
 					<ul>
-						<li class="short">金额：<span></span></li>
-						<li class="short">年利率：<span></span></li>
-						<li class="short">借款期限：<span></span></li>
-						<li class="short">还款方式：<span></span></li>
+						<li class="short">金额：<?=$item['total']?>元<span></span></li>
+						<li class="short">年利率：<?=$item['rate']?>%<span></span></li>
+						<li class="short">借款期限：<?=$item['period']?>个月<span></span></li>
+						<li class="short">还款方式：<?php if($item['paytype']==1) echo "等额本息";
+														  if($item['paytype']==2) echo "等额本金";
+														  if($item['paytype']==3) echo "按月还息到期还本";?><span></span></li>
 						<li class="long">担保单位：<span></span></li>
-						<li class="long">投资人：<span></span></li>
+						<li class="long">投资人：<?=$item['user'];?><span></span></li>
 						<li class="long">回购方：<span></span></li>
 						<li class="long">借款进度：<div class="progress_line" style="width:130px;"><span>100%</span></div></li>
 					</ul>
-					<div class="finish">马上投资</div>
+					<a href="/ppp/issue/bddetail/<?=$item['bid']?>">
+					<?=($item['status']=1)?'<div class="finish">马上投资</div>':'<div class="unfinish">已完成</div>'?>
+					</a>
 				</li>
-				<li class="kind_li">
-					<h1 class="program_name">短期经营资金</h1>
-					<ul>
-						<li class="short">金额：<span></span></li>
-						<li class="short">年利率：<span></span></li>
-						<li class="short">借款期限：<span></span></li>
-						<li class="short">还款方式：<span></span></li>
-						<li class="long">担保单位：<span></span></li>
-						<li class="long">投资人：<span></span></li>
-						<li class="long">回购方：<span></span></li>
-						<li class="long">借款进度：<div class="progress_line" style="width:130px;"><span>100%</span></div></li>
-					</ul>
-					<div class="finish">马上投资</div>
-				</li>
-				<li class="kind_li">
-					<h1 class="program_name">短期经营资金</h1>
-					<ul>
-						<li class="short">金额：<span></span></li>
-						<li class="short">年利率：<span></span></li>
-						<li class="short">借款期限：<span></span></li>
-						<li class="short">还款方式：<span></span></li>
-						<li class="long">担保单位：<span></span></li>
-						<li class="long">投资人：<span></span></li>
-						<li class="long">回购方：<span></span></li>
-						<li class="long">借款进度：<div class="progress_line" style="width:130px;"><span>100%</span></div></li>
-					</ul>
-					<div class="finish">已完成</div>
-				</li>
-				<li class="kind_li">
-					<h1 class="program_name">短期经营资金</h1>
-					<ul>
-						<li class="short">金额：<span></span></li>
-						<li class="short">年利率：<span></span></li>
-						<li class="short">借款期限：<span></span></li>
-						<li class="short">还款方式：<span></span></li>
-						<li class="long">担保单位：<span></span></li>
-						<li class="long">投资人：<span></span></li>
-						<li class="long">回购方：<span></span></li>
-						<li class="long">借款进度：<div class="progress_line" style="width:130px;"><span>100%</span></div></li>
-					</ul>
-					<div class="finish">已完成</div>
-				</li>
-				<li class="kind_li">
-					<h1 class="program_name">短期经营资金</h1>
-					<ul>
-						<li class="short">金额：<span></span></li>
-						<li class="short">年利率：<span></span></li>
-						<li class="short">借款期限：<span></span></li>
-						<li class="short">还款方式：<span></span></li>
-						<li class="long">担保单位：<span></span></li>
-						<li class="long">投资人：<span></span></li>
-						<li class="long">回购方：<span></span></li>
-						<li class="long">借款进度：<div class="progress_line" style="width:130px;"><span>100%</span></div></li>
-					</ul>
-					<div class="finish">已完成</div>
-				</li>
-				<li class="kind_li">
-					<h1 class="program_name">短期经营资金</h1>
-					<ul>
-						<li class="short">金额：<span></span></li>
-						<li class="short">年利率：<span></span></li>
-						<li class="short">借款期限：<span></span></li>
-						<li class="short">还款方式：<span></span></li>
-						<li class="long">担保单位：<span></span></li>
-						<li class="long">投资人：<span></span></li>
-						<li class="long">回购方：<span></span></li>
-						<li class="long">借款进度：<div class="progress_line" style="width:130px;"><span>100%</span></div></li>
-					</ul>
-					<div class="finish">已完成</div>
+			<?php endforeach;?>
+				<!--<li class="kind_li">
 				</li>
 				<li class="kind_li">
 					<h1 class="program_name">短期经营资金</h1>
@@ -130,17 +72,20 @@
 						<li class="long">借款进度：<div class="progress_line" style="width:130px;"><span>100%</span></div></li>
 					</ul>
 					<div class="unfinish">还款中</div>
-				</li>
+				</li>-->
 			</ul>
 		</div>
 		<div class="main_right">
 			<div class="announce_list">
-				<h1>官方公告<a href="">更多>>&nbsp;</a></h1>
-				<a class="li" href="">1</a>
-				<a class="li" href="">2</a>
-				<a class="li" href="">3</a>
-				<a class="li" href="">4</a>
-				<a class="li" href="">5</a>
+				<h1>官方公告<a href="/ppp/main/annlist">更多>>&nbsp;</a></h1>
+				<?php 
+				    $i=1;
+					foreach($ann as $item){
+					echo '<a class="li" href="/ppp/main/anndetail/'.$item['id'].'">';
+					echo $i++;
+					echo ' '.$item['title'].'</a>';
+				}
+				?>
 			</div>
 			<embed src="http://player.youku.com/player.php/sid/XMjI0MDIwNDc2/v.swf" quality="high" width="280" height="252" align="middle" allowScriptAccess="sameDomain" float="right" type="application/x-shockwave-flash"></embed>
 			<ul class="problems_list">
@@ -230,30 +175,4 @@
 			</ul>
 		</div>
 	</div>
-<script type="text/javascript">
-	$('.area_nav li').on('mouseover',function(){
-		$(this).addClass('area_on');
-	});
-	$('.area_nav li').on('mouseout',function(){
-		$(this).removeClass('area_on');
-	});
-	$('.kind_nav li').on('mouseover',function(){
-		$(this).addClass('kind_on');
-	});
-	$('.kind_nav li').on('mouseout',function(){
-		$(this).removeClass('kind_on');
-	});
-	$('.top').on('click',function(){
-		$(window).scrollTop(0);
-	});
-	$(function(){	
-		$('#back_top').css({"position":"absolute","top":$(window).scrollTop()+300+'px',"right":"4%"});
-	});
-	$('body').on('mousewheel',function(){
-		if ($(window).scrollTop()<=$('body').height()-$(window).height()) {
-			$('#back_top').css({"position":"absolute","top":$(window).scrollTop()+300+'px',"right":"4%"});
-			$('#curtain').css('top',$(window).scrollTop()+'px');
-		};	
-	});
-</script>
 <?php include(APPPATH.'views/foot.php');?>

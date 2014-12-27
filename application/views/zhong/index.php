@@ -1,3 +1,8 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>掌金街</title>
+        <meta name="description" content="">
 <?php include(APPPATH.'views/top.php');?>
 <link rel="stylesheet" type="text/css" href="/css/zhongchou_style.css">
 	<div id="main">
@@ -145,18 +150,6 @@
 	});
 	$('.good_program a').on('mouseout',function(){
 		$(this).removeClass('good_program_focus');
-	});
-	$('.top').on('click',function(){
-		$(window).scrollTop(0);
-	});
-	$(function(){	
-		$('#back_top').css({"position":"absolute","top":$(window).scrollTop()+300+'px',"right":"4%"});
-	});
-	$('body').on('mousewheel',function(){
-		if ($(window).scrollTop()<=$('body').height()-$(window).height()) {
-			$('#back_top').css({"position":"absolute","top":$(window).scrollTop()+300+'px',"right":"4%"});
-			$('#curtain').css('top',$(window).scrollTop()+'px');
-		};	
 	});
 </script>
 <?php include(APPPATH.'views/foot.php');?>

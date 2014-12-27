@@ -1,3 +1,8 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>掌金街</title>
+        <meta name="description" content="">
 <?php include(APPPATH.'views/top.php');?>
         <link rel="stylesheet" type="text/css" href="/css/main.css">
 		<link rel="stylesheet" type="text/css" href="/css/style.css">
@@ -178,11 +183,5 @@
 					<span class="btn_page1">末页</span>
 				</div>
 			</div>
-		</div>
-		<div class="service">
-			<div class="service_btn">
-
-			</div>
-			<div class="up"></div>
 		</div>
 <?php include(APPPATH.'views/foot.php');?>

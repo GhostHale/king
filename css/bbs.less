@@ -1,25 +1,28 @@
-.service{
-  width: 54px;
-  height: 160px;
-  position: fixed;
-  left: 90%;
-  top: 550px;
-  .service_btn{
-    cursor: pointer;
-    background-color:#071019;
-    background-image: url("../images/kefu.png");
-    width: 100%;
-    background-position: center;
-    height: 115px;
+#page{
+  height: 35px;
+  margin-top: 25px;
+  margin-left: 450px;
+  *{
+    float: left;
+    color: #666666;
   }
-  .up{
+  ul{
+    height: 35px;
+    line-height: 35px;
+    li{
+      margin-right: 8px;
+      cursor: pointer;
+    }
+  }
+  .btn_page1{
+    width: 86px;
+    height: 35px;
     cursor: pointer;
-    width: 100%;
-    height: 41px;
-    margin-top: 4px;
-    background-position: center;
-    background-image: url("../images/up.png");
-    background-color: #071019;
+    line-height: 35px;
+    text-align: center;
+  }
+  .btn_page2{
+    background: #d6d6d6;
   }
 }
 #main{
@@ -27,33 +30,6 @@
   width: 1000px;
   height: 1036px;
   margin-bottom: 50px;
-  .page{
-    height: 35px;
-    margin-top: 25px;
-    margin-left: 450px;
-    *{
-      float: left;
-      color: #666666;
-    }
-    ul{
-      height: 35px;
-      line-height: 35px;
-      li{
-        margin-right: 8px;
-        cursor: pointer;
-      }
-    }
-    .btn_page1{
-      width: 86px;
-      height: 35px;
-      cursor: pointer;
-      line-height: 35px;
-      text-align: center;
-    }
-    .btn_page2{
-      background: #d6d6d6;
-    }
-  }
   .nav{
     position: relative;
     height: 40px;
@@ -86,52 +62,52 @@
       text-align: center;
     }
   }
-  .bbs_list{
-    margin-top: 18px;
-    margin-bottom: 15px;
-    li{
-      width: 100%;
+}
+#bbs_list{
+  margin-top: 18px;
+  margin-bottom: 15px;
+  li{
+    width: 100%;
+    height: 100px;
+    padding: 14px;
+    border-top: 1px solid #bdd2e4;
+    .bbs_data{
+      float: right;
+      margin-top:-100px;
+      margin-right: 10px;
+      font-size: 12px;
+      color: #666666;
+    }
+    h3{
+      cursor: pointer;
+    }
+    p{
+      cursor: pointer;
+      text-decoration: underline;
+      color: #666666;
+      width: 75%;
+      display:block;
+      white-space:nowrap;
+      overflow:hidden;
+      text-overflow:ellipsis;
+    }
+    .bbs_topic{
+      float: left;
+      width: 900px;
       height: 100px;
-      padding: 14px;
-      border-top: 1px solid #bdd2e4;
-      .bbs_data{
-        float: right;
-        margin-top:-100px;
-        margin-right: 10px;
-        font-size: 12px;
-        color: #666666;
+      line-height: 30px;
+      margin-top: -80px;
+      margin-left: 120px;
+    }
+    .usr_photo{
+      img{
+        display:inline-block;
+        margin-top: 14px;
       }
-      h3{
-        cursor: pointer;
-      }
-      p{
-        cursor: pointer;
-        text-decoration: underline;
-        color: #666666;
-        width: 75%;
-        display:block;
-        white-space:nowrap;
-        overflow:hidden;
-        text-overflow:ellipsis;
-      }
-      .bbs_topic{
-        float: left;
-        width: 900px;
-        height: 100px;
-        line-height: 30px;
-        margin-top: -80px;
-        margin-left: 120px;
-      }
-      .usr_photo{
-        img{
-          display:inline-block;
-          margin-top: 14px;
-        }
-        width: 100px;
-        height: 100px;
-        background: #a5e65b;
-        text-align: center;
-      }
+      width: 100px;
+      height: 100px;
+      background: #a5e65b;
+      text-align: center;
     }
   }
 }
