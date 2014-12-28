@@ -1,0 +1,125 @@
+*{
+  margin: 0;
+  padding: 0;
+}
+#header{
+  height: 110px;
+  background: #ffffff;
+}
+body{
+  background: rgb(244,244,244);
+}
+a{
+  color: #000000;
+}
+.header_nav{
+  width: 100%;
+  height: 40px;
+  overflow: hidden;
+  background: rgb(0,152,224);
+  .nav{
+    display: block;
+    width: 1000px;
+    margin: 0 auto;
+    height: 40px;
+    overflow: hidden;
+    li{
+      a{
+        font-size: 12px;
+        color: #ffffff;
+      }
+      float: left;
+      height: 100%;
+      line-height: 40px;
+    }
+  }
+}
+@font-face {font-family: 'navlog';
+  src: url('../font/nav.eot'); /* IE9*/
+  src: url('../font/nav.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+  url('../font/nav.woff') format('woff'), /* chrome、firefox */
+  url('../font/nav.ttf') format('truetype'), /* chrome、firefox、opera、Safari, Android, iOS 4.2+*/
+  url('../font/nav.svg#uxiconfont') format('svg'); /* iOS 4.1- */
+}
+.navlogo{
+  font-family:"navlog" !important;
+  font-size:16px;font-style:normal;
+  -webkit-font-smoothing: antialiased;
+  -webkit-text-stroke-width: 0.2px;
+  -moz-osx-font-smoothing: grayscale;
+}
+#main{
+  width: 1000px;
+  margin: 0 auto;
+  background: #ffffff;
+  height: 1000px;
+  margin-top: 20px;
+  .iframe{
+    width: 830px;
+    height: auto;
+    border: none;
+    float: right;
+    height: 100%;
+    overflow: hidden;
+  }
+  .main_nav{
+    float: left;
+    width: 160px;
+    border-top:4px solid #194074;
+    height: 100%;
+    background: #e5e6e7;
+    li{
+      font-size: 12px;
+      height: 23px;
+      color: #767676;
+      line-height: 23px;
+      text-align: center;
+    }
+    .active{
+      background: #ffffff;
+    }
+    .nav_class{
+      display: block;
+      text-align: center;
+      height: 36px;
+      width: 90%;
+      margin: 0 auto;
+      margin-bottom: 4px;
+      padding-bottom: 18px;
+      .nav_inner{
+        border-bottom: 1px solid #d5d5d5;
+      }
+      .qiandai{
+        background: url("../font/icon/qiandai.png") left center no-repeat;
+        padding-left: 25px;
+      }
+      .touzi{
+        background: url("../font/icon/touzi.png") left center no-repeat;
+        padding-left: 25px;
+      }
+      .home{
+        background: url("../font/icon/home.png") left center no-repeat;
+        padding-left: 25px;
+      }
+      .gouwu{
+        background: url("../font/icon/gouwuche.png") left center no-repeat;
+        padding-left: 25px;
+      }
+      border-bottom: 1px solid #ffffff;
+      color: rgb(23,60,118);
+      line-height: 52px;
+      a{
+        color: #194074;
+        font-size: 12px;
+        h3{
+          display: inline-block;
+        }
+      }
+      .navicon{
+        font-size: 20px;
+        line-height:40px;
+        margin-left:-20px;
+      }
+    }
+  }
+}
