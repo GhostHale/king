@@ -4,3 +4,4 @@ system/
 .htaccess
 .DS_Store
 .idea/
+.images/.DS_Store
