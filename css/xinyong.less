@@ -1,0 +1,110 @@
+*{
+  padding: 0;
+  margin: 0;
+}
+.title{
+  width: 100%;
+  height: 35px;
+  .titleTxt{
+    height: 100%;
+    color: #ffffff;
+    line-height: 35px;
+    font-size: 16px;
+    font-weight: 700;
+    background: red;
+    padding: 15px 25px;
+  }
+  border-bottom: 1px solid #cccccc;
+  padding-bottom: 5px;
+  .return{
+    float: right;
+    margin-right: 10px;
+    text-decoration: underline;
+    cursor: pointer;
+    line-height: 35px;
+    font-size: 14px;
+  }
+}
+.cre_type{
+  display: inline-block;
+  font-weight: 800;
+  font-size: 20px;
+  margin-top: 14px;
+  margin-bottom: 25px;
+}
+.cre_holder{
+  margin-left: 60px;
+  width: 700px;
+  margin-bottom: 40px;
+  li{
+    width: 100%;
+    list-style: none;
+    font-size: 14px;
+    overflow: hidden;
+    *{
+      float: left;
+    }
+    .upfiel{
+      width: 200px;
+      height: 40px;
+      position: relative;
+      cursor: pointer;
+      margin-left: 55px;
+      margin-top: 8px;
+      .row{
+        width: 38px;
+        height: 38px;
+        float: left;
+        background: url("../images/add.png")left center no-repeat;
+      }
+      .tips{
+        width: 150px;
+        height: 90%;
+        border: 1px solid #cccccc;
+        text-align: center;
+        line-height: 40px;
+      }
+      input{
+        position: absolute;
+        top:-3000px;
+      }
+    }
+    .apply{
+      width: 60px;
+      height: 38px;
+      text-align: center;
+      line-height: 38px;
+      background: orange;
+      color: #ffffff;
+      margin-top: 8px;
+      margin-left: 5px;
+    }
+    span{
+      display: inline-block;
+      line-height: 50px;
+    }
+    .pro_name{
+      width: 205px;
+    }
+    .pro_state{
+      width: 125px;
+    }
+  }
+  .project{
+    display: inline-block;
+    width: 100%;
+    line-height: 45px;
+    color: #666666;
+    height: 45px;
+    border-bottom: 1px solid #cccccc;
+    border-top: 1px solid #cccccc;
+    .pro_name{
+      float: left;
+      margin-left: 15px;
+      margin-right: 165px;
+    }
+    .cre_state{
+      margin-right: 80px;
+    }
+  }
+}

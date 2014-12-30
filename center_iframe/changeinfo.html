@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+	<meta charset="UTF-8">
+	<title></title>
+	<link rel="stylesheet" type="text/less" href="../css/changeinfo.less">
+	<script type="text/javascript" src="../js/jquery-1.8.3.min.js"></script>
+	<script src="../js/less-1.7.5.min.js"></script>
+	<script>
+		$(function(){
+			var oReturn=$('.return');
+			oReturn.bind('click',function(){
+				var a=$(window.parent.document.body).find('.iframe');
+				a[0].src='center_iframe/basicinfo.html';
+			});
+		});
+	</script>
+</head>
+<body>
+	<div class="title">
+		<span class="titleTxt">修改信息</span>
+		<span class="return">返回</span>
+	</div>
+	<ul class="info_holder">
+		<span class="info_title">基本信息</span>
+		<li>
+			<span class="info_li">
+				昵称：<input type="text" value="HelloWorld" class="per_name">
+			</span>
+			<span class="reset">修改</span>
+		</li>
+		<li>
+			<span class="info_li">
+				姓名：<input type="text" value="马云" class="per_name">
+			</span>
+			<span class="reset">修改</span>
+		</li>
+		<li>
+			<span class="info_li">
+				性别：
+				<select>
+					<option>男</option>
+					<option>女</option>
+				</select>
+			</span>
+			<span class="reset">修改</span>
+		</li>
+		<li>
+			<span class="info_li">
+				身份证号：<input type="text" value="" class="per_name" placeholder="提交后无法再次修改" style="padding-left: 5px;width: 150px">
+			</span>
+			<span class="reset">提交</span>
+		</li>
+		<span class="info_title">安全信息</span><br>
+		<li class="safity">
+			<span class="info_li">
+				密码修改：<br>
+			</span>
+			<form class="changewords">
+				原密码：<input type="password"/><span class="tips">请输入原密码</span><br>
+				新密码：<input type="password" /><span class="tips">密码为6-12位字母或数字</span><br>
+				确认密码：<input type="password" /><span class="tips">重复确认新密码</span><br>
+				<input type="submit" value="提交修改" class="apply">
+			</form>
+		</li>
+		<li class="safity">
+			<span class="info_li">
+				手机绑定：<br>
+			</span>
+			<form class="changewords">
+				原手机号：<input type="password"/><span class="tips">请输入原手机号</span><br>
+				新手机号：<input type="password" /><span class="tips">请输入新绑定的手机号</span><br>
+				确认码：<input type="password" /><span class="tips">请输入手机收到的确认码</span><br>
+				<input type="submit" value="提交修改" class="apply">
+			</form>
+		</li>
+		<li class="safity">
+			<span class="info_li">
+				邮箱绑定：<br>
+			</span>
+			<form class="changewords">
+				原邮箱地址：<input type="password"/><span class="tips">请输入原邮箱地址</span><br>
+				新邮箱地址：<input type="password" /><span class="tips">请输入新邮箱地址</span><br>
+				确认码：<input type="password" /><span class="tips">请输入邮箱收到的确认码</span><br>
+				<input type="submit" value="提交修改" class="apply">
+			</form>
+		</li>
+	</ul>
+</body>
+</html>
