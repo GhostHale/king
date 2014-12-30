@@ -16,7 +16,20 @@
 	<script src="js/less-1.7.5.min.js"></script>
 	<script>
 		$(function(){
-
+			var aLi=$('.main_nav').find('li');
+			var arr=["basicinfo","xinyong","wodejiekuan","jiekuanshenqing","wodetouzi","licai"];
+			var oFrame=$('.iframe');
+			for(var i=0;i<aLi.length;i++){
+				aLi.eq(i)[0].index=i;
+			}
+			aLi.click(function(){
+				for(var i=0;i<aLi.length;i++){
+					var li=aLi.eq(i)[0];
+					li.className='';
+				}
+				this.className='active';
+				oFrame.attr("src","center_iframe/"+arr[this.index]+".html");
+			});
 		});
 	</script>
 </head>
@@ -60,8 +73,8 @@
 				<a href="##" target="_self"><h3 class="home">个人中心</h3></a>
 			</div>
 		</span>
-			<a href="##" target="_self"><li class="active">基本信息</li></a>
-			<a href="##" target="_self"><li>信用资料</li></a>
+			<li class="active">基本信息</li>
+			<li>信用资料</li>
 		<span class="nav_class">
 			<div class="nav_inner">
 				<a href="##" target="_self"><h3 class="qiandai">借款管理</h3></a>
