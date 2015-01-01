@@ -40,7 +40,8 @@ case 1:echo '工薪族';break;case 2:echo '企业主';break;case 3:echo '网店�
 			<div class="form_li">
 				<h1>还款方式:</h1>
 				<div class="li_down">
-					<input type="text" name="paytype" value="等额本金" readonly="readonly">
+					<input class="inp_val"type="text" name="paytype" value="1" style="display:none;">
+					<input class="inp" type="text" name="paytype_" value="等额本金" readonly="readonly">
 					<ul>
 						<li>等额本金</li>
 						<li>等额本息</li>
@@ -61,7 +62,8 @@ case 1:echo '工薪族';break;case 2:echo '企业主';break;case 3:echo '网店�
 			<div class="form_li">
 				<h1>期限类型:</h1>
 				<div class="li_down">
-					<input type="text" name="toubiao_name" value="按月还款" readonly="readonly">
+					<input class="inp_val" type="text" name="toubiao_name" value="1" style="display:none;">
+					<input class="inp" type="text" name="toubiao_name_" value="按月还款" readonly="readonly">
 					<ul>
 						<li>按月还款</li>
 						<li>按月还款</li>
@@ -93,7 +95,8 @@ case 1:echo '工薪族';break;case 2:echo '企业主';break;case 3:echo '网店�
 			<div class="form_li">
 				<h1>标段类型:</h1>
 				<div class="li_down">
-					<input type="text" name="toubiao_name" value="信用" readonly="readonly">
+					<input class="inp_val" type="text" name="toubiao_name" value="1" style="display:none;">
+					<input class="inp" type="text" name="toubiao_name_" value="信用" readonly="readonly">
 					<ul>
 						<li>担保</li>
 						<li>回购</li>

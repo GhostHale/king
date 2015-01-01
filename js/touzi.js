@@ -12,9 +12,10 @@ function slideDown(obj){
 			});
 			$(this).find('li').on('click',function(){
 				var text = $(this).text();
+                var val = $(this).index()+1;
 				console.log(text);
-				$(this).parent().parent().find('input').val(text);
-				
+				$(this).parent().parent().find('.inp').val(text);
+                $(this).parent().parent().find('.inp_val').attr('value',val);
 			});
 		}else{
 			$(this).removeClass('li_up');
