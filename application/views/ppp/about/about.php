@@ -2,7 +2,7 @@
 <html>
 <head>
 	<meta charset="utf-8"/>
-	<title></title>
+	<title>关于</title>
 	<meta name="description" content="">
 	<link rel="stylesheet" type="text/css" href="/css/main.css">
 	<link rel="stylesheet" type="text/less" href="/css/aboutus.less">

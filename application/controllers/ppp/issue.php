@@ -35,16 +35,19 @@ class issue extends CI_Controller {
         }
         if ($this->input->post('rate')){
             $this->load->model('p2p');
-            if (($res=$this->p2p->addBd())===true) $this->load->view('ppp/issue/lend3');
-            else echo $res;
+            if (is_array($res=$this->p2p->addBd())){
+                $this->load->view('ppp/issue/lend3',$res);
+            } else echo $res;
         }else $this->load->view('ppp/issue/lend2',array('rank'=>$rank));
     }
     /*
      * 显示标段列表页面，返回json数据
      */ 
     function bdshow(){
-        if ($data=$this->input->post()){
-            
+        if ($page=$this->input->post('page')){
+            if (!is_numeric($page)) show_404();
+            $this->load->model('p2p');
+            echo json_encode($this->p2p->bdList($page));
         }else{
             $this->load->view('ppp/issue/invest');
         }

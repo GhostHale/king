@@ -58,7 +58,6 @@
 					<li>泡面</li>
 					<li>糖果饼干</li>
 					<li>饮品</li>
-					<span class="nav_name">我的收藏</span>
 				</ul>
 			</div>
 			<div class="pro_list">
@@ -78,7 +77,7 @@
 					<ul class="nav_pro">
 						<li>
 							<a href="##">
-								<img src="images/pro.jpg">
+								<img src="/images/pro.jpg">
 								<p>产品名称</p>
 								<p>产品介绍产品介绍产品介绍产品</p>
 								<input type="button" value="点击购买">
@@ -86,7 +85,7 @@
 						</li>
 						<li>
 							<a href="##">
-								<img src="images/pro.jpg">
+								<img src="/images/pro.jpg">
 								<p>产品名称</p>
 								<p>产品介绍产品介绍产品介绍产品</p>
 								<input type="button" value="点击购买">
@@ -94,7 +93,7 @@
 						</li>
 						<li>
 							<a href="##">
-								<img src="images/pro.jpg">
+								<img src="/images/pro.jpg">
 								<p>产品名称</p>
 								<p>产品介绍产品介绍产品介绍产品</p>
 								<input type="button" value="点击购买">
@@ -102,7 +101,7 @@
 						</li>
 						<li>
 							<a href="##">
-								<img src="images/pro.jpg">
+								<img src="/images/pro.jpg">
 								<p>产品名称</p>
 								<p>产品介绍产品介绍产品介绍产品</p>
 								<input type="button" value="点击购买">
@@ -110,7 +109,7 @@
 						</li>
 						<li>
 							<a href="##">
-								<img src="images/pro.jpg">
+								<img src="/images/pro.jpg">
 								<p>产品名称</p>
 								<p>产品介绍产品介绍产品介绍产品</p>
 								<input type="button" value="点击购买">
@@ -118,7 +117,7 @@
 						</li>
 						<li>
 							<a href="##">
-								<img src="images/pro.jpg">
+								<img src="/images/pro.jpg">
 								<p>产品名称</p>
 								<p>产品介绍产品介绍产品介绍产品</p>
 								<input type="button" value="点击购买">
@@ -126,7 +125,7 @@
 						</li>
 						<li>
 							<a href="##">
-								<img src="images/pro.jpg">
+								<img src="/images/pro.jpg">
 								<p>产品名称</p>
 								<p>产品介绍产品介绍产品介绍产品</p>
 								<input type="button" value="点击购买">
@@ -134,7 +133,7 @@
 						</li>
 						<li>
 							<a href="##">
-								<img src="images/pro.jpg">
+								<img src="/images/pro.jpg">
 								<p>产品名称</p>
 								<p>产品介绍产品介绍产品介绍产品</p>
 								<input type="button" value="点击购买">
@@ -142,7 +141,7 @@
 						</li>
 						<li>
 							<a href="##">
-								<img src="images/pro.jpg">
+								<img src="/images/pro.jpg">
 								<p>产品名称</p>
 								<p>产品介绍产品介绍产品介绍产品</p>
 								<input type="button" value="点击购买">

@@ -7,7 +7,7 @@
         <div id="header_top_inner">
             <div class="top_link"><span>客服热线：11111111 &nbsp&nbsp&nbsp&nbsp 关注我们：</span><a href="" class="weibo_logo"></a><a href="" class="wechat_logo"></a></div>
             <ul class="login_register"><?php if (isset($_COOKIE['name'])):?>
-                <li class='quit' style='border-right: 1px dashed #979797;'><a href="/user/logout">退出</a></li><li>Welcome back,<?=$_COOKIE['name']?></li></ul>
+                <li class='quit' style='border-right: 1px dashed #979797;'><a href="/user/logout">退出</a></li><li>Welcome back,<a href="/user/me"><?=$_COOKIE['name']?></a></li></ul>
                 <?php else:?>
                 <li class="register">注册</li>
                 <li class="login">登录</li>

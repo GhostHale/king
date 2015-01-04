@@ -69,9 +69,10 @@ class User_model extends CI_Model
     function recharge($money){
         if (!is_numeric($money)) return '必须是整数！';
         $id=$this->session->userdata('id');
-        if ($this->db->query("UPDATE possess SET total=total+$money WHERE pid=$id")) return true;
+        if ($this->db->query("UPDATE possess SET access=access+$money WHERE pid=$id")) return true;
         else return 'unknown error';
     }
+
 }
 
 

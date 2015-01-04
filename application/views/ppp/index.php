@@ -8,10 +8,10 @@
 	<div id="main">
 		<ul class="title">
 			<a href="/ppp/issue/lend1"><li>我要借款</li></a>
-			<li>我要投资</li>
-			<li>关于我们</li>
-			<li>帮助中心</li>
-			<a href="/ppp/me/index"><li>个人中心</li></a>
+			<a href="/ppp/issue/bdshow"><li>我要投资</li></a>
+			<a href="/ppp/main/about"><li>关于我们</li></a>
+			<a href=""><li>帮助中心</li></a>
+			<a href="/user/me"><li>个人中心</li></a>
 		</ul>
 		<div class="main_left">
 			<ul class="kind_nav">

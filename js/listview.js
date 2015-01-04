@@ -1,34 +1,35 @@
 $(document).ready(function(){
+    LIST=new Object;
+    LIST.param={};
+    LIST.url=location.href;
     var v=navigator.appVersion;
     var num=v.indexOf('MSIE');
-    param={};
     if (num>0){
         v=v.substr(num+5,1);
         if (v>1&&v<=7){
-            nowurl=location.href;
+            LIST.nowurl=location.href;
             setInterval('forOld()',250);
             forOld();
             return;
         }
     }
-    url=location.href;
-    if (url.indexOf('#')==-1) loadPage('1');
-    else loadPage(url.substr(url.indexOf('#')+1));
+    if (LIST.url.indexOf('#')==-1) loadPage('1');
+    else loadPage(LIST.url.substr(LIST.url.indexOf('#')+1));
     $(window).bind('hashchange',loadPage);
 });
 function forOld(){//处理老版本返回事件
-    if (nowurl==location.href) return;
-    nowurl=location.href;
-    if (nowurl.indexOf('#')==-1) loadPage('1');
-    else loadPage(nowurl.substr(nowurl.indexOf('#')+1));
+    if (LIST.nowurl==location.href) return;
+    LIST.nowurl=location.href;
+    if (LIST.nowurl.indexOf('#')==-1) loadPage('1');
+    else loadPage(LIST.nowurl.substr(LIST.nowurl.indexOf('#')+1));
 }
 function loadPage(p){
-    beforeLoad();
+    if (typeof(beforeLoad)=='function') beforeLoad();
     if (typeof(p)=='string'){
-        param.page=p;
-    }else param.page=location.hash.substr(1);
-    if (typeof(url)=='undefined') url=location.href;
-    $.post(url,param,function(res){
+        LIST.param.page=p;
+    }else LIST.param.page=location.hash.substr(1);
+    if (LIST.param.page=='') LIST.param.page=1;
+    $.post(LIST.url,LIST.param,function(res){
         if (res.page>1) $('#pages').html(writePages(res.page,parseInt(page)));
         else $('#pages').html('');
         showData(res.data);
