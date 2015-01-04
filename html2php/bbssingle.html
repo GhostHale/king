@@ -4,10 +4,10 @@
     <meta charset="utf-8"/>
     <title></title>
     <meta name="description" content="">
-    <link rel="stylesheet" type="text/css" href="css/main.css">
-    <link rel="stylesheet" type="text/less" href="css/single.less">
-    <script type="text/javascript" src="js/jquery-1.8.3.min.js"></script>
-    <script src="js/less-1.7.5.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/main.css">
+    <link rel="stylesheet" type="text/less" href="../css/single.less">
+    <script type="text/javascript" src="../js/jquery-1.8.3.min.js"></script>
+    <script src="../js/less-1.7.5.min.js"></script>
     <script>
         function delHtmlTag(str)
         {
@@ -21,6 +21,11 @@
             var h=$('.art_box').height()+200;
             var aReply=$('.reply');
             var oInput=$('#comment_input');
+            function newDelete(oInput){
+                this.obj=oInput;
+                this.function=null;
+            }
+            var obj=new newDelete(oInput);
             aReply.click(function(){
                 var b=this.parentNode.parentNode;
                 var m=$(b).find('.com_value').html();
@@ -29,8 +34,15 @@
                    m=m.substr(0,100)
                 }
                 m=delHtmlTag(m);
-                oInput[0].value='回复：'+m+'...';
+                obj.obj.val('回复：'+m+'...');
+                obj.function=function(){
+                    obj.obj.val("");
+                };
                 scrollTo(0,h);
+            });
+            oInput.focus(function(){
+                obj.function();
+                obj.function=null;
             });
         });
     </script>
@@ -168,7 +180,7 @@
                 <li>
                     <div class="usr_left">
                         <div class="usr_photo">
-                            <img src="images/person.png">
+                            <img src="../images/person.png">
                         </div>
                     </div>
                     <div class="usr_right">
@@ -189,7 +201,7 @@
                 <li>
                     <div class="usr_left">
                         <div class="usr_photo">
-                            <img src="images/person.png">
+                            <img src="../images/person.png">
                         </div>
                     </div>
                     <div class="usr_right">
@@ -268,8 +280,8 @@
         </div>  
 </div>
 </body>
-<script type="text/javascript" src="js/main.js"></script>
-<script type="text/javascript" src="js/login.js"></script>
+<script type="text/javascript" src="../js/main.js"></script>
+<script type="text/javascript" src="../js/login.js"></script>
 <script type="text/javascript">
     $('.up').on('click',function(){
         $(window).scrollTop(0);
