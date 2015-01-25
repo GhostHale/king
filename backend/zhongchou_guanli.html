@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8"/>
+	<title></title>
+	<meta name="description" content="">
+	<!--[if IE 6]>
+	<script type="text/javascript" src="js/dd_png.js"></script>
+	<script type="text/javascript">
+		DD_belatedPNG.fix('.logo,.wechat_logo,.weibo_logo,.service_btn,.up');
+	</script>
+	<![endif]-->
+	<link rel="stylesheet" type="text/css" href="../css/back.css">
+	<link rel="stylesheet" type="text/css" href="../css/themes/default/easyui.css">
+	<link rel="stylesheet" type="text/css" href="../css/themes/icon.css">
+	<script type="text/javascript" src="../js/jquery-1.8.3.min.js"></script>
+	<script type="text/javascript" src="../js/jquery.easyui.min.js"></script>
+</head>
+<body>
+<div id="main">	
+	<div id="content">
+		<div class="content_top">
+			<p><a href="houtaiguanli">后台管理</a><a href="zhongchou_guanli">> 众筹管理</a></p>
+			<div class="search">
+				<input class="easyui-searchbox" data-options="prompt:'Please Input Value',searcher:doSearch" style="width:300px"></input>
+			</div>
+		</div>
+	</div>
+</div>
+</body>
+<script type="text/javascript">
+	//自适应
+	var height = $(window).height();
+	var width = $(window).width();
+	$('#slider').css('height',height-75);
+	$(window).resize(function(){
+		var height = $(window).height();
+		var width = $(window).width();
+		$('#slider').css('height',height-75);
+		$('.content_top').css('width',width);
+	});
+	$('.content_top').css('width',width);
+	$('a').on('click',function(){
+		return false;
+	});
+	//搜索
+	function doSearch(value){
+		alert('You input: ' + value);
+	}
+</script>
+</html>

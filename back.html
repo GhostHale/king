@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8"/>
+	<title></title>
+	<meta name="description" content="">
+	<!--[if IE 6]>
+	<script type="text/javascript" src="js/dd_png.js"></script>
+	<script type="text/javascript">
+		DD_belatedPNG.fix('.logo,.wechat_logo,.weibo_logo,.service_btn,.up');
+	</script>
+	<![endif]-->
+	<link rel="stylesheet" type="text/css" href="css/back.css">
+	<script type="text/javascript" src="js/jquery-1.8.3.min.js"></script>
+</head>
+<body>
+<div id="header">
+	<div class="logo">掌金联盟</div>
+	<p class="welcome">您好，欢迎<span>xx</span>登录掌金宝后台管理系统，当前时间：<span>20xx-xx-xx xx:xx</span></p>
+</div>
+<div id="main">
+	<div id="slider">
+		<div class="block"></div>
+		<div class="quit">
+			<span class="f5">刷新 </span>|
+			<span>退出</span>
+		</div>
+		<div class="user">
+			<img src="">
+			<p>
+				<span>联系人:</span>
+				<span class="user_name">用户名</span>
+			</p>
+		</div>
+		<div class="li">
+			<h1>众筹管理</h1>
+			<ul>
+				<li>项目审核</li>
+				<li>项目管理</li>
+			</ul>
+		</div>
+		<div class="li">
+			<h1>掌金宝管理</h1>
+			<ul>
+				<li>项目审核</li>
+				<li>项目管理</li>
+				<li>公告管理</li>
+			</ul>
+		</div>
+		<div class="li">
+			<h1>掌金街管理</h1>
+		</div>
+		<div class="li">
+			<h1>掌金论坛管理</h1>
+		</div>
+		<div class="li">
+			<h1>抽奖活动管理</h1>
+		</div>
+	</div>
+	<iframe src="backend/zhongchou_guanli.html" class="iframe" scrolling="0"></iframe>
+</div>
+</body>
+<script type="text/javascript">
+	var height = $(window).height();
+	var width = $(window).width();
+	$('#slider').css('height',height-75);
+	$(window).resize(function(){
+		var height = $(window).height();
+		var width = $(window).width();
+		$('#slider').css('height',height-75);
+		$('.iframe').css('width',width-221);
+	});
+	$('.iframe').css('width',width-221);
+	$('.f5').on('click',function(){
+		location.reload();
+	});
+	$('.li h1').on('click',function(){
+		if($(this).parent().attr('class')=='li li_on'){
+			$(this).parent().find('ul').css('display','none');
+			$(this).parent().removeClass('li_on');	
+		}else{
+			$(this).parent().find('ul').css('display','block');
+			$(this).parent().addClass('li_on');	
+		}
+	});
+</script>
+</html>
