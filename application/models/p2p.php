@@ -52,7 +52,7 @@ class P2p extends CI_Model{
                 default:break;
             }
         }
-        if ($sel=$this->input->post('period')&&is_numeric($sel)&&$sel!=0)
+        if ($sel=$this->input->post('rank')&&is_numeric($sel)&&$sel!=0)
             $this->db->where('rank',$sel);
         $res=array('data'=>$this->db->get('p2p_bd')->result_array());
         $res['pages']=ceil($this->db->count_all_results()/$size);

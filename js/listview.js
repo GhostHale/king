@@ -28,9 +28,9 @@ function loadPage(p){
     if (typeof(p)=='string'){
         LIST.param.page=p;
     }else LIST.param.page=location.hash.substr(1);
-    if (LIST.param.page=='') LIST.param.page=1;
+    if (isNaN(LIST.param.page)) LIST.param.page=1;
     $.post(LIST.url,LIST.param,function(res){
-        if (res.page>1) $('#pages').html(writePages(res.page,parseInt(page)));
+        if (res.page>1) $('#pages').html(writePages(res.page,parseInt(LIST.param.page)));
         else $('#pages').html('');
         showData(res.data);
     },'json');

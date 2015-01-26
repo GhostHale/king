@@ -32,7 +32,7 @@ function login(){
     $.post('/user/login',$('#login').serialize(),function(data){
         if (data.state==1){
             alert('登录成功！');
-            $('#header .register').after("<li class='quit' style='border-right: 1px dashed #979797;'><a href='/user/logout'>退出</a></li><li>Welcome back,"+data.name+"</li>");
+            $('#header .login_register').html("<li class='quit' style='border-right: 1px dashed #979797;'><a href='/user/logout'>退出</a></li><li>Welcome back,<a href='/user/me'>"+data.name+"</li></a>");
             $('.close').click();
         }else alert(data.error);
     },'json');

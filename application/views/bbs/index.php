@@ -8,12 +8,10 @@
 <?php include(APPPATH.'views/top.php');?>
     <div id="main">
         <ul class="nav">
-            <li class="active" content="now">全部</li>
-            <li>官方公告</li>
-            <li>最新发帖</li>
-            <li>最火话题</li>
+            <li class="active" content="now" onclick="change(0,this);">最新发帖</li>
+            <li onclick="change(1,this)">最火话题</li>
             <a href="/bbs/main/newone" class="nav_btn">我要发帖</a>
-            <span class="nav_btn">我的帖子</span>
+            <li onclick="change(2,this)">我的帖子</li>
         </ul>
         <ul id="bbs_list">
         </ul>
@@ -41,6 +39,18 @@
         }
         function beforeLoad(){
             $('#bbs_list').html('数据载入中，请稍候……');
+        }
+        function change(type,e){
+            $('.active',e.parentNode).removeClass("active");
+            $(e).addClass("active");
+            switch(type){
+                case 1:LIST.param={type:1};location.href='#n1';break;
+                case 2:if (document.cookie.indexOf('name')>=0){
+                        LIST.param={type:2};location.href='#n3';
+                    }else alert('请先登录！');
+                    break;
+                default:LIST.param={};location.href='#n';break;
+            }
         }
     </script>
     <script type="text/javascript" src="/js/listview.js"></script>

@@ -28,7 +28,7 @@
                     </div>
                 </div>  
                 <div class="checkbox">
-                    <input type="checkbox" name="save" value="">&nbsp;&nbsp;记住我<a href="">忘记密码？</a>
+                    <input type="checkbox" name="save" value="tr">&nbsp;&nbsp;记住我<a href="">忘记密码？</a>
                 </div>
                 <input class="submit" type="submit" onclick="return login()" value="登录">   
             </form>

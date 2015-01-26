@@ -10,8 +10,8 @@ class main extends CI_Controller {
      * 显示首页，返回数据
      */
     function index(){
-        if ($data=$this->input->post(array('page'))){
-            if (!is_numeric($data['page'])) show_404();
+        if ($data=$this->input->post('page')){
+            if (!is_numeric($data)) show_404();
             echo json_encode($this->bbs->getMain($data));
         }else $this->load->view('bbs/index');
     }
@@ -24,10 +24,18 @@ class main extends CI_Controller {
             $this->load->library('session');
             $data['main']=$id;
             if ($data['pid']=$this->session->userdata('id')){
-                if ($this->db->query("SELECT rank FROM bbs_user WHERE pid=$data[pid]")->num_rows()==0) die('请先激活！');
-                echo $this->bbs->reply($data);
-            }else echo '请先登录！';
+                if ($this->db->query("SELECT rank FROM bbs_user WHERE pid=$data[pid]")->num_rows()==0)
+                    echo json_encode(array('state'=>0,'info'=>'请先激活！'));
+                else echo $this->bbs->reply($data);
+            }else echo json_encode(array('state'=>0,'info'=>'请先登录！'));
         }else $this->load->view('bbs/item',$this->bbs->getItem($id));
+    }
+    
+    function repInfo($id='a'){
+        if (!is_numeric($id)) show_404();
+        if ($page=$this->input->post('page')&&is_numeric($page)){
+            echo $this->bbs->repList($id,$page);
+        }
     }
     
     function zan($id='a'){
@@ -55,5 +63,28 @@ class main extends CI_Controller {
         }else jump('请先登录！','/bbs/main');
     }
     
+    function download($name='',$show=''){
+        if (strlen($name)==0) show_404();
+        if (strlen($show)==0) urldecode($name);
+        else $show=urldecode($show);
+        $name='upload/bbs'.$name;
+        if (file_exists($name)){
+            header('Content-Type: "application/octet-stream"');
+            header('Content-Disposition: attachment; filename="'.$show.'"');
+            header("Content-Length: ".filesize($name));
+            header("Content-Transfer-Encoding: binary");
+            header('Expires: 0');
+            if (strpos($_SERVER['HTTP_USER_AGENT'], "MSIE") !== FALSE){
+                header('Cache-Control: must-revalidate, post-check=0, pre-check=0');
+                header('Pragma: public');
+            }else{
+                header('Pragma: no-cache');
+            }
+            readfile($name);
+        }else{
+            $this->load->helper('static');
+            jumpback('文件不存在！');
+        }
+    }
 }
 ?>

@@ -11,8 +11,6 @@
 				<img src="">
 				<a class="good_program_focus" href="">房筹</a>
 				<a href="">房筹</a>
-				<a href="">房筹</a>
-				<a href="">房筹</a>
 			</div>
 			<ul>
 				<li class="program_box">
@@ -114,32 +112,16 @@
 		</div>
 		<div class="main_right">
 			<div class="lottery_announce">
-				<h1>某某项目抽奖结果公示</h1>
+				<h1>抽奖结果公示</h1>
 				<p>这个小姐爱奇偶觉得是国家吉萨打工；就挨饿哦igjsddf，打发恶搞</p>
 			</div>
 			<div class="lottery_list">
-				<h1>抽奖公布</h1>
+				<h1>往期抽奖结果公布</h1>
 				<ul>
 					<li>121434</li>
 					<li>123124</li>
 					<li>124124</li>
 					<li>124144</li>
-				</ul>
-			</div>
-			<div class="lottery_org">
-				<h1>发起达人</h1>
-				<ul>
-					<li>
-						<img src="">
-						<span class="org_name">姓名</span>
-						<span>简介 sdfsdf sdfsdfs  dsfsdfs</span>
-						
-					</li>
-					<li>
-						<img src="">
-						<span class="org_name">姓名</span>
-						<span>简介</span>
-					</li>
 				</ul>
 			</div>
 		</div>

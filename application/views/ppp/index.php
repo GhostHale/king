@@ -13,14 +13,16 @@
 			<a href=""><li>帮助中心</li></a>
 			<a href="/user/me"><li>个人中心</li></a>
 		</ul>
+		<script type="text/javascript">
+    $('#main .title li').on('mouseover',function(){
+        $(this).css('background-color','#0271d1');
+    });
+    $('#main .title li').on('mouseout',function(){
+        $(this).css('background-color','#666');
+    });</script>
 		<div class="main_left">
 			<ul class="kind_nav">
 				<li class="kind_on kind_focus">最新发布</li>
-				<li>政府项目</li>
-				<li>担保</li>
-				<li>回购</li>
-				<li>信用</li>
-				<li>已完成</li>
 			</ul>
 			<?php foreach($bd as $item):?>
 			<ul class="program_list">
@@ -103,43 +105,16 @@
 						<th>排行</th>
 						<th>用户名</th>
 						<th>投资金额</th>
-						<th>排名变化</th>
 					</tr>
 					<tr>
 						<td class="rank_num">1</td>
 						<td class="user_name">dsf</td>
 						<td class="money">10,000</td>
-						<td class="rank_change">--</td>
 					</tr>
 					<tr>
 						<td class="rank_num">2</td>
 						<td class="user_name"></td>
 						<td class="money"></td>
-						<td class="rank_change"></td>
-					</tr>
-					<tr>
-						<td class="rank_num">3</td>
-						<td class="user_name"></td>
-						<td class="money"></td>
-						<td class="rank_change"></td>
-					</tr>
-					<tr>
-						<td class="rank_num">4</td>
-						<td class="user_name"></td>
-						<td class="money"></td>
-						<td class="rank_change"></td>
-					</tr>
-					<tr>
-						<td class="rank_num">5</td>
-						<td class="user_name"></td>
-						<td class="money"></td>
-						<td class="rank_change"></td>
-					</tr>
-					<tr>
-						<td class="rank_num">6</td>
-						<td class="user_name"></td>
-						<td class="money"></td>
-						<td class="rank_change"></td>
 					</tr>
 				</table>
 			</div>

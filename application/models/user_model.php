@@ -56,10 +56,10 @@ class User_model extends CI_Model
                     $check=setcheck();$dbcheck=check($check);
                     $time=time()+604800;
                     setcookie('check',$dbcheck,$time,'/','',false,true);
-                    setcookie('name',$data->user,$time,'/','',false,true);
-                    $this->db->query("UPDATE user SET check=$dbcheck WHERE id=?",$data->pid);
+                    setcookie('name',$data->user,$time,'/');
+                    $this->db->query("UPDATE user SET `check`='$dbcheck' WHERE pid=?",$data->pid);
                 }else{
-                    setcookie('name',$data->user,time()+86400,'/','',false,true);
+                    setcookie('name',$data->user,time()+86400,'/');
                 }
                 return array('state'=>1,'name'=>$data->user);
             }else return "用户名、密码错误！";
