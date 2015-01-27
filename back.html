@@ -57,7 +57,7 @@
 			<h1>抽奖活动管理</h1>
 		</div>
 	</div>
-	<iframe src="backend/zhongchou_guanli.html" class="iframe" scrolling="0"></iframe>
+	<iframe src="backend/shenhe_detail.html" class="iframe" scrolling="0"></iframe>
 </div>
 </body>
 <script type="text/javascript">
@@ -68,13 +68,15 @@
 		var height = $(window).height();
 		var width = $(window).width();
 		$('#slider').css('height',height-75);
-		$('.iframe').css('width',width-221);
+		$('.iframe').css({'width':width-221,"height":height-75});
 	});
-	$('.iframe').css('width',width-221);
+	$('.iframe').css({'width':width-221,"height":height-75});
 	$('.f5').on('click',function(){
 		location.reload();
 	});
 	$('.li h1').on('click',function(){
+		$('.on').removeClass('on');
+		$(this).addClass('on');
 		if($(this).parent().attr('class')=='li li_on'){
 			$(this).parent().find('ul').css('display','none');
 			$(this).parent().removeClass('li_on');	
@@ -83,5 +85,9 @@
 			$(this).parent().addClass('li_on');	
 		}
 	});
+	$('.li ul li').on('click',function(){
+		$('.on').removeClass('on');
+		$(this).addClass('on');
+	})
 </script>
 </html>
