@@ -2,7 +2,6 @@ html,body{
 	width: 100%;
 	height: 100%;
 	font-family: "arial";
-	background-color: #e9e9e9;
 }
 *{
 	margin: 0;
@@ -117,7 +116,6 @@ a{
 		border: none;
 	}
 	#content{
-		overflow: hidden;
 		float: left;
 		.content_top{
 			height: 28px;
@@ -217,6 +215,117 @@ a{
 		}
 		h1{
 			text-align: center;
+			line-height: 60px;
+			font-size: 24px;
+			font-weight: lighter;
+			color: #666;
+			border-bottom: 1px solid #2a2e2f;
+			div{
+				float: right;
+				font-size: 14px;
+				margin-top: 10px;
+				span{
+					padding: 2px 6px;
+					background-color: #3a4147;
+					color: #fff;
+					margin-right: 10px;
+				}
+			}
+		}
+		.detail{
+			width: 1000px;
+			margin: 60px 0 0 38px;
+			.pic1{
+				float: left;
+				width: 510px;
+				height: 278px;
+			}
+			.pic2{
+				width: 700px;
+				height: 200px;
+			}
+			.detail_infro{
+				float: left;
+				width: 300px;
+				margin-left: 20px;
+				h3{
+					font-weight: lighter;
+					color: #666;
+					line-height: 40px;
+				}
+				h2{
+					font-size: 16px;
+					font-weight: lighter;
+					line-height: 30px;
+					color: #666;
+				}
+				ul{
+					overflow: hidden;
+					margin-top: 10px;
+					li{
+						float: left;
+						color: #666;
+						text-align: center;
+						line-height: 30px;
+						padding: 0 10px;
+						border-right: 1px solid #666;
+						h4{
+							font-weight: lighter;
+						}
+					}
+					.rli{
+						border: none;
+					}
+				}
+			}
+			p{
+				padding: 10px 0;
+				clear: both;
+				font-size: 14px;
+				line-height: 24px;
+				color: #666;
+			}
+		}
+		.commit{
+			width: 370px;
+			margin: 0 auto;
+			overflow: hidden;
+			padding: 40px 0;
+			.btn{
+				float: left;
+				width: 108px;
+				height: 44px;
+				line-height: 44px;
+				border: 1px solid #666;
+				background-color: #fff;
+				margin-right: 20px;
+				font-size: 20px;
+				text-align: center;
+				color: #666;
+				cursor: pointer;
+			}
+			.yes_on{
+				color: #fff;
+				background-color: #61e286;
+				border: 1px solid #61e286;
+			}
+			.no_on{
+				color: #fff;
+				background-color: #ff6d6d;
+				border: 1px solid #ff6d6d;
+			}
+			.commit_btn{
+				display: block;
+				float: left;
+				width: 108px;
+				font-size: 20px;
+				line-height: 40px;
+				background-color: #7bbfe4;
+				border: none;
+				border-bottom: 4px solid #42a3da;
+				color: #fff;
+				cursor: pointer;
+			}
 		}
 		.easyui-panel{
 			border: none;

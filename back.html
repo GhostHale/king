@@ -77,11 +77,12 @@
 	$('.li h1').on('click',function(){
 		$('.on').removeClass('on');
 		$(this).addClass('on');
+		$(this).parent().parent().find('ul').css('display','none');
 		if($(this).parent().attr('class')=='li li_on'){
-			$(this).parent().find('ul').css('display','none');
-			$(this).parent().removeClass('li_on');	
+			$('.li_on').removeClass('li_on');	
 		}else{
 			$(this).parent().find('ul').css('display','block');
+			$('.li_on').removeClass('li_on');
 			$(this).parent().addClass('li_on');	
 		}
 	});
