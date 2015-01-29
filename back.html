@@ -33,31 +33,31 @@
 			</p>
 		</div>
 		<div class="li">
-			<h1>众筹管理</h1>
+			<h1>众筹管理<span class="back_icon slide_icon">&#xe73d;</span></h1>
 			<ul>
-				<li>项目审核</li>
-				<li>项目管理</li>
+				<li class="zhongchou_shenhe">项目审核</li>
+				<li class="zhongchou_guanli">项目管理</li>
 			</ul>
 		</div>
 		<div class="li">
-			<h1>掌金宝管理</h1>
+			<h1>掌金宝管理<span class="back_icon slide_icon">&#xe73d;</span></h1>
 			<ul>
-				<li>项目审核</li>
-				<li>项目管理</li>
-				<li>公告管理</li>
+				<li class="zhangjinbao_shenhe">项目审核</li>
+				<li class="zhangjinbao_guanli">项目管理</li>
+				<li class="gonggao_guanli">公告管理</li>
 			</ul>
 		</div>
 		<div class="li">
-			<h1>掌金街管理</h1>
+			<h1 class="zhangjinjie">掌金街管理</h1>
 		</div>
 		<div class="li">
-			<h1>掌金论坛管理</h1>
+			<h1 class="bbs_guanli">掌金论坛管理</h1>
 		</div>
 		<div class="li">
-			<h1>抽奖活动管理</h1>
+			<h1 class="choujiang">抽奖活动管理</h1>
 		</div>
 	</div>
-	<iframe src="backend/zhangjinjie.html" class="iframe" scrolling="0"></iframe>
+	<iframe src="backend/bbs_guanli.html" class="iframe" scrolling="0"></iframe>
 </div>
 </body>
 <script type="text/javascript">
@@ -76,11 +76,15 @@
 	});
 	$('.li h1').on('click',function(){
 		$('.on').removeClass('on');
+		$('.slide_icon').html('&#xe73d;');
 		$(this).addClass('on');
 		$(this).parent().parent().find('ul').css('display','none');
 		if($(this).parent().attr('class')=='li li_on'){
 			$('.li_on').removeClass('li_on');	
 		}else{
+			if($(this).find('span')){
+				$(this).find('.slide_icon').html('&#xe736;');
+			}
 			$(this).parent().find('ul').css('display','block');
 			$('.li_on').removeClass('li_on');
 			$(this).parent().addClass('li_on');	
@@ -89,6 +93,20 @@
 	$('.li ul li').on('click',function(){
 		$('.on').removeClass('on');
 		$(this).addClass('on');
-	})
+	});
+	//iframe
+	function iframe(obj){
+		$('.'+obj).on('click',function(){
+			$('.iframe').attr('src','backend/'+obj+'.html')
+		});
+	}
+	iframe('zhangjinbao_guanli');
+	iframe('zhangjinbao_shenhe');
+	iframe('gonggao_guanli');
+	iframe('zhongchou_guanli');
+	iframe('zhongchou_shenhe');
+	iframe('bbs_guanli');
+	iframe('choujiang');
+	iframe('zhangjinjie');
 </script>
 </html>

@@ -70,6 +70,32 @@
 				<li class="add_tag">+ 添加</li>
 			</ul>
 		</div>
+		<div class="tag_li shenghuoyongpin1">
+			<div class="tag_line">
+				<h1>生活用品1</h1>
+			</div>
+			<ul class="pro_ul">
+				<li class="pro_li">
+					<h1 class="pro_ch"><span class="pro_mod">修改</span><span class="pro_del">删除</span></h1>
+					<h1 class="pro_con"><span>确定</span></h1>
+					<img class="pro_pho" src="">
+					<h2 class="price">￥<span>35</span></h2>
+					<h3 class="name">asdf</h3>
+					<p class="pro_intro">介绍啊介绍介绍！~21#~@#</p>
+				</li>
+				<li class="pro_add">
+					<h1>+ 添加</h1>
+				</li>
+			</ul>
+			<div class="page">
+				<a href="">首页</a>
+				<a href="">上一页</a>
+				<a href="" class="page_on">1</a>
+				<a href="">2</a>
+				<a href="">下一页</a>
+				<a href="">尾页</a>
+			</div>
+		</div>
 	</div>
 </div>
 </body>
@@ -229,6 +255,57 @@
 		$('.tag').on('click',function(){
 			$(this).remove();
 		});
+	});
+	//商品修改
+	$('.pro_mod').on('click',function(){
+		$('.quit_add').trigger('click');
+		$('.quit_mod').trigger('click');
+		$('.quit_del').trigger('click');
+		$('.pro_con').trigger('click');
+		$(this).parents('.pro_li').find('.price span').attr('contenteditable','true').css('background-color','#f0f0f0');
+		$(this).parents('.pro_li').find('.name').attr('contenteditable','true').css('background-color','#f0f0f0');
+		$(this).parents('.pro_li').find('.pro_intro').attr('contenteditable','true').css('background-color','#f0f0f0');
+		$(this).parent().css('display','none');
+		$(this).parent().next().css('display','block');
+		$('.pro_con').on('click',function(){
+			$(this).parents('.pro_li').find('.price span').attr('contenteditable','false').css('background-color','#fff');
+			$(this).parents('.pro_li').find('.name').attr('contenteditable','false').css('background-color','#fff');
+			$(this).parents('.pro_li').find('.pro_intro').attr('contenteditable','false').css('background-color','#fff');
+			$(this).css('display','none');
+			$(this).parent().find('.pro_ch').css('display','block');
+		});
+	});
+	//商品删除
+	$('.pro_del').on('click',function(){
+		$(this).parents('.pro_li').remove();
+	});
+	//商品添加
+	$('.pro_add').on('click',function(){
+		var box = "<li class='pro_li new_pro'><h1 class='pro_ch'><span class='pro_mod'>修改</span><span class='pro_del'>删除</span></h1><h1 class='pro_con'><span>确定</span></h1><img class='pro_pho' src=''><h2 class='price'>￥<span>请输入价格</span></h2><h3 class='name'>请输入商品名</h3><p class='pro_intro'>请输入商品简介</p></li>";
+		$(this).before(box);
+		$('.new_pro').find('.pro_mod').on('click',function(){
+			$('.quit_add').trigger('click');
+			$('.quit_mod').trigger('click');
+			$('.quit_del').trigger('click');
+			$('.pro_con').trigger('click');
+			$(this).parents('.pro_li').find('.price span').attr('contenteditable','true').css('background-color','#f0f0f0');
+			$(this).parents('.pro_li').find('.name').attr('contenteditable','true').css('background-color','#f0f0f0');
+			$(this).parents('.pro_li').find('.pro_intro').attr('contenteditable','true').css('background-color','#f0f0f0');
+			$(this).parent().css('display','none');
+			$(this).parent().next().css('display','block');
+			$('.pro_con').on('click',function(){
+				$(this).parents('.pro_li').find('.price span').attr('contenteditable','false').css('background-color','#fff');
+				$(this).parents('.pro_li').find('.name').attr('contenteditable','false').css('background-color','#fff');
+				$(this).parents('.pro_li').find('.pro_intro').attr('contenteditable','false').css('background-color','#fff');
+				$(this).css('display','none');
+				$(this).parent().find('.pro_ch').css('display','block');
+			});
+		});
+		$('.new_pro').find('.pro_del').on('click',function(){
+			$(this).parents('.pro_li').remove();
+		});
+		$('.new_pro').find('.pro_mod').trigger('click');
+		$('.new_pro').removeClass('new_pro');
 	});
 </script>
 </html>
