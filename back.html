@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8"/>
+	<title></title>
+	<meta name="description" content="">
+	<!--[if IE 6]>
+	<script type="text/javascript" src="js/dd_png.js"></script>
+	<script type="text/javascript">
+		DD_belatedPNG.fix('.logo,.wechat_logo,.weibo_logo,.service_btn,.up');
+	</script>
+	<![endif]-->
+	<link rel="stylesheet" type="text/css" href="css/back.css">
+	<script type="text/javascript" src="js/jquery-1.8.3.min.js"></script>
+</head>
+<body>
+<div id="header">
+	<div class="logo">掌金联盟</div>
+	<p class="welcome">您好，欢迎<span>xx</span>登录掌金宝后台管理系统，当前时间：<span>20xx-xx-xx xx:xx</span></p>
+</div>
+<div id="main">
+	<div id="slider">
+		<div class="block"></div>
+		<div class="quit">
+			<span class="f5">刷新 </span>|
+			<span>退出</span>
+		</div>
+		<div class="user">
+			<img src="">
+			<p>
+				<span>联系人:</span>
+				<span class="user_name">用户名</span>
+			</p>
+		</div>
+		<div class="li">
+			<h1>众筹管理<span class="back_icon slide_icon">&#xe73d;</span></h1>
+			<ul>
+				<li class="zhongchou_shenhe">项目审核</li>
+				<li class="zhongchou_guanli">项目管理</li>
+			</ul>
+		</div>
+		<div class="li">
+			<h1>掌金宝管理<span class="back_icon slide_icon">&#xe73d;</span></h1>
+			<ul>
+				<li class="zhangjinbao_shenhe">项目审核</li>
+				<li class="zhangjinbao_guanli">项目管理</li>
+				<li class="gonggao_guanli">公告管理</li>
+			</ul>
+		</div>
+		<div class="li">
+			<h1 class="zhangjinjie">掌金街管理</h1>
+		</div>
+		<div class="li">
+			<h1 class="bbs_guanli">掌金论坛管理</h1>
+		</div>
+		<div class="li">
+			<h1 class="choujiang">抽奖活动管理</h1>
+		</div>
+	</div>
+	<iframe src="backend/bbs_guanli.html" class="iframe" scrolling="0"></iframe>
+</div>
+</body>
+<script type="text/javascript">
+	var height = $(window).height();
+	var width = $(window).width();
+	$('#slider').css('height',height-75);
+	$(window).resize(function(){
+		var height = $(window).height();
+		var width = $(window).width();
+		$('#slider').css('height',height-75);
+		$('.iframe').css({'width':width-221,"height":height-75});
+	});
+	$('.iframe').css({'width':width-221,"height":height-75});
+	$('.f5').on('click',function(){
+		location.reload();
+	});
+	$('.li h1').on('click',function(){
+		$('.on').removeClass('on');
+		$('.slide_icon').html('&#xe73d;');
+		$(this).addClass('on');
+		$(this).parent().parent().find('ul').css('display','none');
+		if($(this).parent().attr('class')=='li li_on'){
+			$('.li_on').removeClass('li_on');	
+		}else{
+			if($(this).find('span')){
+				$(this).find('.slide_icon').html('&#xe736;');
+			}
+			$(this).parent().find('ul').css('display','block');
+			$('.li_on').removeClass('li_on');
+			$(this).parent().addClass('li_on');	
+		}
+	});
+	$('.li ul li').on('click',function(){
+		$('.on').removeClass('on');
+		$(this).addClass('on');
+	});
+	//iframe
+	function iframe(obj){
+		$('.'+obj).on('click',function(){
+			$('.iframe').attr('src','backend/'+obj+'.html')
+		});
+	}
+	iframe('zhangjinbao_guanli');
+	iframe('zhangjinbao_shenhe');
+	iframe('gonggao_guanli');
+	iframe('zhongchou_guanli');
+	iframe('zhongchou_shenhe');
+	iframe('bbs_guanli');
+	iframe('choujiang');
+	iframe('zhangjinjie');
+</script>
+</html>

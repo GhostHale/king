@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8"/>
+	<title></title>
+	<meta name="description" content="">
+	<!--[if IE 6]>
+	<script type="text/javascript" src="js/dd_png.js"></script>
+	<script type="text/javascript">
+		DD_belatedPNG.fix('.logo,.wechat_logo,.weibo_logo,.service_btn,.up');
+	</script>
+	<![endif]-->
+	<link rel="stylesheet" type="text/css" href="../css/back.css">
+	<link rel="stylesheet" type="text/css" href="../css/themes/default/easyui.css">
+	<link rel="stylesheet" type="text/css" href="../css/themes/icon.css">
+	<script type="text/javascript" src="../js/jquery-1.8.3.min.js"></script>
+	<script type="text/javascript" src="../js/jquery.easyui.min.js"></script>
+</head>
+<body style="background-color:#fff;">
+<div id="main">	
+	<div id="content">
+		<div class="content_top">
+			<p><a href="">后台管理</a><a href="">> 众筹管理</a><a href="">>公告管理</a><a href="">>发布公告</a></p>
+		</div>
+		<form>
+			<input class="title" type="text" placeholder="标题（必填）">
+			<textarea class="content" placeholder="正文"></textarea>
+			<label>上传附件：</label><input class="upload" type="file" placeholder="上传附件">
+			<input class="confirm" value="发布新公告">
+			<a class="cancel" href="">取消</a>
+		</form>
+		
+
+	</div>
+</div>
+</body>
+<script type="text/javascript">
+	//自适应
+	var height = $(window).height();
+	var width = $(window).width();
+	$('#slider').css('height',height-75);
+	$(window).resize(function(){
+		var height = $(window).height();
+		var width = $(window).width();
+		$('#slider').css('height',height-75);
+		$('.content_top').css('width',width);
+	});
+	$('.content_top').css('width',width);
+	$('a').on('click',function(){
+		return false;
+	});
+	//搜索
+	function doSearch(value){
+		alert('You input: ' + value);
+	}
+	//添加公告
+	$('.add_anno').on('click',function(){
+		location.href = "add_anno.html";
+	});
+	//取消发布
+	$('.cancel').on('click',function(){
+		location.href = "gonggao_guanli.html";
+		return false;
+	})
+</script>
+</html>
