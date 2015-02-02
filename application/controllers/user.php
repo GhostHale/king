@@ -92,10 +92,11 @@ class User extends CI_Controller
         return true;
         session_start();
         if (!isset($_SESSION['yzm'])||$_SESSION['yzm']!= strtolower($vcode)) {
-            return false;
+            $res=false;
         } else {
-            return true;
+            $res=true;
         }
+        return $res;
     }
 
     function login(){
@@ -213,4 +214,25 @@ class User extends CI_Controller
         if ($this->db->update($table,$data,array('pid'=>$id))) echo 'ok';
         else echo 'Unknow error';
     }
+
+    function adm_in(){
+        $this->load->helper('functions_helper');
+        if ($inp=$this->input->post(array('code','psw','user'))){
+            if (!$this->vcode_match($code)) jumpback('验证码错误！');
+            else{
+                $string=file_get_contents('application/doyouknow.json');
+                $table=json_decode(gzuncompress($string),true);
+                if (isset($table[$inp['user']])&&md5(md5($inp['psw']))==$table[$inp['user']]){
+                    $this->load->library('session');
+                    $this->session->set_userdata('admin',$inp['user']);
+                    header('Location:/doadmin/index','',301);
+                }else jumpback('账号密码错误！');
+            }
+        }else{
+            $this->load->view('admin/login');
+        }
+        
+    }
+
+    
 }

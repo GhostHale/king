@@ -1,11 +1,11 @@
 <?php
-class P2p extends CI_Model{
+class Chou extends CI_Model{
     function __construct(){
         parent::__construct();
         $this->load->library('session');
     }
     
-    function addBd(){
+    function addChou(){
         $this->load->library('form_validation');
         $config=array(array('field'=> 'title','rules'=>'trim|required|min_length[5]|max_length[20]|xss_clean')
             ,array('field'=>'total','rules'=>'trim|required|greater_than[5000]')
@@ -31,28 +31,10 @@ class P2p extends CI_Model{
         }
     }
 
-    function bdList($page){
+    function indList($page){
         $size=15;
         $this->db->start_cache();
-        $this->db->select('bid,title,rate,rank,total,period,need,isday,(SELECT user FROM user WHERE user.pid=p2p_bd.pid) name',false)->order_by('rank,end')->limit($size,($page-1)*$size)->where('status',1);
-        if ($sel=$this->input->post('rate')){
-            switch($sel){
-                case 1:$this->db->where('rate BETWEEN 8 AND 13',null,false);break;
-                case 2:$this->db->where('rate BETWEEN 13 AND 18',null,false);break;
-                case 3:$this->db->where('rate BETWEEN 18 AND 24',null,false);break;
-                default:break;
-            }
-        }
-        if ($sel=$this->input->post('period')){
-            switch($sel){
-                case 1:$this->db->where('period<=',3,false);break;
-                case 2:$this->db->where('period BETWEEN 3 AND 6',null,false);break;
-                case 3:$this->db->where('period BETWEEN 6 AND 12',null,false);break;
-                default:break;
-            }
-        }
-        if ($sel=$this->input->post('rank')&&is_numeric($sel)&&$sel!=0)
-            $this->db->where('rank',$sel);
+        
         $res=array('data'=>$this->db->get('p2p_bd')->result_array());
         $res['pages']=ceil($this->db->count_all_results()/$size);
         return $res;
@@ -63,35 +45,16 @@ class P2p extends CI_Model{
         $this->db->order_by($data['sort'],$data['order'])->limit($data['rows'],$start);
         $this->db->start_cache();
         if ($isCheck){
-            $this->db->select('(SELECT realname FROM user WHERE user.pid=p2p_bd.pid) as pid,title,`start`,end,total,bid',false)->where('status',0);
+            $this->db->select('(SELECT realname FROM user WHERE user.pid=zhong.pid) as pid,title,`time`,end,total,zid',false)->where('status',0);
         }else{
-            $this->db->select('(SELECT realname FROM user WHERE user.pid=p2p_bd.pid) as pid,title,`start`,`default`,end,total,need,status,bid',false)->where('status>',0,false);
+            $this->db->select('(SELECT realname FROM user WHERE user.pid=zhong.pid) as pid,title,`time`,end,total,need,status,zid',false)->where('status>',0,false);
         }
         if ($key=$this->input->post('key')) $this->db->like('title',$key);
-        $res=$this->db->get('p2p_bd')->result_array();
+        $res=$this->db->get('zhong')->result_array();
         $res=array('rows'=>$res,'total'=>$this->db->count_all_results());
         return json_encode($res);
     }
 
-    function getUserInfo(){
-        $id=$this->session->userdata('id');
-        $res=$this->db->query("SELECT user,phone,(SELECT access FROM possess WHERE pid=user.pid) as access FROM user WHERE pid=$id")->row_array();
-        $sql=$this->db->query("SELECT rank FROM p2p_user WHERE pid=$id");
-        if ($sql->num_rows()==0){
-            $this->db->query("INSERT INTO  p2p_user (`pid`) VALUES ($id)");
-            $res['rank']=0;
-        }else{
-            $res['rank']=$sql->row()->rank;
-        }
-        return $res;
-    }
-
-    function getMeIndex(){
-        $id=$this->session->userdata('id');
-        $data=$this->db->query("SELECT * FROM possess WHERE pid=$id")->row_array();
-        return $data;
-    }
-    
     function getIndex(){
         $sql="(SELECT bid,`total`,title,`rate`,`period`,`paytype`,status,`end`,(SELECT `user` FROM user WHERE user.pid=p2p_bd.pid) as `user` FROM p2p_bd";
         $sql=$sql." WHERE status=1 ORDER BY end LIMIT 0,6) UNION ".$sql." WHERE status=2 ORDER BY end DESC LIMIT 0,2)";
@@ -120,16 +83,6 @@ class P2p extends CI_Model{
             return '余额不足，请充值！';
         }
         
-    }
-
-    function annAdmList($data){
-        $start = ($data['page'] - 1) * $data['rows'];
-        $this->db->order_by($data['sort'],$data['order'])->limit($data['rows'],$start)->select('id,title,`time`',false);
-        $this->db->start_cache();
-        if ($key=$this->input->post('key')) $this->db->like('title',$key);
-        $res=$this->db->get('announce')->result_array();
-        $res=array('rows'=>$res,'total'=>$this->db->count_all_results());
-        return json_encode($res);
     }
 }
 ?>

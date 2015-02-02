@@ -2,19 +2,12 @@
 <html>
 <head>
 	<meta charset="utf-8"/>
-	<title></title>
 	<meta name="description" content="">
-	<!--[if IE 6]>
-	<script type="text/javascript" src="js/dd_png.js"></script>
-	<script type="text/javascript">
-		DD_belatedPNG.fix('.logo,.wechat_logo,.weibo_logo,.service_btn,.up');
-	</script>
-	<![endif]-->
-	<link rel="stylesheet" type="text/css" href="../css/back.css">
-	<link rel="stylesheet" type="text/css" href="../css/themes/default/easyui.css">
-	<link rel="stylesheet" type="text/css" href="../css/themes/icon.css">
-	<script type="text/javascript" src="../js/jquery-1.8.3.min.js"></script>
-	<script type="text/javascript" src="../js/jquery.easyui.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="/css/back.css">
+	<link rel="stylesheet" type="text/css" href="/css/themes/default/easyui.css">
+	<link rel="stylesheet" type="text/css" href="/css/themes/icon.css">
+	<script type="text/javascript" src="/js/jquery-1.8.3.min.js"></script>
+	<script type="text/javascript" src="/js/jquery.easyui.min.js"></script>
 </head>
 <body style="background-color:#fff;">
 <div id="main">	
@@ -28,8 +21,6 @@
 			<input class="confirm" value="发布新公告">
 			<a class="cancel" href="">取消</a>
 		</form>
-		
-
 	</div>
 </div>
 </body>

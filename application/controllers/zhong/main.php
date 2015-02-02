@@ -6,5 +6,15 @@ class main extends CI_Controller {
     function index(){
         $this->load->view('zhong/index');
     }
+
+    function detail($id='1'){
+        if(!is_numeric($id)) show_404();
+        
+    }
+
+    function resdetail($id='a'){
+        if (!is_numeric($id)) show_404();
+        $this->load->view('zhong/cjRes');
+    }
 }
 ?>

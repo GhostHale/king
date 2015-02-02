@@ -83,24 +83,22 @@ class Bbs extends CI_Model{
                 $res=$this->db->query("SELECT content,(SELECT `name` FROM bbs_user WHERE bbs_user.pid=rep.pid) FROM bbs_rep rep WHERE rid=$repid");
                 if ($res->num_rows()==1){
                     $res=$res->row();
-                    $rep=$res->name.':'.htmlspecialchars(substr(htmlspecialchars_decode($res->content),0,50),'ENT_NOQUOTES','UTF-8');
+                    $res->content=substr($res->content,strstr($res->content,'<div class="com_value">')+23,-6);
+                    $rep='<span class="reply_font">'.$res->name.'：</span>'.htmlspecialchars(substr(htmlspecialchars_decode($res->content),0,50),'ENT_NOQUOTES','UTF-8');
                 }
-            }
+            }else return json_encode(array('state'=>0,'info'=>'Are you kidding?'));
         }
-        $data['content']=$rep.htmlspecialchars($data['content'],'ENT_NOQUOTES','UTF-8');
+        $data['content']=$rep.'<div class="com_value">'.htmlspecialchars($data['content'],'ENT_NOQUOTES','UTF-8').'</div>';
         $this->db->simple_query("UPDATE bbs_main SET reply=reply+1 WHERE id=$data[main]");
         $this->db->insert('bbs_rep',$data);
-        $insid=$this->db->insert_id();
-        $res=$this->db->query("SELECT rid,time,content,agree,(SELECT `name` FROM bbs_user WHERE bbs_user.pid=rep.pid) as `name`,".
-        "(SELECT `tou` FROM bbs_user WHERE bbs_user.pid=rep.pid) as `tou`".
-        " FROM bbs_rep rep WHERE rid=$insid")->row_array();
-        return json_encode(array('state'=>1,'info'=>$res));
+        $reply=$this->db->simple_query("SELECT reply FROM bbs_main WHERE id=$data[main]")->row()->reply;
+        return json_encode(array('state'=>1,'info'=>ceil($reply/10)));
     }
 
     function repList($main,$page){
         $num=10;
         $off=($page-1)*$num;
-        $sql="SELECT rid,time,content,agree,(SELECT `name` FROM bbs_user WHERE bbs_user.pid=rep.pid) as `name`,".
+        $sql="SELECT pid,rid,time,content,agree,(SELECT `name` FROM bbs_user WHERE bbs_user.pid=rep.pid) as `name`,".
         "(SELECT `tou` FROM bbs_user WHERE bbs_user.pid=rep.pid) as `tou`".
         " FROM bbs_rep rep WHERE main=$main LIMIT $off,$num";
         $pages=$this->db->query("SELECT count(*) page FROM bbs_rep WHERE main=$main")->row()->page;

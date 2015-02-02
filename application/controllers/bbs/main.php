@@ -20,24 +20,20 @@ class main extends CI_Controller {
      */
     function item($id='a'){
         if (!is_numeric($id)) show_404();
-        if ($data=$this->input->post('content')){
+        if ($data=$this->input->post('content')){//回复帖子
             $this->load->library('session');
+            $data=array('content'=>$data);
             $data['main']=$id;
             if ($data['pid']=$this->session->userdata('id')){
                 if ($this->db->query("SELECT rank FROM bbs_user WHERE pid=$data[pid]")->num_rows()==0)
                     echo json_encode(array('state'=>0,'info'=>'请先激活！'));
                 else echo $this->bbs->reply($data);
             }else echo json_encode(array('state'=>0,'info'=>'请先登录！'));
+        }else if($data=$this->input->post('page')&&is_numeric($page)){//显示回复内容
+            echo $this->bbs->repList($id,$page);
         }else $this->load->view('bbs/item',$this->bbs->getItem($id));
     }
-    
-    function repInfo($id='a'){
-        if (!is_numeric($id)) show_404();
-        if ($page=$this->input->post('page')&&is_numeric($page)){
-            echo $this->bbs->repList($id,$page);
-        }
-    }
-    
+
     function zan($id='a'){
         if (!is_numeric($id)) show_404();
         $this->load->library('session');
@@ -85,6 +81,11 @@ class main extends CI_Controller {
             $this->load->helper('static');
             jumpback('文件不存在！');
         }
+    }
+
+    function userInfo($id=0){
+        if (!is_numeric($id)) show_404();
+        
     }
 }
 ?>

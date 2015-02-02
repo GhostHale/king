@@ -25,67 +25,19 @@
                 <span>文明上网理性发言，请遵守新闻评论服务协议</span>
             </p>
             <div class='txt_box'>
-                <textarea placeholder="发表一下你的想法吧..." id="comment_input"></textarea>
-                <input type="button" value="发表评论" id="apply">
+                <form name="form">
+                <textarea placeholder="发表一下你的想法吧..." id="comment_input" name="content"></textarea>
+                <input type="hidden" name="reply" />
+                <button id="apply" onclick="return sub()">发表评论</button>
+                </form>
             </div>
-            <ul class="comment_list">
-                <li>
-                    <div class="usr_left">
-                        <div class="usr_photo">
-                            <img src="images/person.png">
-                        </div>
-                    </div>
-                    <div class="usr_right">
-                        <p class="usr_inf">
-                            <span class="usr_name">回帖人姓名</span>
-                            <span>2014-12-23</span>
-                        </p>
-                        <div class="commentTxt">
-                            <div class="reply_area">
-                                <span class="reply_font">回复 用户名：</span>/*被回复用户之前的话*/回复内容回复内容 回复内容 回复内容 回复内容 回复内容  回复内容回复内容 回复内容 回复内容 回复内容 回复内容 回复内容 回复内容 回复内容 回复内容  回复内容回
-                            </div>
-                            <div class="com_value">
-                                回复内容回复内容 回复内容 回复内容 回复内容 回复内容  回复内容回复内容 回复内容 回复内容 回复内容 回复内容  回复内容回
-                                复内容 回复内容 回复内容 回复内容 回复内容
-                                回复内容回复内容 回复内容 回复内容 回复内容回复内容回复内容 回复内容 回复内容 回复内容 回复内容  回复内容回复内容 回复内容 回复内容 回复内容 回复内容  回复内容回
-                                复内容 回复内容 回复内容 回复内容 回复内容
-                                回复内容回复内容 回复内容 回复内容 回复内容
-                            </div>
-                        </div>
-                        <div class="opt_box">
-                            <span class="opt">(10)</span>
-                            <span class="reply">回复</span>
-                        </div>
-                    </div>
-                </li>
-                <div id="page" class="load_more">
-                </div>
+            <ul class="comment_list" id="comment">
             </ul>
+            <div id="page" class="load_more">
+            </div>
         </div>
     </div>
 </div>
-<script>
-function delHtmlTag(str)
-{
-    var str=str.replace(/<\/?[^>]*>/gim,"");//去掉所有的html标记
-    var result=str.replace(/(^\s+)|(\s+$)/g,"");//去掉前后空格
-    return  result.replace(/\s/g,"");//去除文章中间空格
-}
-$(function(){
-    var h=$('.art_box').height()+200;
-    var aReply=$('.reply');
-    var oInput=$('#comment_input');
-    aReply.click(function(){
-        var b=this.parentNode.parentNode;
-        var m=$(b).find('.com_value').html();
-        if(m.length>50)
-        {
-           m=m.substr(0,50)
-        }
-        m=delHtmlTag(m);
-        oInput[0].value='回复：'+m+'...';
-        scrollTo(0,h);
-    });
-});
-</script>
+<script src="/js/listview.js"></script>
+<script src="/js/bbs/bbsItem.js"></script>
 <?php include(APPPATH.'views/foot.php');?>

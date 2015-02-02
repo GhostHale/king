@@ -2,22 +2,16 @@
 <html>
 <head>
 	<meta charset="utf-8"/>
-	<title></title>
+	<title>后台管理</title>
 	<meta name="description" content="">
-	<!--[if IE 6]>
-	<script type="text/javascript" src="js/dd_png.js"></script>
-	<script type="text/javascript">
-		DD_belatedPNG.fix('.logo,.wechat_logo,.weibo_logo,.service_btn,.up');
-	</script>
-	<![endif]-->
-	<link rel="stylesheet" type="text/css" href="css/back.css">
-	<script type="text/javascript" src="js/jquery-1.8.3.min.js"></script>
-    <script type="text/javascript" src="js/ajaxLoad.js"></script>
+	<link rel="stylesheet" type="text/css" href="/css/back.css">
+	<script type="text/javascript" src="/js/jquery-1.8.3.min.js"></script>
+	<script type="text/javascript" src="/js/ajaxLoad.js"></script>
 </head>
 <body>
 <div id="header">
 	<div class="logo">掌金联盟</div>
-	<p class="welcome">您好，欢迎<span>xx</span>登录掌金宝后台管理系统，当前时间：<span>20xx-xx-xx xx:xx</span></p>
+	<p class="welcome">您好，欢迎<span><?=$user?></span>登录掌金宝后台管理系统，当前时间：<span><?=date('Y-m-d H:i');?></span></p>
 </div>
 <div id="main">
 	<div id="slider">
@@ -89,21 +83,21 @@
 		$(this).addClass('on');
 	});
 	//iframe
-    function loadPage(id){
-        if (typeof(id)=='object'){
+	function loadPage(id){
+	    if (typeof(id)=='object'){
             id=location.hash.substr(1);
         }
-        var fra=$('.iframe');
-        switch(id){
-            case '2':fra.attr('src','backend/zhongchou_guanli.html');break;
-            case '3':fra.attr('src','backend/zhangjinbao_shenhe.html');break;
-            case '4':fra.attr('src','backend/zhangjinbao_guanli.html');break;
-            case '5':fra.attr('src','backend/gonggao_guanli.html');break;
-            case '6':fra.attr('src','backend/zhangjinjie.html');break;
-            case '7':fra.attr('src','backend/bbs_guanli.html');break;
-            case '8':fra.attr('src','backend/choujiang.html');break;
-            default:fra.attr('src','backend/zhongchou_shenhe.html');
-        }
-    }
+	    var fra=$('.iframe');
+	    switch(id){
+	        case '2':fra.attr('src','/zhong/admin');break;
+	        case '3':fra.attr('src','/ppp/admin/check');break;
+	        case '4':fra.attr('src','/ppp/admin');break;
+	        case '5':fra.attr('src','/ppp/admin/ann');break;
+	        case '6':fra.attr('src','/shop/admin');break;
+	        case '7':fra.attr('src','/bbs/admin');break;
+	        case '8':fra.attr('src','/zhong/admin/choujiang');break;
+	        default:fra.attr('src','/zhong/admin/check');
+	    }
+	}
 </script>
 </html>

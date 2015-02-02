@@ -19,6 +19,7 @@ class me extends CI_Controller {
         $id=$this->session->userdata('id');
         if ($data=$this->input->post(array('name'),true)){
             $data['pid']=$id;
+            $data['begin']=date();
             $this->db->insert('bbs_user',$data);
             echo 'ok';
         }else{
