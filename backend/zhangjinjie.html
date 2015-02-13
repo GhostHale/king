@@ -258,22 +258,7 @@
 	});
 	//商品修改
 	$('.pro_mod').on('click',function(){
-		$('.quit_add').trigger('click');
-		$('.quit_mod').trigger('click');
-		$('.quit_del').trigger('click');
-		$('.pro_con').trigger('click');
-		$(this).parents('.pro_li').find('.price span').attr('contenteditable','true').css('background-color','#f0f0f0');
-		$(this).parents('.pro_li').find('.name').attr('contenteditable','true').css('background-color','#f0f0f0');
-		$(this).parents('.pro_li').find('.pro_intro').attr('contenteditable','true').css('background-color','#f0f0f0');
-		$(this).parent().css('display','none');
-		$(this).parent().next().css('display','block');
-		$('.pro_con').on('click',function(){
-			$(this).parents('.pro_li').find('.price span').attr('contenteditable','false').css('background-color','#fff');
-			$(this).parents('.pro_li').find('.name').attr('contenteditable','false').css('background-color','#fff');
-			$(this).parents('.pro_li').find('.pro_intro').attr('contenteditable','false').css('background-color','#fff');
-			$(this).css('display','none');
-			$(this).parent().find('.pro_ch').css('display','block');
-		});
+		location.href = "addshop.html";
 	});
 	//商品删除
 	$('.pro_del').on('click',function(){
@@ -281,31 +266,7 @@
 	});
 	//商品添加
 	$('.pro_add').on('click',function(){
-		var box = "<li class='pro_li new_pro'><h1 class='pro_ch'><span class='pro_mod'>修改</span><span class='pro_del'>删除</span></h1><h1 class='pro_con'><span>确定</span></h1><img class='pro_pho' src=''><h2 class='price'>￥<span>请输入价格</span></h2><h3 class='name'>请输入商品名</h3><p class='pro_intro'>请输入商品简介</p></li>";
-		$(this).before(box);
-		$('.new_pro').find('.pro_mod').on('click',function(){
-			$('.quit_add').trigger('click');
-			$('.quit_mod').trigger('click');
-			$('.quit_del').trigger('click');
-			$('.pro_con').trigger('click');
-			$(this).parents('.pro_li').find('.price span').attr('contenteditable','true').css('background-color','#f0f0f0');
-			$(this).parents('.pro_li').find('.name').attr('contenteditable','true').css('background-color','#f0f0f0');
-			$(this).parents('.pro_li').find('.pro_intro').attr('contenteditable','true').css('background-color','#f0f0f0');
-			$(this).parent().css('display','none');
-			$(this).parent().next().css('display','block');
-			$('.pro_con').on('click',function(){
-				$(this).parents('.pro_li').find('.price span').attr('contenteditable','false').css('background-color','#fff');
-				$(this).parents('.pro_li').find('.name').attr('contenteditable','false').css('background-color','#fff');
-				$(this).parents('.pro_li').find('.pro_intro').attr('contenteditable','false').css('background-color','#fff');
-				$(this).css('display','none');
-				$(this).parent().find('.pro_ch').css('display','block');
-			});
-		});
-		$('.new_pro').find('.pro_del').on('click',function(){
-			$(this).parents('.pro_li').remove();
-		});
-		$('.new_pro').find('.pro_mod').trigger('click');
-		$('.new_pro').removeClass('new_pro');
+		location.href = "addshop.html";
 	});
 </script>
 </html>
