@@ -65,7 +65,7 @@
     			<li class="var" style="display:none;">
     				<ul>
     					<li class="var_li"><input type="text"><span class="back_icon var_del">&#xf003e;</span><span class="var_con">确定</span></li>
-    					<li class="add_var">+</li>
+    					<li class="add_var">+ 添加分类</li>
     				</ul>	
     			</li>
     		</ul>
@@ -120,7 +120,7 @@
 				var text = $(this).parents('ul').find('.var').html();
 				$('.show_shu').html(text);
 				$('.var_con').on('click',function(){
-					$(this).parent().find('input').attr('contenteditable','false');
+					$(this).parent().find('input').attr('disabled','disabled').css('text-align','center');
 					$(this).css('display','none');
 				});
 				$('.var_del').on('click',function(){
@@ -144,7 +144,7 @@
 			var text = $(this).parents('ul').find('.var').html();
 			$('.show_shu').html(text);
 			$('.var_con').on('click',function(){
-				$(this).parent().find('input').attr('contenteditable','false');
+				$(this).parent().find('input').attr('disabled','disabled').css('text-align','center');
 				$(this).css('display','none');
 			});
 			$('.var_del').on('click',function(){
