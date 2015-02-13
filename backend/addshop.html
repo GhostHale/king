@@ -58,23 +58,20 @@
     	<div id="testdiv"></div> 
     	<h1 class="shop_title">简介</h1> 
     	<textarea class="jianjie"></textarea>
-    	<h1 class="shop_title">属性</h1>
+    	<h1 class="shop_title">属性<span class="shop_del">删除属性</span></h1>
     	<form class="shuxing">
     		<ul>
-    			<li class="shuxing_li"><input class="shu_tag" type="text"><span class="back_icon">&#xf003e;</span><span class="shu_con">确定</span><span class="add_detail">分类</span></li>
+    			<li class="shuxing_li"><input class="shu_tag" type="text"><span class="back_icon shu_del">&#xf003e;</span><span class="shu_con">确定</span><span class="add_detail">分类</span></li>
     			<li class="var" style="display:none;">
-    				<h4>添加分类</h4>
     				<ul>
-    					<li class="var_li"><input type="text"><span class="back_icon">&#xf003e;</span><span class="var_con">确定</span></li>
-    					<li class="var_li"><input type="text"><span class="back_icon">&#xf003e;</span><span class="var_con">确定</span></li>
+    					<li class="var_li"><input type="text"><span class="back_icon var_del">&#xf003e;</span><span class="var_con">确定</span></li>
     					<li class="add_var">+</li>
     				</ul>	
     			</li>
     		</ul>
     		<ul>
-    			<li class="shuxing_li"><input class="shu_tag" type="text"><span class="back_icon">&#xf003e;</span><span class="shu_con">确定</span><span class="add_detail">分类</span></li>
+    			<li class="shuxing_li"><input class="shu_tag" type="text"><span class="back_icon shu_del">&#xf003e;</span><span class="shu_con">确定</span><span class="add_detail">分类</span></li>
     			<li class="var">
-    				<h4>添加分类</h4>
     				<ul>
     					<li class="var_li"><input type="text"><span class="back_icon">&#xf003e;</span><span class="var_con">确定</span></li>
     					<li class="add_var">+</li>
@@ -83,6 +80,8 @@
     		</ul>
     		<div class="add_shu">+ 添加属性</div>
     	</form>
+    	<h4>添加分类</h4>
+    	<div class="show_shu"></div>
 	</div>	
 </div>
 </body>
@@ -107,33 +106,60 @@
 	}
 	//添加属性
 	$('.add_shu').on('click',function(){
-		var shu ="<ul><li class='shuxing_li'><input type='text'><span class='back_icon'>&#xf003e;</span></li><li class='var'><ul><li></li></ul></li></ul>";
+		var shu = "<ul><li class='shuxing_li'><input class='shu_tag' type='text'><span class='back_icon shu_del'>&#xf003e;</span><span class='shu_con'>确定</span><span class='add_detail'>分类</span></li><li class='var' style='display:none;''><ul><li class='var_li'><input type='text'><span class='back_icon var_del'>&#xf003e;</span><span class='var_con'>确定</span></li><li class='add_var'>+</li></ul></li></ul>";
     	$(this).before(shu);
     	//删除
-    	$('.back_icon').on('click',function(){
+    	$('.shu_del').on('click',function(){
 			$(this).parents('ul').remove();
 		});
 		$('.shu_con').on('click',function(){
-			$(this).parent().find('input').attr('contenteditable','false');
+			$(this).parent().find('input').attr('disabled','disabled').css('text-align','center');
 			$(this).css('display','none');
-			$(this).next().css('display','block');
+			$(this).next().css('display','block');	
 			$('.add_detail').on('click',function(){
-
-			});	
+				var text = $(this).parents('ul').find('.var').html();
+				$('.show_shu').html(text);
+				$('.var_con').on('click',function(){
+					$(this).parent().find('input').attr('contenteditable','false');
+					$(this).css('display','none');
+				});
+				$('.var_del').on('click',function(){
+					$(this).parent().remove();
+				});
+				$('.add_var').on('click',function(){
+					var var_li = "<li class='var_li'><input type='text'><span class='back_icon var_del'>&#xf003e;</span><span class='var_con'>确定</span></li>";
+					$(this).before(var_li);
+				});
+			});
 		});
 	});
-	$('.back_icon').on('click',function(){
+	$('.shu_del').on('click',function(){
 		$(this).parents('ul').remove();
 	});
 	$('.shu_con').on('click',function(){
-		$('.shu_tag').attr('disabled','disabled').css('text-align','center');
+		$(this).parent().find('input').attr('disabled','disabled').css('text-align','center');
 		$(this).css('display','none');
 		$(this).next().css('display','block');	
 		$('.add_detail').on('click',function(){
-
+			var text = $(this).parents('ul').find('.var').html();
+			$('.show_shu').html(text);
+			$('.var_con').on('click',function(){
+				$(this).parent().find('input').attr('contenteditable','false');
+				$(this).css('display','none');
+			});
+			$('.var_del').on('click',function(){
+				$(this).parent().remove();
+			});
+			$('.add_var').on('click',function(){
+				var var_li = "<li class='var_li'><input type='text'><span class='back_icon var_del'>&#xf003e;</span><span class='var_con'>确定</span></li>";
+				$(this).before(var_li);
+			});
 		});
 	});
-	
+	//shop_del
+	$('.shop_del').on('click',function(){
+		$('.back_icon').css('display','block');
+	});
 	
 </script>
 </html>
