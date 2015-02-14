@@ -79,9 +79,11 @@
     			</li>
     		</ul>
     		<div class="add_shu">+ 添加属性</div>
+    		<input class="submit" type="submit" value="确认提交">
     	</form>
     	<h4>添加分类</h4>
     	<div class="show_shu"></div>
+    	<button class="submit_">确认提交</button>
 	</div>	
 </div>
 </body>
@@ -160,6 +162,9 @@
 	$('.shop_del').on('click',function(){
 		$('.back_icon').css('display','block');
 	});
-	
+	//提交
+	$('.submit_').on('click',function(){
+		$('.submit').trigger('click');
+	});
 </script>
 </html>
