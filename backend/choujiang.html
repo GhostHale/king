@@ -49,6 +49,7 @@
 				</tr> 
 			</tbody>                         
 		</table>
+		<a class="choujiang_pub" href="">抽奖发布</a>
 		<div style="float:right;width:630px;">
 			<div class="easyui-panel" width="610px;">
 				<div class="easyui-pagination" data-options=""></div>
@@ -76,9 +77,11 @@
 	function doSearch(value){
 		alert('You input: ' + value);
 	}
-	//添加公告
-	$('.add_anno').on('click',function(){
-		location.href = "add_anno.html";
+	//抽奖发布
+	$('.choujiang_pub').on('click',function(){
+		location.href = "choujiang_pub.html";
 	});
+	
+
 </script>
 </html>
