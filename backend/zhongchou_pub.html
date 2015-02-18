@@ -23,13 +23,21 @@
 			<p><a href="">后台管理</a><a href="">> 众筹管理</a><a href="">>公告管理</a><a href="">>发布公告</a></p>
 		</div>
 		<form>
-			<input class="title" type="text" placeholder="标题（必填）">
-			<textarea class="content" placeholder="正文"></textarea>
-			<input class="confirm" value="发布新公告">
-			<a class="cancel" href="">取消</a>
+			<div class="level">
+				<h1>等级<span class="num">一</span><span class="back_icon del_level">&#xf003e; 删除等级</span></h1>
+				<div>
+					<label>总金额:</label>
+					<input type="text">
+					<span class="chr">元</span>
+				</div>
+				<div>
+					<label>反 馈:</label>
+					<textarea></textarea>
+				</div>
+			</div>
+			<a class="add_level" href="">添加等级</a>
+			<input class="confirm" type="submit" value="发布" style="background-color: #7bbfe4;">
 		</form>
-		
-
 	</div>
 </div>
 </body>
@@ -52,14 +60,21 @@
 	function doSearch(value){
 		alert('You input: ' + value);
 	}
-	//添加公告
-	$('.add_anno').on('click',function(){
-		location.href = "add_anno.html";
-	});
-	//取消发布
-	$('.cancel').on('click',function(){
-		location.href = "gonggao_guanli.html";
+	//添加等级
+	var level = "<div class='level new_lev'><h1>等级<span class='num'>一</span><span class='back_icon del_level'>&#xf003e; 删除等级</span></h1><div><label>总金额:</label><input type='text'><span class='chr'>元</span></div><div><label>反 馈:</label><textarea></textarea></div></div>";
+	var Num = ["一","二","三","四","五","六","七","八"];
+	$('.add_level').on('click',function(){
+		$('.add_level').before(level);
+		var num = $('.new_lev').index();
+		$('.new_lev .num').html(Num[num]);
+		$('.new_lev').removeClass('new_lev');
+		$('.del_level').on('click',function(){
+			$(this).parents('.level').remove();
+		});
 		return false;
-	})
+	});
+	$('.del_level').on('click',function(){
+		$(this).parents('.level').remove();
+	});
 </script>
 </html>

@@ -190,6 +190,60 @@ a{
 				padding: 4px 12px;
 				border: 2px solid #e3e3e3;
 			}
+			.level{
+				h1{
+					font-size: 14px;
+					color: #666;
+					line-height: 30px;
+					background-color: #e8e8e8;
+					border: none;
+					text-align: left;
+					text-indent: 12px;
+					.del_level{
+						float: right;
+						margin-right: 12px;
+						cursor: pointer;
+					}
+				}
+				div{
+					overflow: hidden;
+					label{
+						display: block;
+						float: left;
+						width: 60px;
+						color: #666;
+						line-height: 30px;
+						margin-right: 10px;
+						text-align: right;
+					}
+					input{
+						float: left;
+   						width: 904px;
+   						height: 30px;
+   						font-size: 16px;
+   						text-indent: 12px;
+   						border: 2px solid #e9e9e9;
+   						color: #666;
+					}
+					textarea{
+						float: left;
+						resize: none;
+						width: 880px;
+						height: 200px;
+						color: #666;
+						line-height: 28px;
+						font-size: 16px;
+						padding: 0 12px;
+						border: 2px solid #e9e9e9;
+					}
+					.chr{
+						position: absolute;
+						line-height: 34px;
+						right: 40px;
+						color: #666;
+					}
+				}
+			}
 			div{
 				position: relative;
 				margin: 20px 0;
@@ -238,7 +292,7 @@ a{
 				cursor: pointer;
 			}
 		}
-		.add_anno{
+		.add_anno,.choujiang_pub,.add_level{
 			float: left;
 			display: block;
 			width: 90px;
@@ -250,18 +304,7 @@ a{
 			line-height: 24px;
 			margin: 20px 80px 0 40px;
 		}
-		.choujiang_pub{
-			float: left;
-			display: block;
-			width: 90px;
-			color: #fff;
-			background-color: #3a4147;
-			border-bottom: 2px solid #2a2e2f;
-			font-size: 16px;
-			text-align: center;
-			line-height: 24px;
-			margin: 20px 80px 0 40px;
-		}
+		
 		h1{
 			text-align: center;
 			line-height: 60px;

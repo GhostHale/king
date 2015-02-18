@@ -26,7 +26,7 @@
 			<input class="title" type="text" placeholder="标题（必填）">
 			<textarea class="content" placeholder="正文"></textarea>
 			<input type="file" style="margin-left:20px;">
-			<input class="confirm" value="发布新公告">
+			<input class="confirm" type="submit" value="发布新公告">
 			<a class="cancel" href="">取消</a>
 		</form>
 		
@@ -61,6 +61,6 @@
 	$('.cancel').on('click',function(){
 		location.href = "gonggao_guanli.html";
 		return false;
-	})
+	});
 </script>
 </html>
