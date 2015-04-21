@@ -12,9 +12,13 @@ class main extends CI_Controller {
         
     }
 
-    function resdetail($id='a'){
+    function resdetail($id='1'){
         if (!is_numeric($id)) show_404();
         $this->load->view('zhong/cjRes');
+    }
+
+    function cjDetail($id='1'){
+        if (!is_numeric($id)) show_404();
     }
 }
 ?>

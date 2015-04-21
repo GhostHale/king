@@ -66,6 +66,15 @@ class User_model extends CI_Model
         }else return "用户名不存在！";
     }
 
+    function changeRank($info){
+        $this->load->helper('rank_helper');
+        $rank=$this->db->query("SELECT rank FROM p2p_user WHERE pid=$info[pid]")->row()->rank;
+        $table=rankTable($rank);
+        $this->db->simple_query("DELETE FROM $table WHERE pid=$info[pid]");
+        if ($table=rankTable($info['rank']))
+            $this->db->simple_query("INSERT INTO $table (pid) VALUES ($info[pid])");
+    }
+
     function recharge($money){
         if (!is_numeric($money)) return '必须是整数！';
         $id=$this->session->userdata('id');
@@ -73,6 +82,18 @@ class User_model extends CI_Model
         else return 'unknown error';
     }
 
+    function xinyong($id){
+        $res=$this->db->query("SELECT * FROM p2p_user WHERE pid=$id")->row_array();
+        $this->load->helper('rank_helper');
+        if ($table=rankTable($res['rank'])){
+            $res=array_merge($res,$this->db->query("SELECT * FROM $table WHERE pid=$id")->row_array());
+            unset($res['pid']);unset($res['rank']);
+            return dealPic($res);
+        }else{
+            $this->load->helper('functions_helper');
+            jump('请先完善信息！','1');
+        }
+    }
 }
 
 

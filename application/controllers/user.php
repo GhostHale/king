@@ -140,7 +140,7 @@ class User extends CI_Controller
         $view='user/main';$data=array();
         switch($type){
             case 1:$this->load->model('p2p');$view='user/basicinfo';$data=$this->p2p->getUserInfo();break;
-            case 2:$view='user/xinyong';break;
+            case 2:$this->load->model('user_model','user');$view='user/xinyong';$data=$this->user->xinyong($id);break;
             case 3:$view='user/myborrow';break;
             case 4:$view='user/borrow';break;
             case 5:$view='user/myinvest';break;
@@ -152,32 +152,31 @@ class User extends CI_Controller
         $this->load->view($view,$data);
     }
     
-    function picup($type){
+    function picup(){
+        $type=$this->input->post('type');
         if (!is_numeric($type)) show_404();
-        $dbinfo=array(array('table'=>'ppp_user','data'=>array('peo','bank','car','comany','marry','credit','tax','society','educa','house','hukou','skill'))
-            ,array('table'=>'rank_worker','data'=>array('card','com','bhistory'))
-            ,array('table'=>'rank_com','data'=>array('yyzz','zzdm','bhistory','swdj','gszc','nszm','sjbb'))
-            ,array('table'=>'rank_tao','data'=>array('yyzz','smrz','jkzh','dmjt'))
-            );
+        $this->load->helper('rank_helper');
         $this->load->library('session');
         $id=$this->session->userdata('id');
-        if ($type<15) $rank=0;
-        else {
-            $rank=$this->db->query("SELECT rank FROM p2p_user WHERE pid=$id")->row()->rank;
-            $type-=15;
-        }
-        $name=$dbinfo[$rank]['data'][$type];
+        $db=dbinfo($type);
         
-        $config['upload_path'] = 'upload/pics/';
+        $config['upload_path'] = 'upload/userpics/';
         $config['allowed_types'] = 'jpeg|jpg|png';
         $config['max_size'] = '2048';
-        $config['file_name'] = $id.$name;
+        $config['file_name'] = $id.$db['name'];
         $config['overwrite'] = true;
         $this -> load -> library('upload', $config);
-        if (!$this -> upload -> do_upload())
+        if (!$this -> upload -> do_upload('file'))
             $info = $this -> upload -> display_errors('','');
         else {
-            $this->db->set($name,1)->where('pid',$id)->update($dbinfo[$rank]['table']);
+            $data=$this->upload->data();
+            $val=1;
+            switch($data['file_ext']){
+                case '.jpg':$val=2;break;
+                case '.jpeg':$val=3;break;
+                default:break;
+            }
+            $this->db->set($db['name'],$val)->where('pid',$id)->update($db['table']);
             $info='ok';
         }
         echo $info;
@@ -194,6 +193,8 @@ class User extends CI_Controller
         switch($type){
             case 1:$data=array('rank'=>$this->input->post('rank'));
                 if (!is_numeric($data['rank'])) exit('输入非法!');
+                $this->load->model('user_model','user');
+                $this->user->changeRank(array('pid'=>$id,'rank'=>$data['rank']));
                 $table='p2p_user';break;
             case 2:$data=$this->input->post(array('realname','peoid'));
                 $res=$this->db->query("SELECT peoid FROM user WHERE pid=$id")->row()->peoid;
@@ -218,11 +219,15 @@ class User extends CI_Controller
     function adm_in(){
         $this->load->helper('functions_helper');
         if ($inp=$this->input->post(array('code','psw','user'))){
-            if (!$this->vcode_match($code)) jumpback('验证码错误！');
+            if (!$this->vcode_match($inp['code'])) jumpback('验证码错误！');
             else{
                 $string=file_get_contents('application/doyouknow.json');
                 $table=json_decode(gzuncompress($string),true);
-                if (isset($table[$inp['user']])&&md5(md5($inp['psw']))==$table[$inp['user']]){
+                if (isset($table[$inp['user']])&&md5(md5($inp['psw']))==$table[$inp['user']]['psw']){
+                    $table[$inp['user']]['l']=$table[$inp['user']]['t'];
+                    $table[$inp['user']]['t']=array('ip'=>$this->input->ip_address(),'time'=>date('Y-m-d H:i'));
+                    $this->load->helper('file');
+                    write_file('application/doyouknow.json',gzcompress(json_encode($table)));
                     $this->load->library('session');
                     $this->session->set_userdata('admin',$inp['user']);
                     header('Location:/doadmin/index','',301);
@@ -231,8 +236,10 @@ class User extends CI_Controller
         }else{
             $this->load->view('admin/login');
         }
-        
     }
-
-    
+    function test(){
+        $table=array('zhang'=>array('psw'=>md5(md5('xiao')),'t'=>array('time'=>'','ip'=>''),'l'=>array('time'=>'','ip'=>'')));
+        $this->load->helper('file');
+        write_file('application/doyouknow.json',gzcompress(json_encode($table)));
+    }
 }

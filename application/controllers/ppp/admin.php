@@ -53,5 +53,13 @@ class admin extends CI_Controller {
             $this->db->update('ann',$data);
         }else $this->load->view('ppp/admin/addann');
     }
+
+    function userInfo($id=0){
+        
+    }
+
+    function userPic(){
+        
+    }
 }
 ?>

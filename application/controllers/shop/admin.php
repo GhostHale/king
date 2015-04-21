@@ -14,5 +14,23 @@ class admin extends CI_Controller {
             
         }else $this->load->view('admin/shop');
     }
+
+    function add(){
+        if ($data=$this->input->post()){
+            
+        }else $this->load->view('admin/goods');
+    }
+
+    function mod($id=0){
+        if (!is_numeric($id)) show_404();
+        if ($data=$this->input->post()){
+            
+        }else $this->load->view('admin/goods');
+    }
+
+    function upPic(){
+        
+    }
+
 }
 ?>

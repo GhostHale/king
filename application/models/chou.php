@@ -84,5 +84,9 @@ class Chou extends CI_Model{
         }
         
     }
+
+    function delCj($id){
+        
+    }
 }
 ?>

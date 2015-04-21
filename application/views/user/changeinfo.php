@@ -27,7 +27,7 @@
                 <option value="3">网店主</option>
             </select><script type="text/javascript">$('#rank').val(<?=$rank?>)</script>
             </span>
-            <span class="reset" onclick="set(1)">修改</span>
+            <span class="reset" onclick="set(1)">确认修改</span>
         </li>
 		<li>
 			<span class="info_li">

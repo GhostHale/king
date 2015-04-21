@@ -31,5 +31,14 @@ class admin extends CI_Controller {
             echo $this->chou->cjList($data);
         }else $this->load->view('admin/choujiang');
     }
+
+    function buyer($id='1'){
+        if (!is_numeric($id)) show_404();
+    }
+
+    function delCj($id='1'){
+        if (!is_numeric($id)) show_404();
+        echo $this->chou->delCj($id);
+    }
 }
 ?>

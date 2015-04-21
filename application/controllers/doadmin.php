@@ -9,7 +9,13 @@ class doadmin extends CI_Controller {
     }
     
     function index(){
-        $this->load->view('admin/index',array('user'=>$this->session->userdata('admin')));
+        $this->load->view('admin/index');
+    }
+
+    function admin(){
+        $string=file_get_contents('application/doyouknow.json');
+        $table=json_decode(gzuncompress($string),true);
+        $this->load->view('admin/admin',array('data'=>$table));
     }
 
     function addAdmin(){
@@ -21,7 +27,7 @@ class doadmin extends CI_Controller {
             if (isset($table[$data['user']])){
                 echo '此用户名已存在';
                 return;
-            }else $table[$data['user']]=$data['psw'];
+            }else $table[$data['user']]=array('psw'=>md5(md5($data['psw'])),'t'=>array('time'=>'','ip'=>''),'l'=>array('time'=>'','ip'=>''));
             $this->load->helper('file');
             write_file('application/doyouknow.json',gzcompress(json_encode($table)));
             echo 'ok';
@@ -30,6 +36,7 @@ class doadmin extends CI_Controller {
     
     function delAdmin(){
         if ($data=$this->input->post('user')){
+            if ($data=='zhang') exit('基本账户不可删除！');
             $string=file_get_contents('application/doyouknow.json');
             $table=json_decode(gzuncompress($string),true);
             if (isset($table[$data])){
@@ -42,23 +49,22 @@ class doadmin extends CI_Controller {
     }
 
     function setPsw(){
-        if ($data=$this->input->post(array('opsw','npsw'))){
+        if ($data=$this->input->post(array('user','psw'))){
             $string=file_get_contents('application/doyouknow.json');
             $table=json_decode(gzuncompress($string),true);
-            $data['opsw']=md5(md5($data['opsw']));
-            $user=$this->session->userdata('admin');
-            if ($table[$user]==$data['opsw']){
-                $table[$user]=$data['npsw'];
+            if (isset($table[$data['user']])){
+                $table[$data['user']]['psw']=md5(md5($data['psw']));
                 $this->load->helper('file');
                 write_file('application/doyouknow.json',gzcompress(json_encode($table)));
                 echo 'ok';
-            }else echo '原密码错误！';
+            }else echo '此用户不存在！';
         }
     }
 
     function logout(){
         $this->session->sess_destroy();
-        header('Location:/','',301);
+        $this->load->helper('functions_helper');
+        jump('退出成功','/');
     }
 }
 ?>

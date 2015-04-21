@@ -22,6 +22,8 @@ $(document).ready(function (){
     pageSize: 10,       //每页显示的记录条数，默认为10
     pageList: [5, 10, 15, 20, 25, 30 ], //可以设置每页记录条数的列表
     url:location.href,
+    sortName: 'begin',  //排序列名
+    sortOrder: 'desc',  //排序规则
     columns : [[
         {
         field: 'user',
@@ -65,7 +67,7 @@ $(document).ready(function (){
 function send(id,e){
     var rank=0;
     if (e.checked) rank=1;
-    $.post('/bbs/admin/setrank',{id:id,rank:rank},function(d){
+    $.post('/bbs/admin/setrank',{pid:id,rank:rank},function(d){
         if (d=='ok') $.messager.alert('消息：','操作成功！','info');
         else $.messager.alert('警告：',d,'warning');
     });

@@ -17,9 +17,9 @@ class admin extends CI_Controller {
     }
     
     function index(){
-        if ($data=$this->input->post(array('page','rows'))){
+        if ($data=$this->input->post(array('page','rows','order','sort'))){
             $start = ($data['page'] - 1) * $data['rows'];
-            $this->db->order_by('begin','desc')->limit($data['rows'],$start)->select('(SELECT `user` FROM user WHERE user.pid=bbs_user.pid) user,pid,name,rank,begin',false);
+            $this->db->order_by($data['sort'],$data['order'])->limit($data['rows'],$start)->select('(SELECT `user` FROM user WHERE user.pid=bbs_user.pid) user,pid,name,rank,begin',false);
             $this->db->start_cache();
             if ($key=$this->input->post('key')) $this->db->like('name',$key);
             $res=$this->db->get('bbs_user')->result_array();

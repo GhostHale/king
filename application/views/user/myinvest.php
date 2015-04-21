@@ -17,24 +17,6 @@
 	<div class="title">
 		<span class="titleTxt">基本信息</span>
 	</div>
-	<ul class="top_ul">
-		<li class="fir_li">
-			<h1>投资总金额</h1>
-			<h2>0.00元</h2>
-		</li>
-		<li>
-			<h1>满标金额</h1>
-			<h2>0.00元</h2>
-		</li>
-		<li>
-			<h1>总收益</h1>
-			<h2>0.00元</h2>
-		</li>
-		<li>
-			<h1>近30天收益</h1>
-			<h2>0.00元</h2>
-		</li>
-	</ul>
 	<div>
 		<ul>
 			<li class="on">正在竞标</li>

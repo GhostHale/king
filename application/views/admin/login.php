@@ -2,7 +2,7 @@
 <head>
     <title>后台登陆入口</title>
     <meta charset="utf-8"/>
-    <link rel="stylesheet" type="text/css" href="../../../../king/css/login.css">
+    <link rel="stylesheet" type="text/css" href="/css/login.css">
 </head>
 <body>
 <div id="login_register">

@@ -24,33 +24,5 @@
 	</div>
 </div>
 </body>
-<script type="text/javascript">
-	//自适应
-	var height = $(window).height();
-	var width = $(window).width();
-	$('#slider').css('height',height-75);
-	$(window).resize(function(){
-		var height = $(window).height();
-		var width = $(window).width();
-		$('#slider').css('height',height-75);
-		$('.content_top').css('width',width);
-	});
-	$('.content_top').css('width',width);
-	$('a').on('click',function(){
-		return false;
-	});
-	//搜索
-	function doSearch(value){
-		alert('You input: ' + value);
-	}
-	//添加公告
-	$('.add_anno').on('click',function(){
-		location.href = "add_anno.html";
-	});
-	//取消发布
-	$('.cancel').on('click',function(){
-		location.href = "gonggao_guanli.html";
-		return false;
-	})
-</script>
+<script type="text/javascript" src="/js/admin.js"></script>
 </html>

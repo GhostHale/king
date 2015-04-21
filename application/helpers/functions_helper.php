@@ -8,10 +8,12 @@ function jump($str, $url)
     header("Content-type: text/html; charset=utf-8");
     header("Refresh:0.1;url=$url");
     echo "<script type=\"text/javascript\">alert('$str')</script>";
+    exit();
 }
 
 function jumpback($str){
     header("Content-type: text/html; charset=utf-8");
     echo "<script>alert('$str');history.back(-1);</script>";
+    exit();
 }
 ?>
